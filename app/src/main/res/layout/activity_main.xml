@@ -19,7 +19,7 @@
         android:id="@+id/tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Textview!"
+        android:text="Login-textVIew!"
         android:layout_below="@+id/tv1"/>
     <Button
         android:id="@+id/btnLogin"
@@ -27,4 +27,8 @@
         android:layout_height="wrap_content"
         android:text="Login"
         android:layout_below="@+id/tv2"/>
+
 </RelativeLayout>
+
+
+
