@@ -61,7 +61,7 @@
             android:layout_gravity="center_horizontal"/>
         <Button
             android:id="@+id/btnGotID"
-            android:text="Did you have a account?"
+            android:text="Did you have an account?"
             android:textSize="10dp"
             android:textStyle="italic"
             android:backgroundTint="#0000"

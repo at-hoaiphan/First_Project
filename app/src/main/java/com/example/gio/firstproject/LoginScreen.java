@@ -29,7 +29,8 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnSignUp:
-                Intent i = new Intent()
+                Intent i = new Intent(this, RegisterScreen.class);
+                startActivity(i);
         }
     }
 }
