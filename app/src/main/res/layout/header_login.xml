@@ -40,14 +40,17 @@
         android:layout_below="@+id/tvName"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"/>
+
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:textSize="20dp"
         android:hint="Mật khẩu"
-        android:layout_toRightOf="@+id/tvPassword"
         android:layout_alignTop="@+id/tvPassword"
-        android:layout_marginLeft="20dp"/>
+        android:layout_alignLeft="@+id/imgView"
+        android:layout_alignStart="@+id/imgView"
+        android:inputType="textPassword"/>
+
 
 </RelativeLayout>
