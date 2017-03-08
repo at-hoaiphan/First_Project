@@ -28,7 +28,8 @@
         android:hint="Tên"
         android:layout_toRightOf="@+id/tvName"
         android:layout_alignTop="@+id/tvName"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/user"/>
 
     <TextView
         android:id="@+id/tvPassword"
@@ -43,14 +44,22 @@
 
     <EditText
         android:id="@+id/edtPassword"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="Mật khẩu"
         android:layout_alignTop="@+id/tvPassword"
         android:layout_alignLeft="@+id/imgView"
         android:layout_alignStart="@+id/imgView"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/lock"/>
+    <ImageButton
+        android:id="@+id/ibtnShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/edtPassword"
+        android:layout_alignTop="@+id/tvPassword"
+        android:src="@drawable/eye"/>
 
 
 </RelativeLayout>
