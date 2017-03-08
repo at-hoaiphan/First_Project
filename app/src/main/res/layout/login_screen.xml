@@ -18,7 +18,7 @@
         android:layout_gravity="center_horizontal"/>
 
     <Button
-        android:id="@+id/btnForgotPW"
+        android:id="@+id/btnSignUp"
         android:text="Sign up?"
         android:textStyle="italic"
         android:layout_width="wrap_content"
