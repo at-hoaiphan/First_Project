@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        //Navigate to Login  Screen
         Intent i = new Intent(this, LoginScreen.class);
         startActivity(i);
     }
