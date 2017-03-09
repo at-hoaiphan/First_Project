@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -21,10 +22,10 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    Button btnSignUp, btnLogin;
+    Button btnLogin;
+    TextView tvSignUp;
     ImageButton imgBtnShow;
     EditText edtName, edtPassword;
-    int showPw = 1;
     String strName, strPassword;
 
     @Override
@@ -32,8 +33,8 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
-        btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnSignUp.setOnClickListener(this);
+        tvSignUp = (TextView) findViewById(R.id.tvSignUp);
+        tvSignUp.setOnClickListener(this);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(this);
         edtName = (EditText) findViewById(R.id.edtName);
@@ -49,7 +50,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnSignUp:
+            case R.id.tvSignUp:
                 // Navigate to Register screen
                 Intent i = new Intent(this, RegisterScreen.class);
                 startActivity(i);
