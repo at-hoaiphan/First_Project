@@ -20,7 +20,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
 
     Button btnSignUp, btnLogin;
     EditText edtName, edtPassword;
-    String name, pw;
+    String strName, strPassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,10 +47,10 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                 startActivity(i);
                 break;
             case R.id.btnLogin:
-                name = edtName.getText().toString();
-                pw = edtPassword.getText().toString();
-                Toast.makeText(LoginScreen.this, "Usr: "+ name +"---" + "Pw: " + pw, Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onCreate: " + name);
+                strName = edtName.getText().toString();
+                strPassword = edtPassword.getText().toString();
+                Toast.makeText(LoginScreen.this, "Usr: "+ strName +"---" + "Pw: " + strPassword, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onCreate: " + strName);
 
         }
     }

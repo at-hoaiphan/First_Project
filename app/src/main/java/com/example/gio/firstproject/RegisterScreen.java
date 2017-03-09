@@ -13,21 +13,21 @@ import android.widget.Button;
 
 public class RegisterScreen extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnGotID;
+    Button btnHadUsername;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_screen);
 
-        btnGotID = (Button) findViewById(R.id.btnGotID);
-        btnGotID.setOnClickListener(this);
+        btnHadUsername = (Button) findViewById(R.id.btnHadUsername);
+        btnHadUsername.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.btnGotID:
+            case R.id.btnHadUsername:
                 startActivity(new Intent(this, LoginScreen.class));
         }
     }
