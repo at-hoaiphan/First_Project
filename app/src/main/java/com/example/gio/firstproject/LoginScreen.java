@@ -23,8 +23,8 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     Button btnSignUp, btnLogin;
     ImageButton ibtnShow;
     EditText edtName, edtPassword;
-    String name, pw;
-    int show = 1;
+    int showPw = 1;
+    String strName, strPassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,19 +53,19 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                 startActivity(i);
                 break;
             case R.id.btnLogin:
-                name = edtName.getText().toString();
-                pw = edtPassword.getText().toString();
-                Toast.makeText(LoginScreen.this, "Usr: " + name + "---" + "Pw: " + pw, Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onCreate: " + name);
+                strName = edtName.getText().toString();
+                strPassword = edtPassword.getText().toString();
+                Toast.makeText(LoginScreen.this, "Usr: "+ strName +"---" + "Pw: " + strPassword, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onCreate: " + strName);
                 break;
             case R.id.ibtnShow:
-                if (show == 1) {
+                if (showPw == 1) {
                     edtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    show = 0;
+                    showPw = 0;
                 } else {
 
                     edtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    show = 1;
+                    showPw = 1;
                 }
 
 

@@ -8,15 +8,14 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    int x=1;
-    Button btnLogin;
+    Button btnLoginPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(this);
+        btnLoginPage = (Button) findViewById(R.id.btnLoginPage);
+        btnLoginPage.setOnClickListener(this);
     }
 
     @Override

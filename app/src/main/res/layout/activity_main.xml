@@ -22,10 +22,10 @@
         android:text="TextVIew in branch2(conflict) edited!"
         android:layout_below="@+id/tv1"/>
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="button"
+        android:text="Go to Login page"
         android:layout_below="@+id/tv2"/>
 
 </RelativeLayout>

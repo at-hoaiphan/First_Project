@@ -23,33 +23,33 @@
                 android:text="Sex:"
                 android:textSize="20dp"/>
             <RadioButton
-                android:id="@+id/rdbMale"
+                android:id="@+id/rbMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="90dp"
                 android:text="Male"/>
             <RadioButton
-                android:id="@+id/rdbFemale"
+                android:id="@+id/rbFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Female"/>
         </RadioGroup>
         <CheckBox
-            android:id="@+id/cblike1"
-            android:text="Like 1"
+            android:id="@+id/chkHobby1"
+            android:text="Hobby 1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"/>
         <CheckBox
-            android:id="@+id/cblike2"
-            android:text="Like 2"
+            android:id="@+id/chkHobby2"
+            android:text="Hobby 2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp" />
         <CheckBox
-            android:id="@+id/cblike3"
-            android:text="Like 3"
+            android:id="@+id/chkHobby3"
+            android:text="Hobby 3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp" />
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"/>
         <Button
-            android:id="@+id/btnGotID"
+            android:id="@+id/btnHadUsername"
             android:text="Did you have an account?"
             android:textSize="10dp"
             android:textStyle="italic"
