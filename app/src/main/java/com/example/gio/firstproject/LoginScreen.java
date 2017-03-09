@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +17,12 @@ import android.widget.Toast;
  * Created by Gio on 3/7/2017.
  */
 
-public class LoginScreen extends AppCompatActivity implements View.OnClickListener {
+public class LoginScreen extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
     Button btnSignUp, btnLogin;
-    ImageButton ibtnShow;
+    ImageButton imgBtnShow;
     EditText edtName, edtPassword;
     int showPw = 1;
     String strName, strPassword;
@@ -39,8 +40,8 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         edtName.setOnClickListener(this);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         edtPassword.setOnClickListener(this);
-        ibtnShow = (ImageButton) findViewById(R.id.ibtnShow);
-        ibtnShow.setOnClickListener(this);
+        imgBtnShow = (ImageButton) findViewById(R.id.imgBtnShow);
+        imgBtnShow.setOnTouchListener(this);
 
 
     }
@@ -49,30 +50,30 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnSignUp:
+                // Navigate to Register screen
                 Intent i = new Intent(this, RegisterScreen.class);
                 startActivity(i);
                 break;
             case R.id.btnLogin:
+                // Get value of Username and Password
                 strName = edtName.getText().toString();
                 strPassword = edtPassword.getText().toString();
-                Toast.makeText(LoginScreen.this, "Usr: "+ strName +"---" + "Pw: " + strPassword, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginScreen.this, "Usr: " + strName + "---" + "Pw: " + strPassword, Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onCreate: " + strName);
-                break;
-            case R.id.ibtnShow:
-                if (showPw == 1) {
-                    edtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    showPw = 0;
-                } else {
-
-                    edtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    showPw = 1;
-                }
-
-
-                edtPassword.setSelection(edtPassword.length());
                 break;
         }
 
+    }
+
+    //Set event when handling see_password button
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            edtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        } else {
+            edtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        }
+        return true;
     }
 }
 

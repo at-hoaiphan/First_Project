@@ -24,6 +24,7 @@ public class RegisterScreen extends AppCompatActivity implements View.OnClickLis
         btnHadUsername.setOnClickListener(this);
     }
 
+    //Navigate to Login page
     @Override
     public void onClick(View v) {
         switch(v.getId()){
