@@ -16,6 +16,7 @@ public class ListUser extends AppCompatActivity {
     private RecyclerView recyclerViewUsers;
     private UserAdapter mUserAdapter;
     private List<User> mUsers;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,5 +38,9 @@ public class ListUser extends AppCompatActivity {
         //RecyclerView scroll vertical
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewUsers.setLayoutManager(linearLayoutManager);
+
+        //Show list in grid style
+        //        GridLayoutManager gridLayoutManager = new GridLayoutManager(ListUser.this, 2);
+        //        recyclerViewUsers.setLayoutManager(gridLayoutManager);
     }
 }

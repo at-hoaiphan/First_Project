@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -42,6 +43,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvCompany = (TextView) itemView.findViewById(R.id.tvCompany);
             tvMajor = (TextView) itemView.findViewById(R.id.tvMajor);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    User user = mUser.get(getAdapterPosition());
+                    Toast.makeText(mContext, user.getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
