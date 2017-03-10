@@ -33,7 +33,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
         <include
-            layout="@layout/inf_adapter_layout">
+            layout="@layout/information">
         </include>
     </RelativeLayout>
 
