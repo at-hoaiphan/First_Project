@@ -4,36 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/imgBtnBack"
-            android:background="@drawable/ic_back"
-            android:layout_width="48dp"
-            android:layout_height="48dp" />
-        <ImageButton
-            android:id="@+id/imgBtnSettings"
-            android:background="@drawable/ic_settings"
-            android:gravity="center"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentRight="true"/>
-        <TextView
-            android:id="@+id/tvCenter"
-            android:text="Header"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_toLeftOf="@+id/imgBtnSettings"
-            android:layout_toRightOf="@id/imgBtnBack"
-            android:gravity="center"
-            android:background="#9910f400"/>
+    <ImageButton
+        android:id="@+id/imgBtnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tvCenter"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_toStartOf="@+id/imgBtnSettings"
+        android:layout_toEndOf="@id/imgBtnBack"
+        android:background="#5510f400"
+        android:gravity="center"
+        android:text="Header"
+        android:lines="1"
+        android:ellipsize="end" />
+
+    <ImageButton
+        android:id="@+id/imgBtnSettings"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/ic_setting"
+        android:gravity="center"
+        android:paddingLeft="100dp" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:foregroundGravity="center_vertical"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-        <include
-            layout="@layout/information">
-        </include>
+        android:layout_marginRight="10dp"
+        android:foregroundGravity="center_vertical">
+
+        <include layout="@layout/information"></include>
     </RelativeLayout>
 </RelativeLayout>

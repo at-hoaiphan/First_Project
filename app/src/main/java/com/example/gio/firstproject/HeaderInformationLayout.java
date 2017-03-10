@@ -10,7 +10,7 @@ import android.widget.ImageButton;
  * Created by Gio on 3/9/2017.
  */
 
-public class HeaderAdapterLayout extends AppCompatActivity implements View.OnClickListener {
+public class HeaderInformationLayout extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton imgBtnBack, imgBtnSettings;
     @Override
