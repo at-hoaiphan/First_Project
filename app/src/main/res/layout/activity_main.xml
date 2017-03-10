@@ -27,6 +27,12 @@
         android:layout_height="wrap_content"
         android:text="Go to Login page"
         android:layout_below="@+id/tv2"/>
+    <Button
+        android:id="@+id/btnLayout"
+        android:text="Layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLoginPage"/>
 
 </RelativeLayout>
 
