@@ -16,7 +16,7 @@ public class HeaderAdapterLayout extends AppCompatActivity implements View.OnCli
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adapter_information);
+        setContentView(R.layout.header_information);
 
         imgBtnBack = (ImageButton) findViewById(R.id.imgBtnBack);
         imgBtnBack.setOnClickListener(this);
@@ -29,7 +29,7 @@ public class HeaderAdapterLayout extends AppCompatActivity implements View.OnCli
         switch(v.getId()){
             case R.id.imgBtnSettings:
                 //Navigate to Information Layout  Screen
-                startActivity(new Intent(this, InformationLayout.class));
+                startActivity(new Intent(this, ListUser.class));
                 break;
             case  R.id.imgBtnBack:
                 finish();

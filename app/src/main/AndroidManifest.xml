@@ -19,6 +19,7 @@
         <activity android:name=".RegisterScreen"></activity>
         <activity android:name=".HeaderAdapterLayout"></activity>
         <activity android:name=".InformationLayout"></activity>
+        <activity android:name=".ListUser"></activity>
     </application>
 
 </manifest>
