@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnLayout:
                 //Navigate to Header Information Layout  Screen
-                Intent i2 = new Intent(this, HeaderAdapterLayout.class);
+                Intent i2 = new Intent(this, HeaderInformationLayout.class);
                 startActivity(i2);
                 break;
         }

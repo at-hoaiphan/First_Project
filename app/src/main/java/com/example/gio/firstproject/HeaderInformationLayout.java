@@ -10,13 +10,13 @@ import android.widget.ImageButton;
  * Created by Gio on 3/9/2017.
  */
 
-public class HeaderAdapterLayout extends AppCompatActivity implements View.OnClickListener {
+public class HeaderInformationLayout extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton imgBtnBack, imgBtnSettings;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adapter_information);
+        setContentView(R.layout.header_information);
 
         imgBtnBack = (ImageButton) findViewById(R.id.imgBtnBack);
         imgBtnBack.setOnClickListener(this);

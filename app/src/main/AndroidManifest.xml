@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".LoginScreen"></activity>
         <activity android:name=".RegisterScreen"></activity>
-        <activity android:name=".HeaderAdapterLayout"></activity>
+        <activity android:name=".HeaderInformationLayout"></activity>
         <activity android:name=".InformationLayout"></activity>
     </application>
 
