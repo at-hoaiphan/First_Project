@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Gio on 3/10/2017.
@@ -15,7 +14,7 @@ import java.util.List;
 public class ListUser extends AppCompatActivity {
     private RecyclerView recyclerViewUsers;
     private UserAdapter mUserAdapter;
-    private List<User> mUsers;
+    private ArrayList<User> mUsers;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,11 @@ public class ListUser extends AppCompatActivity {
 
         //create User data
         mUsers = new ArrayList<>();
-        mUsers.add(new User("at-hoaiphan", "Asiantech", "Intern"));
-        mUsers.add(new User("at-nhanphan", "Asiantech", "Intern"));
-        mUsers.add(new User("at-toannguyen", "Asiantech", "Intern"));
-        mUsers.add(new User("at-haole", "Asiantech", "Intern"));
-        mUsers.add(new User("at-haivo", "Asiantech", "Intern"));
+        mUsers.add(new User(1, "at-hoaiphan", "Asiantech", "Intern", "BKĐN", 1));
+        mUsers.add(new User(2, "at-nhanphan", "Asiantech", "Intern", "BKĐN", 0));
+        mUsers.add(new User(3, "at-toannguyen", "Asiantech", "Intern", "ABC", 0));
+        mUsers.add(new User(4, "at-haole", "Asiantech", "Intern", "ABC", 0));
+        mUsers.add(new User(5, "at-haivo", "Asiantech", "Intern", "APtech", 0));
 
         mUserAdapter = new UserAdapter(this, mUsers);
         recyclerViewUsers.setAdapter(mUserAdapter);
