@@ -1,4 +1,4 @@
-package com.example.gio.firstproject;
+package com.example.gio.firstproject.screen_layout;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.gio.firstproject.R;
 
 /**
  * Created by Gio on 3/8/2017.

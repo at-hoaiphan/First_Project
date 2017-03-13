@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,11 +59,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                     User user = mUser.get(getAdapterPosition());
                     if (user.getIsFavourite() == 0) {
                         imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staroff);
-                        user.setIsFavourite(1);
-                        mUser.set(getAdapterPosition(),null);
+//                        user.setIsFavourite(1);
+                        mUser.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 1));
+                        Log.d(TAG, "click fvr "+user.getId()+ user.getName()+ user.getCompany()+ user.getMajor()+ user.getAbout()+ user.getIsFavourite());
                     } else {
                         imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staron);
-                        user.setIsFavourite(0);
+//                        user.setIsFavourite(0);
+                        mUser.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 0));
                     }
                 }
             });

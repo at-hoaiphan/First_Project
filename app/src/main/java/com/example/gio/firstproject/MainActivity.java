@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.gio.firstproject.screen_layout.LoginScreen;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button btnLoginPage, btnLayout;
