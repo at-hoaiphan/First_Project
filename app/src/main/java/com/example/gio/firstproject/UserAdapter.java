@@ -1,8 +1,6 @@
 package com.example.gio.firstproject;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,14 +20,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private ArrayList<User> mUser;
+    private ArrayList<User> mUsers;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    private final IsOnFavouriteListener mIsOnFavouriteListener;
 
-    public UserAdapter(Context context, ArrayList<User> datas) {
+    public UserAdapter(Context context, ArrayList<User> datas, IsOnFavouriteListener listener) {
         mContext = context;
-        mUser = datas;
+        mUsers = datas;
         mLayoutInflater = LayoutInflater.from(context);
+        mIsOnFavouriteListener = listener;
     }
 
     @Override
@@ -56,17 +56,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             imgBtnIsFavourite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    User user = mUser.get(getAdapterPosition());
-                    if (user.getIsFavourite() == 0) {
+                    User user = mUsers.get(getAdapterPosition());
+                    if (user.getIsFavourite()) {
                         imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staroff);
-//                        user.setIsFavourite(1);
-                        mUser.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 1));
-                        Log.d(TAG, "click fvr "+user.getId()+ user.getName()+ user.getCompany()+ user.getMajor()+ user.getAbout()+ user.getIsFavourite());
+                        user.setIsFavourite(false);
+                        Log.d(TAG, "User set " + user.getIsFavourite());
+                        //mUsers.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 1));
                     } else {
                         imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staron);
-//                        user.setIsFavourite(0);
-                        mUser.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 0));
+                        user.setIsFavourite(true);
+                        //mUsers.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 0));
                     }
+                    mIsOnFavouriteListener.onFavouriteClick();
+                    Log.d(TAG, "click Item_Detail1 "+user.getId()+ user.getName()+ user.getCompany()+ user.getMajor()+ user.getAbout()+ user.getIsFavourite());
+
                 }
             });
 
@@ -74,14 +77,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, DetailItem.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelable("user_item", mUser.get(getAdapterPosition()));
-                    intent.putExtra("mUser", bundle);
-//                    User user = mUser.get(getAdapterPosition());
-//                    Toast.makeText(mContext, user.getName(), Toast.LENGTH_SHORT).show();
-                    mContext.startActivity(intent);
-
+                    mMyOnClickListener.onClick(getLayoutPosition());
                 }
             });
 
@@ -90,26 +86,41 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     @Override
     public void onBindViewHolder(UserViewHolder holder, int position) {
-        //get User from mUser via position
-        User user = mUser.get(position);
+        //get User from mUsers via position
+        User user = mUsers.get(position);
 
         //bind data to viewholder
-        if (user.getId()%2==0) {
+        if (user.getId() % 2 == 0) {
             holder.imgAvatar.setImageResource(R.drawable.ic_setting);
         }
         holder.tvName.setText(user.getName());
         holder.tvCompany.setText(user.getCompany());
-        if (user.getIsFavourite() == 0) {
-            holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staroff);
-        } else {
+        if (user.getIsFavourite()) { //IsFavourite = true
             holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staron);
+            Log.d(TAG, "Set Favourite = 1" + user.getIsFavourite());
+        } else {
+            holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staroff);
+            Log.d(TAG, "Set Favourite = 0" + user.getIsFavourite());
         }
         holder.tvMajor.setText(user.getMajor());
     }
 
     @Override
     public int getItemCount() {
-        return mUser.size();
+        return mUsers.size();
+    }
+
+    public interface IsOnFavouriteListener {
+        void onFavouriteClick();
+    }
+
+    public interface MyOnClickListener {
+        void onClick(int id);
+    }
+
+    MyOnClickListener mMyOnClickListener;
+    public void setMyOnClickListener(MyOnClickListener mMyOnClickListener) {
+        this.mMyOnClickListener = mMyOnClickListener;
     }
 }
 

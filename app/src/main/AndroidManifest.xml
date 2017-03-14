@@ -15,12 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen_layout.LoginScreen"></activity>
-        <activity android:name=".screen_layout.RegisterScreen"></activity>
+        <activity android:name=".screen_layout.LoginScreenActivity"></activity>
+        <activity android:name=".screen_layout.RegisterScreenActivity"></activity>
         <activity android:name=".HeaderInformationLayout"></activity>
         <activity android:name=".InformationLayout"></activity>
-        <activity android:name=".ListUser"></activity>
-        <activity android:name=".DetailItem"></activity>
+        <activity android:name=".ListUserActivity"></activity>
+        <activity android:name=".DetailItemActivity"></activity>
     </application>
 
 </manifest>

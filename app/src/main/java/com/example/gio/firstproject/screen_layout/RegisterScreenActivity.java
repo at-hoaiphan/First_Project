@@ -16,7 +16,7 @@ import com.example.gio.firstproject.R;
  * Created by Gio on 3/8/2017.
  */
 
-public class RegisterScreen extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
+public class RegisterScreenActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
 
     TextView tvHadUsername;
     EditText edtPassword;

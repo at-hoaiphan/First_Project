@@ -8,10 +8,11 @@ import android.os.Parcelable;
  */
 
 public class User implements Parcelable{
-    private int id, isFavourite = 0;
+    private int id;
+    private boolean isFavourite = false;
     private String name, company, major, about;
 
-    public User(int id, String name, String company, String major, String about, int isFavourite) {
+    public User(int id, String name, String company, String major, String about, boolean isFavourite) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -22,18 +23,18 @@ public class User implements Parcelable{
 
     protected User(Parcel in) {
         id = in.readInt();
-        isFavourite = in.readInt();
+        isFavourite = in.readByte() != 0;
         name = in.readString();
         company = in.readString();
         major = in.readString();
         about = in.readString();
     }
 
-    public int getIsFavourite() {
+    public boolean getIsFavourite() {
         return isFavourite;
     }
 
-    public void setIsFavourite(int isFavourite) {
+    public void setIsFavourite(boolean isFavourite) {
         this.isFavourite = isFavourite;
     }
 
@@ -97,7 +98,7 @@ public class User implements Parcelable{
     @Override
     public void writeToParcel(Parcel parcel, int flags) {
         parcel.writeInt(id);
-        parcel.writeInt(isFavourite);
+        parcel.writeInt(isFavourite ? 1 : 0);
         parcel.writeString(getName());
         parcel.writeString(getCompany());
         parcel.writeString(getMajor());

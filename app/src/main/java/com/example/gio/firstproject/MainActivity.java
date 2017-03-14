@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.gio.firstproject.screen_layout.LoginScreen;
+import com.example.gio.firstproject.screen_layout.LoginScreenActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.btnLoginPage:
                 //Navigate to Login  Screen
-                Intent i = new Intent(this, LoginScreen.class);
+                Intent i = new Intent(MainActivity.this, LoginScreenActivity.class);
                 startActivity(i);
                 break;
             case R.id.btnLayout:

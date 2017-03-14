@@ -29,7 +29,7 @@ public class HeaderInformationLayout extends AppCompatActivity implements View.O
         switch(v.getId()){
             case R.id.imgBtnSettings:
                 //Navigate to Information Layout  Screen
-                startActivity(new Intent(this, ListUser.class));
+                startActivity(new Intent(this, ListUserActivity.class));
                 break;
             case  R.id.imgBtnBack:
                 finish();
