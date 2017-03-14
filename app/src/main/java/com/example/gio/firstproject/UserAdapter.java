@@ -21,7 +21,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private ArrayList<User> mUsers;
-    private Context mContext;
+    Context mContext;
     private LayoutInflater mLayoutInflater;
     private final IsOnFavouriteListener mIsOnFavouriteListener;
 
@@ -68,7 +68,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                         //mUsers.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 0));
                     }
                     mIsOnFavouriteListener.onFavouriteClick();
-                    Log.d(TAG, "click Item_Detail1 "+user.getId()+ user.getName()+ user.getCompany()+ user.getMajor()+ user.getAbout()+ user.getIsFavourite());
+                    Log.d(TAG, "click Item_Detail1 " + user.getId() + user.getName() + user.getCompany() + user.getMajor() + user.getAbout() + user.getIsFavourite());
 
                 }
             });
@@ -90,17 +90,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         User user = mUsers.get(position);
 
         //bind data to viewholder
-        if (user.getId() % 2 == 0) {
-            holder.imgAvatar.setImageResource(R.drawable.ic_setting);
-        }
+//        if (user.getId() % 2 == 0) {
+//            holder.imgAvatar.setImageResource(R.drawable.ic_setting);
+//        }
         holder.tvName.setText(user.getName());
         holder.tvCompany.setText(user.getCompany());
         if (user.getIsFavourite()) { //IsFavourite = true
             holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staron);
-            Log.d(TAG, "Set Favourite = 1" + user.getIsFavourite());
+//            Log.d(TAG, "Set Favourite = 1" + user.getIsFavourite());
         } else {
             holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staroff);
-            Log.d(TAG, "Set Favourite = 0" + user.getIsFavourite());
+//            Log.d(TAG, "Set Favourite = 0" + user.getIsFavourite());
         }
         holder.tvMajor.setText(user.getMajor());
     }
@@ -119,6 +119,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     MyOnClickListener mMyOnClickListener;
+
     public void setMyOnClickListener(MyOnClickListener mMyOnClickListener) {
         this.mMyOnClickListener = mMyOnClickListener;
     }

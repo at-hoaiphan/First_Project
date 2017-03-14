@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -14,9 +16,19 @@ import java.util.ArrayList;
  */
 
 public class ListUserActivity extends AppCompatActivity {
+    private View view;
     private RecyclerView recyclerViewUsers;
     private UserAdapter mUserAdapter;
     private ArrayList<User> mUsers;
+
+    private LinearLayoutManager linearLayoutManager;
+    private RelativeLayout bottomLayout;
+
+    //variable for scroll listener
+    private boolean userScrolled = true;
+    int pastVisibleItem,totalItemCount;
+    // TODO: 3/14/2017 method LinearLayout
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +44,19 @@ public class ListUserActivity extends AppCompatActivity {
         mUsers.add(new User(3, "at-toannguyen", "Asiantech", "Intern", "ABC", false));
         mUsers.add(new User(4, "at-haole", "Asiantech", "Intern", "ABC", false));
         mUsers.add(new User(5, "at-haivo", "Asiantech", "Intern", "APtech", false));
+        mUsers.add(new User(6, "at-hoaiphan", "Asiantech", "Intern", "BKĐN", true));
+        mUsers.add(new User(7, "at-nhanphan", "Asiantech", "Intern", "BKĐN", false));
+        mUsers.add(new User(8, "at-toannguyen", "Asiantech", "Intern", "ABC", false));
+        mUsers.add(new User(9, "at-haole", "Asiantech", "Intern", "ABC", false));
+        mUsers.add(new User(10, "at-haivo", "Asiantech", "Intern", "APtech", false));
+        mUsers.add(new User(11, "at-hoaiphan", "Asiantech", "Intern", "BKĐN", true));
+        mUsers.add(new User(12, "at-nhanphan", "Asiantech", "Intern", "BKĐN", false));
+        mUsers.add(new User(13, "at-toannguyen", "Asiantech", "Intern", "ABC", false));
+        mUsers.add(new User(14, "at-haole", "Asiantech", "Intern", "ABC", false));
+        mUsers.add(new User(15, "at-haivo", "Asiantech", "Intern", "APtech", false));
+//        for (int i =0; i<10; i++) {
+//            mUsers.add(new User(i, "pvhoai "+i,"Asiantech", "Intern", "BKĐN", i%4==0));
+//        }
 
         mUserAdapter = new UserAdapter(this, mUsers, new UserAdapter.IsOnFavouriteListener() {
             @Override
@@ -55,7 +80,7 @@ public class ListUserActivity extends AppCompatActivity {
         });
 
         //RecyclerView scroll vertical
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewUsers.setLayoutManager(linearLayoutManager);
 
         //Show list in grid style
@@ -76,7 +101,6 @@ public class ListUserActivity extends AppCompatActivity {
                     mUsers.set(index, mUsers.get(index));
                     mUserAdapter.notifyDataSetChanged();
                 }
-
             }
         }
     }
