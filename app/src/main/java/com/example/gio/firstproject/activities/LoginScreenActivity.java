@@ -1,4 +1,4 @@
-package com.example.gio.firstproject.screen_layout;
+package com.example.gio.firstproject.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gio.firstproject.MainActivity;
 import com.example.gio.firstproject.R;
 
 /**

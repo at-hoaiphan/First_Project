@@ -1,4 +1,4 @@
-package com.example.gio.firstproject.screen_layout;
+package com.example.gio.firstproject.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

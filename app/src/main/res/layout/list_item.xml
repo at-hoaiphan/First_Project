@@ -18,7 +18,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        layout="@layout/progress_layout"
+        layout="@layout/progress_layout_includelayout"
         android:visibility="gone" />
     <!--<ProgressBar-->
         <!--android:id="@+id/more_progress"-->

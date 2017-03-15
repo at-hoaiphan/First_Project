@@ -8,7 +8,7 @@
         android:id="@+id/imgBtnBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:background="@drawable/ic_back" />
+        android:background="@drawable/ic_back2" />
 
     <TextView
         android:id="@+id/tvCenter"
@@ -27,7 +27,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/ic_setting"
+        android:background="@drawable/ic_list"
         android:gravity="center"
         android:paddingLeft="100dp" />
 
