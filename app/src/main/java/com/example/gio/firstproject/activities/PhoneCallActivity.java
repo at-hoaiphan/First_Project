@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -124,12 +125,16 @@ public class PhoneCallActivity extends AppCompatActivity implements View.OnClick
                 edtNumber.setText(number);
                 break;
             case R.id.imgBtnBackspace:
-                if (number.length() > 0) {
-                    number = number.substring(0, number.length() - 1);
+                if (number.length() > 0 && edtNumber.getSelectionStart() != 0) {
+//                    number = number.substring(0, number.length() - 1);
+                    int pointer = edtNumber.getSelectionStart();
+                    String subStr1 = number.substring(0,pointer-1);
+                    String subStr2 = number.substring(pointer, edtNumber.length());
+                    number = subStr1 +subStr2;
+                    Log.d("positon cusor---", "onResume: " + pointer+"--" +number);
                     edtNumber.setText(number);
-                    edtNumber.setSelection(edtNumber.getText().length());
+                    edtNumber.setSelection(pointer -1);
                 }
-                // TODO: 3/15/2017 set limit onClick button when edtNumber == null
                 break;
             case R.id.imgBtnCall:
                 Toast.makeText(PhoneCallActivity.this, number, Toast.LENGTH_SHORT).show();
@@ -138,8 +143,8 @@ public class PhoneCallActivity extends AppCompatActivity implements View.OnClick
 
                 if (ActivityCompat.checkSelfPermission(PhoneCallActivity.this,
                         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                    //Permit for higher android 5.0
-//                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},0);
+                    //Permit for higher android 5.0
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},0);
                     return;
                 }
                 startActivity(callIntent);
