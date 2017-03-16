@@ -11,7 +11,8 @@ android:padding="5dp" >
     android:id="@+id/more_progress"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    style="?android:attr/progressBarStyleLarge"/>
+    style="?android:attr/progressBarStyle"
+    />
 
 <TextView
     android:layout_width="wrap_content"

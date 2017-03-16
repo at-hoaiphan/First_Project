@@ -1,16 +1,19 @@
-package com.example.gio.firstproject;
+package com.example.gio.firstproject.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
-import com.example.gio.firstproject.screen_layout.LoginScreenActivity;
+import com.example.gio.firstproject.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button btnLoginPage, btnLayout;
+    ImageButton imgBtnCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLoginPage.setOnClickListener(this);
         btnLayout = (Button) findViewById(R.id.btnLayout);
         btnLayout.setOnClickListener(this);
+        imgBtnCall = (ImageButton) findViewById(R.id.imgBtnCall);
+        imgBtnCall.setOnClickListener(this);
     }
 
     @Override
@@ -32,8 +37,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnLayout:
                 //Navigate to Header Information Layout  Screen
-                Intent i2 = new Intent(this, HeaderInformationLayout.class);
+                Log.d("click btnLayout", "onClick: ");
+                Intent i2 = new Intent(this, HeaderInformationLayoutActivity.class);
                 startActivity(i2);
+                break;
+            case R.id.imgBtnCall:
+                //Navigate to Header PhoneCallActvity Layout  Screen
+                Log.d("click imgBtnDial", "onClick: ");
+                Intent intentCall = new Intent(this, PhoneCallActivity.class);
+                startActivity(intentCall);
                 break;
         }
 

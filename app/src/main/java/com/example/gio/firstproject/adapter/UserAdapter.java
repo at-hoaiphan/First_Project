@@ -1,4 +1,4 @@
-package com.example.gio.firstproject;
+package com.example.gio.firstproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.gio.firstproject.R;
+import com.example.gio.firstproject.activities.MainActivity;
+import com.example.gio.firstproject.model.User;
 
 import java.util.ArrayList;
 
@@ -63,7 +67,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                         Log.d(TAG, "User set " + user.getIsFavourite());
                         //mUsers.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 1));
                     } else {
-                        imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staron);
+                        imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_stargold);
                         user.setIsFavourite(true);
                         //mUsers.set(getAdapterPosition(), new User(user.getId(), user.getName(), user.getCompany(), user.getMajor(), user.getAbout(), 0));
                     }
@@ -96,7 +100,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.tvName.setText(user.getName());
         holder.tvCompany.setText(user.getCompany());
         if (user.getIsFavourite()) { //IsFavourite = true
-            holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staron);
+            holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_stargold);
 //            Log.d(TAG, "Set Favourite = 1" + user.getIsFavourite());
         } else {
             holder.imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staroff);

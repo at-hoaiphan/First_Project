@@ -1,4 +1,4 @@
-package com.example.gio.firstproject;
+package com.example.gio.firstproject.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FirstProject</string>
     <string name="loadmore">Loading more items please wait&#8230;</string>
+    <string name="description_button_1">Button 1</string>
 </resources>

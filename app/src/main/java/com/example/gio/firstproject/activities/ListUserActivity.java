@@ -1,4 +1,4 @@
-package com.example.gio.firstproject;
+package com.example.gio.firstproject.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.example.gio.firstproject.R;
+import com.example.gio.firstproject.model.User;
+import com.example.gio.firstproject.adapter.UserAdapter;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
@@ -117,7 +120,7 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
                     mHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Log.d("131", "run: ");
+                            Log.d("loading item ", "run: ");
                             int nextItem = mUsers.size();
                             int endItem = nextItem + 20;
                             for (int i = nextItem + 1; i < endItem; i++) {
