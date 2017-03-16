@@ -1,13 +1,20 @@
 package com.example.gio.firstproject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
@@ -15,7 +22,7 @@ import java.util.ArrayList;
  * Created by Gio on 3/10/2017.
  */
 
-public class ListUserActivity extends AppCompatActivity {
+public class ListUserActivity extends AppCompatActivity implements UserAdapter.MyOnClickListener {
     private View view;
     private RecyclerView recyclerViewUsers;
     private UserAdapter mUserAdapter;
@@ -24,9 +31,17 @@ public class ListUserActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private RelativeLayout bottomLayout;
 
-    //variable for scroll listener
-    private boolean userScrolled = true;
-    int pastVisibleItem,totalItemCount;
+    android.os.Handler mHandler;
+    ProgressBar prgLoading;
+    RelativeLayout rlProgress;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
+    public ListUserActivity() {
+    }
     // TODO: 3/14/2017 method LinearLayout
 
 
@@ -35,7 +50,10 @@ public class ListUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_item);
 
+        mHandler = new android.os.Handler();
         recyclerViewUsers = (RecyclerView) findViewById(R.id.recylerView);
+        prgLoading = (ProgressBar) findViewById(R.id.more_progress);
+        rlProgress = (RelativeLayout) findViewById(R.id.rlProgress);
 
         //create User data
         mUsers = new ArrayList<>();
@@ -49,11 +67,6 @@ public class ListUserActivity extends AppCompatActivity {
         mUsers.add(new User(8, "at-toannguyen", "Asiantech", "Intern", "ABC", false));
         mUsers.add(new User(9, "at-haole", "Asiantech", "Intern", "ABC", false));
         mUsers.add(new User(10, "at-haivo", "Asiantech", "Intern", "APtech", false));
-        mUsers.add(new User(11, "at-hoaiphan", "Asiantech", "Intern", "BKĐN", true));
-        mUsers.add(new User(12, "at-nhanphan", "Asiantech", "Intern", "BKĐN", false));
-        mUsers.add(new User(13, "at-toannguyen", "Asiantech", "Intern", "ABC", false));
-        mUsers.add(new User(14, "at-haole", "Asiantech", "Intern", "ABC", false));
-        mUsers.add(new User(15, "at-haivo", "Asiantech", "Intern", "APtech", false));
 //        for (int i =0; i<10; i++) {
 //            mUsers.add(new User(i, "pvhoai "+i,"Asiantech", "Intern", "BKĐN", i%4==0));
 //        }
@@ -86,6 +99,43 @@ public class ListUserActivity extends AppCompatActivity {
         //Show list in grid style
         //        GridLayoutManager gridLayoutManager = new GridLayoutManager(ListUserActivity.this, 2);
         //        recyclerViewUsers.setLayoutManager(gridLayoutManager);
+
+
+        recyclerViewUsers.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int lastVisibleItem = linearLayoutManager.findLastCompletelyVisibleItemPosition();
+                if (lastVisibleItem == mUsers.size() - 1) {
+//                    prgLoading.setVisibility(View.VISIBLE);
+                    rlProgress.setVisibility(View.VISIBLE);
+                    mHandler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d("131", "run: ");
+                            int nextItem = mUsers.size();
+                            int endItem = nextItem + 20;
+                            for (int i = nextItem + 1; i < endItem; i++) {
+                                mUsers.add(new User(i, "pvhoai", "Asiantech", "Intern", "BKĐN", true));
+                            }
+                            mUserAdapter.notifyItemInserted(mUsers.size());
+//                            prgLoading.setVisibility(View.GONE);
+                            rlProgress.setVisibility(View.GONE);
+                        }
+                    }, 3000);
+                }
+
+            }
+        });
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -103,5 +153,46 @@ public class ListUserActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public void onClick(int id) {
+
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("ListUser Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
     }
 }
