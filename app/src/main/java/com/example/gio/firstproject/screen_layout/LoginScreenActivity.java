@@ -1,4 +1,4 @@
-package com.example.gio.firstproject;
+package com.example.gio.firstproject.screen_layout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gio.firstproject.MainActivity;
+import com.example.gio.firstproject.R;
+
 /**
  * Created by Gio on 3/7/2017.
  */
 
-public class LoginScreen extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
+public class LoginScreenActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -52,14 +55,14 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.tvSignUp:
                 // Navigate to Register screen
-                Intent i = new Intent(this, RegisterScreen.class);
+                Intent i = new Intent(this, RegisterScreenActivity.class);
                 startActivity(i);
                 break;
             case R.id.btnLogin:
                 // Get value of Username and Password
                 strName = edtName.getText().toString();
                 strPassword = edtPassword.getText().toString();
-                Toast.makeText(LoginScreen.this, "Usr: " + strName + "---" + "Pw: " + strPassword, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginScreenActivity.this, "Usr: " + strName + "---" + "Pw: " + strPassword, Toast.LENGTH_SHORT).show();
                 Log.d(TAG, "onCreate: " + strName);
                 break;
         }
