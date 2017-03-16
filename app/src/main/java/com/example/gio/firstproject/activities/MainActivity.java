@@ -12,7 +12,7 @@ import com.example.gio.firstproject.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnLoginPage, btnLayout;
+    Button btnLoginPage, btnLayout, btnIntentFilter;
     ImageButton imgBtnCall;
 
     @Override
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLayout.setOnClickListener(this);
         imgBtnCall = (ImageButton) findViewById(R.id.imgBtnCall);
         imgBtnCall.setOnClickListener(this);
+        btnIntentFilter = (Button) findViewById(R.id.btnIntentFilter);
+        btnIntentFilter.setOnClickListener(this);
     }
 
     @Override
@@ -43,9 +45,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.imgBtnCall:
                 //Navigate to Header PhoneCallActvity Layout  Screen
-                Log.d("click imgBtnDial", "onClick: ");
                 Intent intentCall = new Intent(this, PhoneCallActivity.class);
                 startActivity(intentCall);
+                break;
+            case R.id.btnIntentFilter:
+                //Navigate to Header PhoneCallActvity Layout  Screen
+                Log.d("click imgBtnDial", "onClick: ");
+                Intent intentFilter = new Intent(this, IntentFilterActivity.class);
+                startActivity(intentFilter);
                 break;
         }
 

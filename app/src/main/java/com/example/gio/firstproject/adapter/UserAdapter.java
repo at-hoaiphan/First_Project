@@ -127,6 +127,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void setMyOnClickListener(MyOnClickListener mMyOnClickListener) {
         this.mMyOnClickListener = mMyOnClickListener;
     }
+
+
+    //set view type for recyclerView
+    @Override
+    public int getItemViewType(int position) {
+
+//        return mData.get(position).getType();
+
+        return super.getItemViewType(position);
+    }
 }
 
 
