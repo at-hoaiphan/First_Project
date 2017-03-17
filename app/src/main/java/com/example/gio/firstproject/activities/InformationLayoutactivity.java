@@ -13,6 +13,6 @@ public class InformationLayoutactivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.information);
+        setContentView(R.layout.item_user);
     }
 }

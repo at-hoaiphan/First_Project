@@ -1,11 +1,9 @@
 package com.example.gio.firstproject.activities;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,23 +20,23 @@ import java.util.Locale;
 
 public class IntentFilterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnCallIntent, btnSmsIntent, btnMailIntent, btnLaunchWebIntent, btnPlayStoreIntent, btnMapIntent, btnGalleryIntent, btnCameraIntent;
-    ImageView imgView;
-    private static int SELECT_PICTURE = 7, CAMERA_REQUEST = 8;
+    private ImageView imgView;
+    private static final int SELECT_PICTURE = 7;
+    private static final int CAMERA_REQUEST = 8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intent_filter);
 
-        btnCallIntent = (Button) findViewById(R.id.btnCallIntent);
-        btnSmsIntent = (Button) findViewById(R.id.btnSmsIntent);
-        btnMailIntent = (Button) findViewById(R.id.btnMailIntent);
-        btnLaunchWebIntent = (Button) findViewById(R.id.btnLaunchWebIntent);
-        btnPlayStoreIntent = (Button) findViewById(R.id.btnPlayStoreIntent);
-        btnMapIntent = (Button) findViewById(R.id.btnMapIntent);
-        btnGalleryIntent = (Button) findViewById(R.id.btnGalleryIntent);
-        btnCameraIntent = (Button) findViewById(R.id.btnCameraIntent);
+        Button btnCallIntent = (Button) findViewById(R.id.btnCallIntent);
+        Button btnSmsIntent = (Button) findViewById(R.id.btnSmsIntent);
+        Button btnMailIntent = (Button) findViewById(R.id.btnMailIntent);
+        Button btnLaunchWebIntent = (Button) findViewById(R.id.btnLaunchWebIntent);
+        Button btnPlayStoreIntent = (Button) findViewById(R.id.btnPlayStoreIntent);
+        Button btnMapIntent = (Button) findViewById(R.id.btnMapIntent);
+        Button btnGalleryIntent = (Button) findViewById(R.id.btnGalleryIntent);
+        Button btnCameraIntent = (Button) findViewById(R.id.btnCameraIntent);
         btnCallIntent.setOnClickListener(this);
         btnSmsIntent.setOnClickListener(this);
         btnMailIntent.setOnClickListener(this);
@@ -98,7 +96,7 @@ public class IntentFilterActivity extends AppCompatActivity implements View.OnCl
     }
 
     /* Choose an image from Gallery */
-    void openImageChooser() {
+    private void openImageChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -107,38 +105,22 @@ public class IntentFilterActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == SELECT_PICTURE) {
-                // Get the url from data
-                Uri selectedImageUri = data.getData();
-                if (null != selectedImageUri) {
-                    // Set the image in ImageView
-                    imgView.setImageURI(selectedImageUri);
-                }
-                if (requestCode == CAMERA_REQUEST) {
-                    Bitmap photo = (Bitmap) data.getExtras().get("data");
-                    Log.i("capture", "Image Path : ");
-                    imgView.setImageBitmap(photo);
-                }
+        // Gallery request
+        if (resultCode == RESULT_OK && requestCode == SELECT_PICTURE) {
+            // Get the url from data
+            Uri selectedImageUri = data.getData();
+            if (null != selectedImageUri) {
+                // Set the image in ImageView
+                imgView.setImageURI(selectedImageUri);
             }
         }
-    }
-
-
-
-    /* Get the real path from the URI */
-    public String getPathFromURI(Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
+        // Camera request
+        if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            Log.i("capture", "Image Path : ");
+            imgView.setImageBitmap(photo);
         }
-        cursor.close();
-        return res;
     }
-
 }
 
 
