@@ -45,6 +45,8 @@
         <activity android:name=".activities.DetailItemActivity"></activity>
         <activity android:name=".activities.PhoneCallActivity"></activity>
         <activity android:name=".activities.IntentFilterActivity"></activity>
+        <activity android:name=".activities.SQLiteActivity"></activity>
+        <activity android:name=".activities.AddEditNoteActivity"></activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more item_user. -->
         <meta-data

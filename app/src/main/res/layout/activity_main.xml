@@ -46,6 +46,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgBtnCall"/>
+    <Button
+        android:id="@+id/btnSqlite"
+        android:text="SQLite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnIntentFilter"/>
 
 </RelativeLayout>
 

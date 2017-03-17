@@ -1,6 +1,7 @@
 package com.example.gio.firstproject.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -77,6 +78,7 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class VHUser extends RecyclerView.ViewHolder {
+        private CardView cardView;
         private TextView tvName;
         private TextView tvCompany;
         private TextView tvMajor;

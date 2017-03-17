@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgBtnCall.setOnClickListener(this);
         Button btnIntentFilter = (Button) findViewById(R.id.btnIntentFilter);
         btnIntentFilter.setOnClickListener(this);
+        Button btnSqlite = (Button) findViewById(R.id.btnSqlite);
+        btnSqlite.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +52,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("click imgBtnDial", "onClick: ");
                 Intent intentFilter = new Intent(this, IntentFilterActivity.class);
                 startActivity(intentFilter);
+                break;
+            case R.id.btnSqlite:
+                //Navigate to Header PhoneCallActvity Layout  Screen
+                Log.d("click imgBtnDial", "onClick: ");
+                Intent intentSqlite = new Intent(this, SQLiteActivity.class);
+                startActivity(intentSqlite);
                 break;
         }
     }
