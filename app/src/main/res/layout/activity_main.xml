@@ -52,6 +52,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnIntentFilter"/>
+    <Button
+        android:id="@+id/btnSharedPreference"
+        android:text="Share Preference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSqlite"/>
+    <Button
+        android:id="@+id/btnStorage"
+        android:text="Storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSharedPreference"/>
 
 </RelativeLayout>
 

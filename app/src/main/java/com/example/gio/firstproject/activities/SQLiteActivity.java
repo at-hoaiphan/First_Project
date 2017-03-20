@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.View;
 
@@ -51,7 +52,8 @@ public class SQLiteActivity extends AppCompatActivity implements NoteAdapter.MyO
         MyDatabaseHelper db = new MyDatabaseHelper(this);
         db.createDefaultNotesIfNeed();
 
-        mNotes = db.getAllNotes();
+        mNotes.addAll(db.getAllNotes());
+        Log.d("bla", "onCreate: " + mNotes.get(2).getNoteTitle());
         noteAdapter = new NoteAdapter(this, mNotes);
         // Đăng ký Adapter cho RecyclerView.
         rlListItem.setAdapter(noteAdapter);

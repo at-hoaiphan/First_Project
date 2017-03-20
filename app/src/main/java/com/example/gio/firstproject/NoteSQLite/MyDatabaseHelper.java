@@ -67,12 +67,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void createDefaultNotesIfNeed()  {
         int count = this.getNotesCount();
         if(count ==0 ) {
-            Note note1 = new Note("First Note",
-                    "Content Note 1");
-            Note note2 = new Note("Second Note",
-                    "Content Note 1");
+            Note note1 = new Note("First Note", "Content Note 1");
+            Note note2 = new Note("Second Note", "Content Note 2");
+            Note note3 = new Note("Third Note", "Content Note 3");
             this.addNote(note1);
             this.addNote(note2);
+            this.addNote(note3);
         }
     }
 

@@ -1,6 +1,8 @@
 package com.example.gio.firstproject.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,15 +28,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnIntentFilter.setOnClickListener(this);
         Button btnSqlite = (Button) findViewById(R.id.btnSqlite);
         btnSqlite.setOnClickListener(this);
+        Button btnSharedPre = (Button) findViewById(R.id.btnSharedPreference);
+        btnSharedPre.setOnClickListener(this);
+        Button btnStorage = (Button) findViewById(R.id.btnStorage);
+        btnStorage.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnLoginPage:
-                //Navigate to Login  Screen
-                Intent i = new Intent(MainActivity.this, LoginScreenActivity.class);
-                startActivity(i);
+                boolean isLogIn = false;
+                SharedPreferences sharedPreferences = getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
+
+                if (sharedPreferences != null) {
+                    isLogIn = sharedPreferences.getBoolean("isLogIn", false);
+                } else {
+
+                }
+                if (isLogIn) {
+                    startActivity(new Intent(this,LogInSuccessActivity.class));
+                } else {
+                    //Navigate to Login  Screen
+                    Intent i = new Intent(MainActivity.this, LoginScreenActivity.class);
+                    startActivity(i);
+                }
                 break;
             case R.id.btnLayout:
                 //Navigate to Header Information Layout  Screen
@@ -59,6 +77,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intentSqlite = new Intent(this, SQLiteActivity.class);
                 startActivity(intentSqlite);
                 break;
+            case R.id.btnSharedPreference:
+                //Navigate to Header PhoneCallActvity Layout  Screen
+                Log.d("click imgBtnDial", "onClick: ");
+                Intent intentSharedPre = new Intent(this, SharedPreferenceActivity.class);
+                startActivity(intentSharedPre);
+                break;
+            case R.id.btnStorage:
+                //Navigate to Header PhoneCallActvity Layout  Screen
+                Log.d("click imgBtnDial", "onClick: ");
+                Intent intentStorage = new Intent(this, InternalStorageActivity.class);
+                startActivity(intentStorage);
+                break;
+
         }
     }
 }
