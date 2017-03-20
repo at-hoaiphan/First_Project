@@ -20,6 +20,7 @@ public class Note implements Serializable {
         this.noteContent = noteContent;
     }
 
+
     public void setNoteId(int noteId) {
         this.noteId = noteId;
     }
