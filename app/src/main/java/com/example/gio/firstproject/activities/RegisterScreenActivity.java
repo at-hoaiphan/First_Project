@@ -23,7 +23,7 @@ public class RegisterScreenActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_screen);
+        setContentView(R.layout.activity_register_screen);
 
         TextView tvHadUsername = (TextView) findViewById(R.id.tvHadUsername);
         tvHadUsername.setOnClickListener(this);

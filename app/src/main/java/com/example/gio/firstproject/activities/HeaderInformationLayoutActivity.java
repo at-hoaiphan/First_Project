@@ -16,7 +16,7 @@ public class HeaderInformationLayoutActivity extends AppCompatActivity implement
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.header_information);
+        setContentView(R.layout.activity_header_information);
 
         ImageButton imgBtnBack = (ImageButton) findViewById(R.id.imgBtnBack);
         imgBtnBack.setOnClickListener(this);

@@ -2,7 +2,6 @@ package com.example.gio.firstproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,49 +17,54 @@ import java.util.ArrayList;
  */
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder>{
-    private ArrayList<Note> notes;
-    private LayoutInflater inflater;
+    private ArrayList<Note> notes = new ArrayList<>();
+    private Context mContext;
+    private NoteOnClickListener mNoteOnClickListener;
 
     //Hàm tạo của custom
     public NoteAdapter(Context context, ArrayList<Note> notes){
-//        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
         this.notes = notes;
-
+        this.mContext =context;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_note, parent, false);
-        return new MyViewHolder(v);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_note, parent, false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Note mNote = notes.get(position);
-        holder.tvTitle.setText(mNote.getNoteTitle());
-        Log.d("adapterNote", "onBindViewHolder: "+mNote.getNoteTitle());
+        holder.tvTitle.setText(notes.get(position).getNoteTitle());
+        holder.tvContent.setText((notes.get(position).getNoteContent()));
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
+        TextView tvContent;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            tvContent = (TextView) itemView.findViewById(R.id.tvContent);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mNoteOnClickListener.onClick(getLayoutPosition());
+                }
+            });
         }
     }
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
+    
     @Override
     public int getItemCount() {
-        return 0;
+        return notes.size();
     }
 
-    public interface MyOnClickListener {
+    public interface NoteOnClickListener {
         void onClick(int id);
+    }
+    public void setNoteOnClickListener(NoteOnClickListener mNoteOnClickListener) {
+        this.mNoteOnClickListener = mNoteOnClickListener;
     }
 }

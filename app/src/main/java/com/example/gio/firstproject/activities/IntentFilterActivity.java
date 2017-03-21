@@ -27,7 +27,7 @@ public class IntentFilterActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.intent_filter);
+        setContentView(R.layout.activity_intent_filter);
 
         Button btnCallIntent = (Button) findViewById(R.id.btnCallIntent);
         Button btnSmsIntent = (Button) findViewById(R.id.btnSmsIntent);
@@ -96,7 +96,7 @@ public class IntentFilterActivity extends AppCompatActivity implements View.OnCl
     }
 
     /* Choose an image from Gallery */
-    private void openImageChooser() {
+    public void openImageChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);

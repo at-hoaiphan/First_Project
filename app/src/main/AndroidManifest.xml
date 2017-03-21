@@ -53,7 +53,7 @@
         <activity android:name=".activities.DetailItemActivity" />
         <activity android:name=".activities.PhoneCallActivity" />
         <activity android:name=".activities.IntentFilterActivity" />
-        <activity android:name=".activities.SQLiteActivity" />
+        <activity android:name=".activities.ListNoteActivity" />
         <activity android:name=".activities.AddEditNoteActivity" />
         <activity android:name=".activities.SharedPreferenceActivity" />
         <activity android:name=".activities.InternalStorageActivity" />

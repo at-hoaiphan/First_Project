@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvHeaderListNote"
+        android:text="List Note"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:background="#4cff00"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="Item"
-            android:textColor="#000"
-            android:textStyle="bold"
-            />
-    </LinearLayout>
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/imgBtnAddNote"
+        android:background="@drawable/ic_add_note"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rlListNote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvHeaderListNote"
+        android:scrollbars="vertical"
+        android:background="#3300ffdd"/>
+</RelativeLayout>

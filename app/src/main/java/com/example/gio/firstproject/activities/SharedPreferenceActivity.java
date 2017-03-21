@@ -30,7 +30,7 @@ public class SharedPreferenceActivity extends AppCompatActivity implements View.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shared_preference_setting);
+        setContentView(R.layout.activity_shared_preference_setting);
 
         skSound = (SeekBar) findViewById(R.id.skSound);
         skBrightness = (SeekBar) findViewById(R.id.skBrightness);

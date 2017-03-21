@@ -17,24 +17,30 @@ import com.example.gio.firstproject.R;
 public class LogInSuccessActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tvLogOut;
     private SharedPreferences.Editor editor;
-    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_success);
+        setContentView(R.layout.activity_login_success);
 
-        sharedPreferences= this.getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
 
-         editor = sharedPreferences.edit();
+        editor = sharedPreferences.edit();
 
         tvLogOut = (TextView) findViewById(R.id.tvLogOut);
         tvLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editor.clear().commit();
+//                editor.remove("isLogIn").commit();
                 finish();
             }
         });
+
+
+        editor.putBoolean("isLogIn", true);
+        // Save.
+        editor.apply();
     }
 
     @Override
@@ -42,11 +48,11 @@ public class LogInSuccessActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    @Override
-    public void onBackPressed() {
-        editor.putBoolean("isLogIn", true);
-        // Save.
-        editor.apply();
-        finish();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        editor.putBoolean("isLogIn", true);
+//        // Save.
+//        editor.apply();
+//        finish();
+//    }
 }
