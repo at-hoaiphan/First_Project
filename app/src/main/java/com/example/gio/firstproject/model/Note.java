@@ -13,6 +13,7 @@ public class Note implements Serializable, Parcelable {
     private int noteId;
     private String noteTitle;
     private String noteContent;
+    private String noteImageUri;
 
     public Note() {
     }
@@ -27,6 +28,7 @@ public class Note implements Serializable, Parcelable {
         noteId = in.readInt();
         noteTitle = in.readString();
         noteContent = in.readString();
+        noteImageUri = in.readString();
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
@@ -54,7 +56,6 @@ public class Note implements Serializable, Parcelable {
     }
 
     public int getNoteId() {
-
         return noteId;
     }
 
@@ -66,12 +67,11 @@ public class Note implements Serializable, Parcelable {
         return noteContent;
     }
 
-    public Note(int noteId, String noteTitle, String noteContent) {
-
+    public Note(int noteId, String noteTitle, String noteContent, String noteImageUri) {
         this.noteId = noteId;
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
-
+        this.noteImageUri = noteImageUri;
     }
 
     @Override
@@ -79,10 +79,19 @@ public class Note implements Serializable, Parcelable {
         return 0;
     }
 
+    public void setNoteImageUri(String noteImageUri) {
+        this.noteImageUri = noteImageUri;
+    }
+
+    public String getNoteImageUri() {
+        return noteImageUri;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(noteId);
         dest.writeString(noteTitle);
         dest.writeString(noteContent);
+        dest.writeString(noteImageUri);
     }
 }

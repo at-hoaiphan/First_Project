@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -52,7 +51,6 @@ public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.N
                 bundle.putParcelable("note_item", mNotes.get(id));
                 intent.putExtra("mNotes", bundle);
                 intent.putExtra("editNote", NOTE_EDIT);
-                Log.d("adapter-", "onClick: " + mNotes.get(id));
                 startActivityForResult(intent, 1);
             }
         });

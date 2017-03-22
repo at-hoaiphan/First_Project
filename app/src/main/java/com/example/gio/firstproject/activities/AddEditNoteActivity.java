@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.gio.firstproject.NoteSQLite.MyDatabaseHelper;
 import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.model.Note;
+import com.squareup.picasso.Picasso;
 
 public class AddEditNoteActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,6 +32,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
     private static final int NOTE_ADD = 11;
     private static final int NOTE_EDIT = 22;
     private MyDatabaseHelper myDatabaseHelper;
+    private String noteUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,12 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
             note = getIntent().getBundleExtra("mNotes").getParcelable("note_item");
             edtTitle.setText(note.getNoteTitle());
             edtContent.setText(note.getNoteContent());
+            if (note.getNoteImageUri() != null) {
+                Picasso.with(this).load(note.getNoteImageUri()).into(imgAvatar);
+//                imgAvatar.setImageURI(Uri.parse(note.getNoteImageUri()));
+            } else {
+                imgAvatar.setImageResource(R.drawable.img_nullavatar);
+            }
             btnAddEdit.setText("Edit");
             tvHeaderAddEdit.setText("Edit Note");
             btnDeleteNote.setVisibility(View.VISIBLE);
@@ -79,6 +87,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
                     } else if (noteState == NOTE_EDIT) {
                         note.setNoteTitle(edtTitle.getText().toString());
                         note.setNoteContent(edtContent.getText().toString());
+                        note.setNoteImageUri(noteUri);
+//                        note.setNoteImageUri("content://com.android.providers.media.documents/document/image%3A20");
                         myDatabaseHelper.updateNote(note);
                         Toast.makeText(getApplicationContext(), "Record has been editted!", Toast.LENGTH_LONG).show();
                         refreshList();
@@ -129,6 +139,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
         if (resultCode == RESULT_OK && requestCode == SELECT_PICTURE) {
             // Get the url from data
             Uri selectedImageUri = data.getData();
+            noteUri = selectedImageUri.toString();
             if (null != selectedImageUri) {
                 // Set the image in ImageView
                 imgAvatar.setImageURI(selectedImageUri);
