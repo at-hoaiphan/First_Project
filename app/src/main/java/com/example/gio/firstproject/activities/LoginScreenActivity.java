@@ -53,6 +53,7 @@ public class LoginScreenActivity extends AppCompatActivity implements View.OnCli
                 String strName = edtName.getText().toString();
                 String strPassword = edtPassword.getText().toString();
                 Toast.makeText(LoginScreenActivity.this, "Usr: " + strName + "---" + "Pw: " + strPassword, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LogInSuccessActivity.class));
                 break;
         }
     }
