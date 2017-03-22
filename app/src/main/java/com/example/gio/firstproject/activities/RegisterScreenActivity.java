@@ -18,20 +18,18 @@ import com.example.gio.firstproject.R;
 
 public class RegisterScreenActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
 
-    TextView tvHadUsername;
-    EditText edtPassword;
-    ImageButton imgBtnShow;
+    private EditText edtPassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_screen);
 
-        tvHadUsername = (TextView) findViewById(R.id.tvHadUsername);
+        TextView tvHadUsername = (TextView) findViewById(R.id.tvHadUsername);
         tvHadUsername.setOnClickListener(this);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         edtPassword.setOnClickListener(this);
-        imgBtnShow = (ImageButton) findViewById(R.id.imgBtnShow);
+        ImageButton imgBtnShow = (ImageButton) findViewById(R.id.imgBtnShow);
         imgBtnShow.setOnTouchListener(this);
     }
 

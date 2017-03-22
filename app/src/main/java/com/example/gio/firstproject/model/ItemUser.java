@@ -7,12 +7,12 @@ import android.os.Parcelable;
  * Created by Gio on 3/10/2017.
  */
 
-public class User implements Parcelable{
+public class ItemUser extends ListItem implements Parcelable {
     private int id;
     private boolean isFavourite = false;
     private String name, company, major, about;
 
-    public User(int id, String name, String company, String major, String about, boolean isFavourite) {
+    public ItemUser(int id, String name, String company, String major, String about, boolean isFavourite) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -21,7 +21,7 @@ public class User implements Parcelable{
         this.isFavourite = isFavourite;
     }
 
-    protected User(Parcel in) {
+    private ItemUser(Parcel in) {
         id = in.readInt();
         isFavourite = in.readByte() != 0;
         name = in.readString();
@@ -46,15 +46,15 @@ public class User implements Parcelable{
         this.about = about;
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
+    public static final Creator<ItemUser> CREATOR = new Creator<ItemUser>() {
         @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
+        public ItemUser createFromParcel(Parcel in) {
+            return new ItemUser(in);
         }
 
         @Override
-        public User[] newArray(int size) {
-            return new User[size];
+        public ItemUser[] newArray(int size) {
+            return new ItemUser[size];
         }
     };
 
@@ -103,5 +103,10 @@ public class User implements Parcelable{
         parcel.writeString(getCompany());
         parcel.writeString(getMajor());
         parcel.writeString(getAbout());
+    }
+
+    @Override
+    public int getType() {
+        return TYPE_ITEM;
     }
 }

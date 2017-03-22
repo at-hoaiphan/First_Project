@@ -20,16 +20,24 @@ import com.example.gio.firstproject.R;
  */
 
 public class PhoneCallActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnAsterisk, btnHash;
-    EditText edtNumber;
-    ImageButton imgBtnBackspace, imgBtnCall;
-    String number;
+    private Button btn0;
+    private Button btn1;
+    private Button btn2;
+    private Button btn3;
+    private Button btn4;
+    private Button btn5;
+    private Button btn6;
+    private Button btn7;
+    private Button btn8;
+    private Button btn9;
+    private Button btnAsterisk, btnHash;
+    private EditText edtNumber;
+    private String number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.phone_call_screen);
-
 
         btn0 = (Button) findViewById(R.id.btn0);
         btn1 = (Button) findViewById(R.id.btn1);
@@ -54,9 +62,9 @@ public class PhoneCallActivity extends AppCompatActivity implements View.OnClick
 
         edtNumber = (EditText) findViewById(R.id.edtNumber);
         edtNumber.setOnClickListener(this);
-        imgBtnBackspace = (ImageButton) findViewById(R.id.imgBtnBackspace);
+        ImageButton imgBtnBackspace = (ImageButton) findViewById(R.id.imgBtnBackspace);
         imgBtnBackspace.setOnClickListener(this);
-        imgBtnCall = (ImageButton) findViewById(R.id.imgBtnCall);
+        ImageButton imgBtnCall = (ImageButton) findViewById(R.id.imgBtnCall);
         imgBtnCall.setOnClickListener(this);
 
         //get data from Medial Application
@@ -67,11 +75,11 @@ public class PhoneCallActivity extends AppCompatActivity implements View.OnClick
 //        number = number.substring(4, number.length() - 1);
         if (number != null) {
             edtNumber.setText(number);
-        }
-        else {
+        } else {
             number = "";
         }
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -129,7 +137,6 @@ public class PhoneCallActivity extends AppCompatActivity implements View.OnClick
                     edtNumber.setText(number);
                     edtNumber.setSelection(edtNumber.getText().length());
                 }
-                // TODO: 3/15/2017 set limit onClick button when edtNumber == null
                 break;
             case R.id.imgBtnCall:
                 Toast.makeText(PhoneCallActivity.this, number, Toast.LENGTH_SHORT).show();

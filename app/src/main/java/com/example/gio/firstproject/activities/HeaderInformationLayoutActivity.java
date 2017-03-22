@@ -13,16 +13,14 @@ import com.example.gio.firstproject.R;
  */
 
 public class HeaderInformationLayoutActivity extends AppCompatActivity implements View.OnClickListener {
-
-    ImageButton imgBtnBack, imgBtnSettings;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.header_information);
 
-        imgBtnBack = (ImageButton) findViewById(R.id.imgBtnBack);
+        ImageButton imgBtnBack = (ImageButton) findViewById(R.id.imgBtnBack);
         imgBtnBack.setOnClickListener(this);
-        imgBtnSettings = (ImageButton) findViewById(R.id.imgBtnSettings);
+        ImageButton imgBtnSettings = (ImageButton) findViewById(R.id.imgBtnSettings);
         imgBtnSettings.setOnClickListener(this);
     }
 

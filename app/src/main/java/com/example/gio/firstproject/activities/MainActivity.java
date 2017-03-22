@@ -10,26 +10,25 @@ import android.widget.ImageButton;
 
 import com.example.gio.firstproject.R;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
-    Button btnLoginPage, btnLayout;
-    ImageButton imgBtnCall;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnLoginPage = (Button) findViewById(R.id.btnLoginPage);
+        Button btnLoginPage = (Button) findViewById(R.id.btnLoginPage);
         btnLoginPage.setOnClickListener(this);
-        btnLayout = (Button) findViewById(R.id.btnLayout);
+        Button btnLayout = (Button) findViewById(R.id.btnLayout);
         btnLayout.setOnClickListener(this);
-        imgBtnCall = (ImageButton) findViewById(R.id.imgBtnCall);
+        ImageButton imgBtnCall = (ImageButton) findViewById(R.id.imgBtnCall);
         imgBtnCall.setOnClickListener(this);
+        Button btnIntentFilter = (Button) findViewById(R.id.btnIntentFilter);
+        btnIntentFilter.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.btnLoginPage:
                 //Navigate to Login  Screen
                 Intent i = new Intent(MainActivity.this, LoginScreenActivity.class);
@@ -43,11 +42,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.imgBtnCall:
                 //Navigate to Header PhoneCallActvity Layout  Screen
-                Log.d("click imgBtnDial", "onClick: ");
                 Intent intentCall = new Intent(this, PhoneCallActivity.class);
                 startActivity(intentCall);
                 break;
+            case R.id.btnIntentFilter:
+                //Navigate to Header PhoneCallActvity Layout  Screen
+                Log.d("click imgBtnDial", "onClick: ");
+                Intent intentFilter = new Intent(this, IntentFilterActivity.class);
+                startActivity(intentFilter);
+                break;
         }
-
     }
 }

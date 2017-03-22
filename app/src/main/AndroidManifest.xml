@@ -3,6 +3,9 @@
     package="com.example.gio.firstproject">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +23,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="tel"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sms"/>
+                <data android:scheme="smsto"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEND" />
+                <data android:scheme="mailto"/>
+            </intent-filter>
         </activity>
         <activity android:name=".activities.LoginScreenActivity"></activity>
         <activity android:name=".activities.RegisterScreenActivity"></activity>
@@ -28,8 +44,9 @@
         <activity android:name=".activities.ListUserActivity"></activity>
         <activity android:name=".activities.DetailItemActivity"></activity>
         <activity android:name=".activities.PhoneCallActivity"></activity>
+        <activity android:name=".activities.IntentFilterActivity"></activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more item_user. -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

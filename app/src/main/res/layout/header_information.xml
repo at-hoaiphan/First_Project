@@ -39,6 +39,6 @@
         android:layout_marginRight="10dp"
         android:foregroundGravity="center_vertical">
 
-        <include layout="@layout/information"></include>
+        <include layout="@layout/item_user"></include>
     </RelativeLayout>
 </RelativeLayout>
