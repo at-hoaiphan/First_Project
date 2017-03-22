@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (sharedPreferences != null) {
                     isLogIn = sharedPreferences.getBoolean("isLogIn", false);
-                } else {
-
                 }
                 if (isLogIn) {
                     startActivity(new Intent(this,LogInSuccessActivity.class));
@@ -74,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSqlite:
                 //Navigate to Header PhoneCallActvity Layout  Screen
                 Log.d("click imgBtnDial", "onClick: ");
-                Intent intentSqlite = new Intent(this, SQLiteActivity.class);
+                Intent intentSqlite = new Intent(this, ListNoteActivity.class);
                 startActivity(intentSqlite);
                 break;
             case R.id.btnSharedPreference:

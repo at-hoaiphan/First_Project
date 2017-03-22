@@ -41,7 +41,7 @@ public class DetailItemActivity extends AppCompatActivity implements View.OnClic
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detail_item);
+        setContentView(R.layout.activity_detail_item);
 
         user = getIntent().getBundleExtra("mListItems").getParcelable("user_item");
         mIndex = getIntent().getIntExtra("index", -1);

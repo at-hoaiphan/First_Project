@@ -32,7 +32,7 @@ public class InternalStorageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.internal_storage);
+        setContentView(R.layout.activity_internal_storage);
 
         btnSaveToFile = (Button) findViewById(R.id.btnSave);
         btnReadFile = (Button) findViewById(R.id.btnReadFile);

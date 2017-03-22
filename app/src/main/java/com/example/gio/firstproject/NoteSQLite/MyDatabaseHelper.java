@@ -70,9 +70,17 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Note note1 = new Note("First Note", "Content Note 1");
             Note note2 = new Note("Second Note", "Content Note 2");
             Note note3 = new Note("Third Note", "Content Note 3");
+            Note note4 = new Note("abc Note", "Content");
+            Note note5 = new Note("5th Note", "Content Note 5");
+            Note note6 = new Note("6th Note", "Content Note 6");
+            Note note7 = new Note("7th Note", "Content Note 7");
             this.addNote(note1);
             this.addNote(note2);
             this.addNote(note3);
+            this.addNote(note4);
+            this.addNote(note5);
+            this.addNote(note6);
+            this.addNote(note7);
         }
     }
 
@@ -165,10 +173,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOTE_TITLE, note.getNoteTitle());
         values.put(COLUMN_NOTE_CONTENT, note.getNoteContent());
-
         // updating row
-        return db.update(TABLE, values, COLUMN_NOTE_ID + " = ?",
-                new String[]{String.valueOf(note.getNoteId())});
+        return db.update(TABLE, values, COLUMN_NOTE_ID + " = ?", new String[]{String.valueOf(note.getNoteId())});
     }
 
     // Delete Note

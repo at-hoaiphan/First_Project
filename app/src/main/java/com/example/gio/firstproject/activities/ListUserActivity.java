@@ -61,8 +61,6 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
                 bundle.putParcelable("user_item", (Parcelable) mListItems.get(id));
                 intent.putExtra("index", id);
                 intent.putExtra("mListItems", bundle);
-//                    ItemUser user = mListItems.get(getAdapterPosition());
-//                    Toast.makeText(mContext, user.getName(), Toast.LENGTH_SHORT).show();
                 startActivityForResult(intent, 1);
             }
         });
@@ -70,10 +68,6 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
         //RecyclerView scroll vertical
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewUsers.setLayoutManager(linearLayoutManager);
-
-        //Show list in grid style
-        //        GridLayoutManager gridLayoutManager = new GridLayoutManager(ListUserActivity.this, 2);
-        //        recyclerViewUsers.setLayoutManager(gridLayoutManager);
 
         recyclerViewUsers.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
