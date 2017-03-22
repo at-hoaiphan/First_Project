@@ -32,6 +32,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_NOTE_ID ="Note_Id";
     private static final String COLUMN_NOTE_TITLE ="Note_Title";
     private static final String COLUMN_NOTE_CONTENT = "Note_Content";
+    private static final String COLUMN_NOTE_URI = "Note_Uri";
 
     public MyDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,7 +46,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String createQuery = "CREATE TABLE " + TABLE + "("
                 + COLUMN_NOTE_ID + " INTEGER PRIMARY KEY,"
                 + COLUMN_NOTE_TITLE + " TEXT,"
-                + COLUMN_NOTE_CONTENT + " TEXT )";
+                + COLUMN_NOTE_CONTENT + " TEXT,"
+                + COLUMN_NOTE_URI + " TEXT )";
 
         // ExecuteSQL
         db.execSQL(createQuery);
@@ -86,13 +88,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     // Add Note
     public void addNote(Note note) {
-        Log.i(TAG, "MyDatabaseHelper.addNote ... " + note.getNoteTitle());
+        Log.i(TAG, "MyDatabaseHelper.addNote ... ");
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOTE_TITLE, note.getNoteTitle());
         values.put(COLUMN_NOTE_CONTENT, note.getNoteContent());
+        values.put(COLUMN_NOTE_URI, note.getNoteImageUri());
 
         // Insert a record into Table
         db.insert(TABLE, null, values);
@@ -108,13 +111,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE, new String[] { COLUMN_NOTE_ID,
-                        COLUMN_NOTE_TITLE, COLUMN_NOTE_CONTENT }, COLUMN_NOTE_ID + "=?",
+                        COLUMN_NOTE_TITLE, COLUMN_NOTE_CONTENT, COLUMN_NOTE_URI }, COLUMN_NOTE_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
+        if (cursor != null) {
             cursor.moveToFirst();
+        }
 
-        Note note = new Note(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2));
+        Note note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
 
         // return note
         return note;
@@ -138,6 +141,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 note.setNoteId(Integer.parseInt(cursor.getString(0)));
                 note.setNoteTitle(cursor.getString(1));
                 note.setNoteContent(cursor.getString(2));
+                note.setNoteImageUri(cursor.getString(3));
 
                 // Add into list.
                 noteList.add(note);
@@ -173,6 +177,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NOTE_TITLE, note.getNoteTitle());
         values.put(COLUMN_NOTE_CONTENT, note.getNoteContent());
+        values.put(COLUMN_NOTE_URI, note.getNoteImageUri());
         // updating row
         return db.update(TABLE, values, COLUMN_NOTE_ID + " = ?", new String[]{String.valueOf(note.getNoteId())});
     }
@@ -182,8 +187,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         Log.i(TAG, "MyDatabaseHelper.updateNote ... " + note.getNoteTitle() );
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE, COLUMN_NOTE_ID + " = ?",
-                new String[] { String.valueOf(note.getNoteId()) });
+        db.delete(TABLE, COLUMN_NOTE_ID + " = ?", new String[] { String.valueOf(note.getNoteId()) });
         db.close();
     }
 }

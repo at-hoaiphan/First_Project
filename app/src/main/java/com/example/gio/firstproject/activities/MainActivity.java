@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.gio.firstproject.R;
+import com.example.gio.firstproject.fragmentdemo.FragmentDemoActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSharedPre.setOnClickListener(this);
         Button btnStorage = (Button) findViewById(R.id.btnStorage);
         btnStorage.setOnClickListener(this);
+        Button btnFragment = (Button) findViewById(R.id.btnFragment);
+        btnFragment.setOnClickListener(this);
     }
 
     @Override
@@ -86,6 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("click imgBtnDial", "onClick: ");
                 Intent intentStorage = new Intent(this, InternalStorageActivity.class);
                 startActivity(intentStorage);
+                break;
+            case R.id.btnFragment:
+                //Navigate to Header PhoneCallActvity Layout  Screen
+                Log.d("click imgBtnDial", "onClick: ");
+                Intent intentFragment = new Intent(this, FragmentDemoActivity.class);
+                startActivity(intentFragment);
                 break;
 
         }
