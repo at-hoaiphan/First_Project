@@ -46,7 +46,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
 
         ActivityCompat.requestPermissions((Activity) mContext, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
         String imageUri = notes.get(position).getNoteImageUri();
-        if (imageUri.isEmpty()) {
+        if (java.util.Objects.equals(imageUri, "") || imageUri == null) {
             holder.imgNote.setImageResource(R.drawable.img_nullavatar);
         } else {
             Log.d("load image-", "onBindViewHolder: " + imageUri);

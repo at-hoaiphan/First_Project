@@ -23,6 +23,11 @@ public class Note implements Serializable, Parcelable {
         this.noteContent = noteContent;
     }
 
+    public Note(String noteTitle, String noteContent, String noteImageUri) {
+        this.noteTitle = noteTitle;
+        this.noteContent = noteContent;
+        this.noteImageUri = noteImageUri;
+    }
 
     protected Note(Parcel in) {
         noteId = in.readInt();

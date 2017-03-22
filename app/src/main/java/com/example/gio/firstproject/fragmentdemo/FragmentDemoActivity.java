@@ -6,11 +6,14 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.gio.firstproject.R;
+
 /**
  * Created by Gio on 3/22/2017.
  */
 
 public class FragmentDemoActivity extends AppCompatActivity {
+    boolean orientation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,18 +26,21 @@ public class FragmentDemoActivity extends AppCompatActivity {
         /**
          * Check the device orientation and act accordingly
          */
-        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        orientation = getResources().getBoolean(R.bool.orientation);
+        if (orientation) {
             /**
              * Landscape mode of the device
              */
-            LM_Fragment ls_fragment = new LM_Fragment();
+            LsFragment ls_fragment = new LsFragment();
             fragmentTransaction.replace(android.R.id.content, ls_fragment);
+            fragmentTransaction.addToBackStack(null);
         } else {
             /**
              * Portrait mode of the device
              */
-            PM_Fragment pm_fragment = new PM_Fragment();
+            PtFragment pm_fragment = new PtFragment();
             fragmentTransaction.replace(android.R.id.content, pm_fragment);
+            fragmentTransaction.addToBackStack(null);
         }
         fragmentTransaction.commit();
     }

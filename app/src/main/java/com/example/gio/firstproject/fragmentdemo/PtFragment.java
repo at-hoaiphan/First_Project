@@ -12,12 +12,12 @@ import com.example.gio.firstproject.R;
  * Created by Gio on 3/22/2017.
  */
 
-public class LM_Fragment extends Fragment {
+public class PtFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         /**
          * Inflate the layout for this fragment
          */
-        return inflater.inflate(R.layout.fragment_demo_landscape, container, false);
+        return inflater.inflate(R.layout.fragment_demo_portrait, container, false);
     }
 }

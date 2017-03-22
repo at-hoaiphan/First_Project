@@ -80,8 +80,14 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
                     return;
                 } else {
                     if (noteState == NOTE_ADD) {
-                        Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString());
-                        myDatabaseHelper.addNote(newNote);
+                        if (noteUri != null) {
+                            Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString(), noteUri);
+                            myDatabaseHelper.addNote(newNote);
+                        } else {
+
+                            Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString());
+                            myDatabaseHelper.addNote(newNote);
+                        }
                         Toast.makeText(getApplicationContext(), "Record has been added!", Toast.LENGTH_LONG).show();
                         refreshList();
                     } else if (noteState == NOTE_EDIT) {
