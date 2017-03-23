@@ -60,7 +60,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSharedPreference"
         android:layout_centerHorizontal="true"/>
-
+    <Button
+        android:id="@+id/btnFragment"
+        android:text="Fragment"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStorage"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btnFragmentDemo2"
+        android:text="Fragment2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStorage"
+        android:layout_toEndOf="@+id/btnFragment"/>
 </RelativeLayout>
 
 
