@@ -19,12 +19,11 @@ import java.util.ArrayList;
 
 public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.NoteOnClickListener, View.OnClickListener {
 
-    private static final int MY_REQUEST_CODE = 1000;
-    private static final int NOTE_ADD = 11;
     private static final int NOTE_EDIT = 22;
 
     private LinearLayoutManager linearLayoutManager;
     private ArrayList<Note> mNotes = new ArrayList<>();
+
     private NoteAdapter noteAdapter;
 
     @Override
@@ -71,7 +70,7 @@ public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.N
                     MyDatabaseHelper db = new MyDatabaseHelper(this);
                     ArrayList<Note> list = db.getAllNotes();
                     this.mNotes.addAll(list);
-                    // Thông báo dữ liệu thay đổi.
+                    // Notify data set Changed.
                     noteAdapter.notifyDataSetChanged();
                 }
             }

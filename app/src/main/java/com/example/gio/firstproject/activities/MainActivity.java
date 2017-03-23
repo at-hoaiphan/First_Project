@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnFragment.setOnClickListener(this);
         Button btnFragmentDemo2 = (Button) findViewById(R.id.btnFragmentDemo2);
         btnFragmentDemo2.setOnClickListener(this);
+        Button btnViewpager = (Button) findViewById(R.id.btnViewpager);
+        btnViewpager.setOnClickListener(this);
     }
 
     @Override
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     isLogIn = sharedPreferences.getBoolean("isLogIn", false);
                 }
                 if (isLogIn) {
-                    startActivity(new Intent(this,LogInSuccessActivity.class));
+                    startActivity(new Intent(this, LogInSuccessActivity.class));
                 } else {
                     //Navigate to Login  Screen
                     Intent i = new Intent(MainActivity.this, LoginScreenActivity.class);
@@ -96,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Navigate to FragmentMainDemo2 Layout  Screen
                 Intent intentFragmentDemo2 = new Intent(this, FragmentMainDemo2.class);
                 startActivity(intentFragmentDemo2);
+                break;
+            case R.id.btnViewpager:
+                //Navigate to FragmentMainDemo2 Layout  Screen
+                Intent intentViewpager = new Intent(this, ViewPagerActivity.class);
+                startActivity(intentViewpager);
                 break;
 
         }
