@@ -15,65 +15,79 @@
         android:id="@+id/btnLoginPage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Go to Login page"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Go to Login page" />
+
     <Button
         android:id="@+id/btnLayout"
-        android:text="Layout"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnLoginPage"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Layout" />
+
     <ImageButton
         android:id="@+id/imgBtnCall"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnLayout"
-        android:src="@drawable/ic_phone_call"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_phone_call" />
 
     <Button
         android:id="@+id/btnIntentFilter"
-        android:text="Intent Filter"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgBtnCall"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Intent Filter" />
+
     <Button
         android:id="@+id/btnSqlite"
-        android:text="SQLite"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnIntentFilter"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="SQLite" />
+
     <Button
         android:id="@+id/btnSharedPreference"
-        android:text="Share Preference"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSqlite"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Share Preference" />
+
     <Button
         android:id="@+id/btnStorage"
-        android:text="Storage"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSharedPreference"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Storage" />
+
     <Button
         android:id="@+id/btnFragment"
-        android:text="Fragment"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnStorage"
-        android:layout_centerHorizontal="true"/>
+        android:text="Fragment" />
+
     <Button
         android:id="@+id/btnFragmentDemo2"
-        android:text="Fragment2"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnStorage"
-        android:layout_toEndOf="@+id/btnFragment"/>
+        android:layout_toEndOf="@+id/btnFragment"
+        android:text="Fragment2" />
+
+    <Button
+        android:id="@+id/btnViewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStorage"
+        android:layout_toEndOf="@+id/btnFragmentDemo2"
+        android:text="ViewPager" />
 </RelativeLayout>
 
 
