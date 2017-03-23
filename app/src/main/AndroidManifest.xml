@@ -61,6 +61,7 @@
         <activity android:name=".activities.InternalStorageActivity" />
         <activity android:name=".activities.LogInSuccessActivity" />
         <activity android:name=".fragmentdemo.FragmentDemoActivity"/>
+        <activity android:name=".fragmentdemo.FragmentMainDemo2"/>
         <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more item_user.

@@ -2,7 +2,6 @@ package com.example.gio.firstproject.fragmentdemo;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -18,8 +17,6 @@ public class FragmentDemoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Configuration config = getResources().getConfiguration();
-
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -33,14 +30,14 @@ public class FragmentDemoActivity extends AppCompatActivity {
              */
             LsFragment ls_fragment = new LsFragment();
             fragmentTransaction.replace(android.R.id.content, ls_fragment);
-            fragmentTransaction.addToBackStack(null);
+//            fragmentTransaction.addToBackStack("0");
         } else {
             /**
              * Portrait mode of the device
              */
             PtFragment pm_fragment = new PtFragment();
             fragmentTransaction.replace(android.R.id.content, pm_fragment);
-            fragmentTransaction.addToBackStack(null);
+//            fragmentTransaction.addToBackStack("0");
         }
         fragmentTransaction.commit();
     }
