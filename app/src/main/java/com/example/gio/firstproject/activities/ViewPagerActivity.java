@@ -7,15 +7,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.gio.firstproject.R;
-import com.example.gio.firstproject.adapter.ViewpagerAdapter;
+import com.example.gio.firstproject.adapter.ViewPagerAdapter;
 
 /**
  * Created by Gio on 3/23/2017.
  */
 
 public class ViewPagerActivity extends AppCompatActivity {
-    ViewPager pager;
-    TabLayout tabLayout;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,14 @@ public class ViewPagerActivity extends AppCompatActivity {
         // Hide ActionBar
         getSupportActionBar().hide();
 
-        pager = (ViewPager) findViewById(R.id.view_pager);
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         FragmentManager manager = getSupportFragmentManager();
-        ViewpagerAdapter adapter = new ViewpagerAdapter(manager);
-        pager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(pager);
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setTabsFromPagerAdapter(adapter);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(manager);
+        mViewPager.setAdapter(adapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.setTabsFromPagerAdapter(adapter);
     }
 }

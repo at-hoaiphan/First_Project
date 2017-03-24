@@ -56,7 +56,6 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
             edtContent.setText(note.getNoteContent());
             if (note.getNoteImageUri() != null) {
                 Picasso.with(this).load(note.getNoteImageUri()).into(imgAvatar);
-//                imgAvatar.setImageURI(Uri.parse(note.getNoteImageUri()));
             } else {
                 imgAvatar.setImageResource(R.drawable.img_nullavatar);
             }

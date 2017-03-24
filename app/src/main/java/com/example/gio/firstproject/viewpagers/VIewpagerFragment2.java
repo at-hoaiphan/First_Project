@@ -11,19 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gio.firstproject.R;
-import com.example.gio.firstproject.adapter.ViewpagerInnerAdapter;
+import com.example.gio.firstproject.adapter.ViewPagerInner2Adapter;
 
 /**
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewpagerFragment2 extends Fragment {
+public class ViewPagerFragment2 extends Fragment {
 
-    //    private AnimatedGifImageView animatedGifImageView;
-    private ViewPager pager;
-    private TabLayout tabLayout;
-
-    public ViewpagerFragment2() {
+    public ViewPagerFragment2() {
     }
 
     @Nullable
@@ -34,15 +30,15 @@ public class ViewpagerFragment2 extends Fragment {
 //        animatedGifImageView = ((AnimatedGifImageView)findViewById(R.id.animatedGifImageView));
 //        animatedGifImageView.setAnimatedGif(R.raw.animated_gif,
 //                TYPE.FIT_CENTER);
-        pager = (ViewPager) view.findViewById(R.id.view_pager2);
-        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout2);
+        ViewPager mViewPager = (ViewPager) view.findViewById(R.id.view_pager2);
+        TabLayout mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout2);
 
         FragmentManager manager = getChildFragmentManager();
-        ViewpagerInnerAdapter adapter = new ViewpagerInnerAdapter(manager);
-        pager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(pager);
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setTabsFromPagerAdapter(adapter);
+        ViewPagerInner2Adapter adapter = new ViewPagerInner2Adapter(manager);
+        mViewPager.setAdapter(adapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.setTabsFromPagerAdapter(adapter);
 
 
         return view;

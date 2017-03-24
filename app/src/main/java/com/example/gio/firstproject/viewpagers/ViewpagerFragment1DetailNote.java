@@ -18,7 +18,7 @@ import com.example.gio.firstproject.model.Note;
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewpagerFragment1DetailNote extends Fragment {
+public class ViewPagerFragment1DetailNote extends Fragment {
 
     private ViewPagerActivity viewPagerActivity;
     private Note note;
@@ -28,7 +28,7 @@ public class ViewpagerFragment1DetailNote extends Fragment {
     private Button btnDeleteNote;
     private ImageView imgAvatar;
 
-    public ViewpagerFragment1DetailNote() {
+    public ViewPagerFragment1DetailNote() {
     }
 
     @Nullable

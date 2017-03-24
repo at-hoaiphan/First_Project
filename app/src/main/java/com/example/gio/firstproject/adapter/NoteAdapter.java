@@ -23,13 +23,13 @@ import java.util.ArrayList;
  */
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> {
-    private ArrayList<Note> notes = new ArrayList<>();
+    private ArrayList<Note> mNotes = new ArrayList<>();
     private Context mContext;
     private NoteOnClickListener mNoteOnClickListener;
 
     //Hàm tạo của custom
     public NoteAdapter(Context context, ArrayList<Note> notes) {
-        this.notes = notes;
+        this.mNotes = notes;
         this.mContext = context;
     }
 
@@ -41,16 +41,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.tvTitle.setText(notes.get(position).getNoteTitle());
-        holder.tvContent.setText((notes.get(position).getNoteContent()));
+        holder.tvTitle.setText(mNotes.get(position).getNoteTitle());
+        holder.tvContent.setText((mNotes.get(position).getNoteContent()));
 
         ActivityCompat.requestPermissions((Activity) mContext, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-        String imageUri = notes.get(position).getNoteImageUri();
+        String imageUri = mNotes.get(position).getNoteImageUri();
         if (java.util.Objects.equals(imageUri, "") || imageUri == null) {
             holder.imgNote.setImageResource(R.drawable.img_nullavatar);
         } else {
             Log.d("load image-", "onBindViewHolder: " + imageUri);
-//            Picasso.with(mContext).load(imageUri).into(holder.imgNote);
             Picasso.with(mContext).load(imageUri).placeholder(R.drawable.ic_setting).error(R.drawable.ic_lock).into(holder.imgNote);
         }
     }
@@ -76,7 +75,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return notes.size();
+        return mNotes.size();
     }
 
     public interface NoteOnClickListener {

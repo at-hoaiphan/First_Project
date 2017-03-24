@@ -24,17 +24,16 @@ import java.util.ArrayList;
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewpagerFragment1ListNote extends Fragment {
+public class ViewPagerFragment1ListNote extends Fragment {
 
-    private ViewPagerActivity viewPagerActivity;
+    private ViewPagerActivity mViewPagerActivity;
     private RecyclerView recyclerViewPagerListNote;
     private ArrayList<Note> mNotes = new ArrayList<>();
     private NoteAdapter noteAdapter;
 
-
     private static final int NOTE_EDIT = 22;
 
-    public ViewpagerFragment1ListNote() {
+    public ViewPagerFragment1ListNote() {
     }
 
     @Nullable
@@ -44,22 +43,22 @@ public class ViewpagerFragment1ListNote extends Fragment {
 
         recyclerViewPagerListNote = (RecyclerView) view.findViewById(R.id.recylerView);
 
-        MyDatabaseHelper db = new MyDatabaseHelper(viewPagerActivity);
+        MyDatabaseHelper db = new MyDatabaseHelper(mViewPagerActivity);
         db.createDefaultNotesIfNeed();
 
         mNotes.addAll(db.getAllNotes());
-        noteAdapter = new NoteAdapter(viewPagerActivity, mNotes);
+        noteAdapter = new NoteAdapter(mViewPagerActivity, mNotes);
         recyclerViewPagerListNote.setAdapter(noteAdapter);
 
         //RecyclerView scroll vertical
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(viewPagerActivity, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mViewPagerActivity, LinearLayoutManager.VERTICAL, false);
         recyclerViewPagerListNote.setLayoutManager(linearLayoutManager);
 
         // Set onClick item in listNote fragment
         noteAdapter.setNoteOnClickListener(new NoteAdapter.NoteOnClickListener() {
             @Override
             public void onClick(int id) {
-                Intent intent = new Intent(viewPagerActivity, AddEditNoteActivity.class);
+                Intent intent = new Intent(mViewPagerActivity, AddEditNoteActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("note_item", mNotes.get(id));
                 intent.putExtra("mNotes", bundle);
@@ -77,7 +76,7 @@ public class ViewpagerFragment1ListNote extends Fragment {
         super.onAttach(context);
 
         if (context instanceof ViewPagerActivity) {
-            this.viewPagerActivity = (ViewPagerActivity) context;
+            this.mViewPagerActivity = (ViewPagerActivity) context;
         }
     }
 }
