@@ -7,7 +7,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gio.firstproject.activities.MainActivity">
 
 
@@ -88,6 +87,13 @@
         android:layout_below="@+id/btnStorage"
         android:layout_toEndOf="@+id/btnFragmentDemo2"
         android:text="ViewPager" />
+
+    <Button
+        android:id="@+id/btnService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnFragment"
+        android:text="Service" />
 </RelativeLayout>
 
 
