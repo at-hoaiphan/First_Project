@@ -15,10 +15,11 @@ import com.example.gio.firstproject.viewpagers.ViewPagerFragment3Item;
 public class ViewPagerInner3Adapter extends FragmentStatePagerAdapter {
 
     private MyDatabaseHelper mMyDatabaseHelper;
+    private int count;
 
     public ViewPagerInner3Adapter(FragmentManager fm, Context context) {
         super(fm);
-        mMyDatabaseHelper = new MyDatabaseHelper(context);
+        count = (new MyDatabaseHelper(context)).getNotesCount();
     }
 
     @Override
@@ -28,7 +29,7 @@ public class ViewPagerInner3Adapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return mMyDatabaseHelper.getNotesCount();
+        return count;
     }
 
     @Override
@@ -40,5 +41,11 @@ public class ViewPagerInner3Adapter extends FragmentStatePagerAdapter {
     public int getItemPosition(Object object) {
         return POSITION_NONE;
     }
+
+    @Override
+    public float getPageWidth(int position) {
+        return 0.85f;
+    }
 }
+
 

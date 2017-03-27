@@ -88,7 +88,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     // Add Note
     public void addNote(Note note) {
-        Log.i(TAG, "MyDatabaseHelper.addNote ... ");
+        Log.i(TAG, "MyDatabaseHelper.addNote ... " + note.getNoteTitle());
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -125,7 +125,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     // Get all Note
     public ArrayList<Note> getAllNotes() {
-        Log.i(TAG, "MyDatabaseHelper.getAllNotes ... " );
+        Log.i(TAG, "MyDatabaseHelper.getAllNotes ... ");
 
         ArrayList<Note> noteList = new ArrayList<Note>();
         // Select All Query
@@ -145,6 +145,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
                 // Add into list.
                 noteList.add(note);
+                Log.i(TAG, "getNote--- " + cursor.getString(1));
             } while (cursor.moveToNext());
         }
 
@@ -154,7 +155,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     // Get Note count
     public int getNotesCount() {
-        Log.i(TAG, "MyDatabaseHelper.getNotesCount ... " );
+        Log.i(TAG, "MyDatabaseHelper.getNotesCount ..." );
 
         String countQuery = "SELECT  * FROM " + TABLE;
         SQLiteDatabase db = this.getReadableDatabase();

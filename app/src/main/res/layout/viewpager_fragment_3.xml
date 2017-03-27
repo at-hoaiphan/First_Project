@@ -15,9 +15,7 @@
     <FrameLayout
         android:id="@+id/frameInnerPager3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp">
 
@@ -30,8 +28,10 @@
 
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="40dp" />
-    </FrameLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:clipToPadding="false"
+            android:paddingStart="20dp"/>
+</FrameLayout>
 </LinearLayout>

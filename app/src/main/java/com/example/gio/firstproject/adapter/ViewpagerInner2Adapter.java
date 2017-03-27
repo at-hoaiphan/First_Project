@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.gio.firstproject.viewpagers.ViewPagerFragment1;
+import com.example.gio.firstproject.viewpagers.ViewPagerFragment3;
 
 /**
  * Created by Gio on 3/23/2017.
@@ -20,13 +20,13 @@ public class ViewPagerInner2Adapter extends FragmentStatePagerAdapter {
         Fragment frag = null;
         switch (position) {
             case 0:
-                frag = new ViewPagerFragment1();
+                frag = new ViewPagerFragment3();
                 break;
             case 1:
-                frag = new ViewPagerFragment1();
+                frag = new ViewPagerFragment3();
                 break;
             case 2:
-                frag = new ViewPagerFragment1();
+                frag = new ViewPagerFragment3();
                 break;
         }
         return frag;

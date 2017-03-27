@@ -54,6 +54,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
             note = getIntent().getBundleExtra("mNotes").getParcelable("note_item");
             edtTitle.setText(note.getNoteTitle());
             edtContent.setText(note.getNoteContent());
+            noteUri = note.getNoteImageUri();
             if (note.getNoteImageUri() != null) {
                 Picasso.with(this).load(note.getNoteImageUri()).into(imgAvatar);
             } else {
@@ -93,7 +94,6 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
                         note.setNoteTitle(edtTitle.getText().toString());
                         note.setNoteContent(edtContent.getText().toString());
                         note.setNoteImageUri(noteUri);
-//                        note.setNoteImageUri("content://com.android.providers.media.documents/document/image%3A20");
                         myDatabaseHelper.updateNote(note);
                         Toast.makeText(getApplicationContext(), "Record has been editted!", Toast.LENGTH_LONG).show();
                         refreshList();

@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         if (java.util.Objects.equals(imageUri, "") || imageUri == null) {
             holder.imgNote.setImageResource(R.drawable.img_nullavatar);
         } else {
-            Log.d("load image-", "onBindViewHolder: " + imageUri);
             Picasso.with(mContext).load(imageUri).placeholder(R.drawable.ic_setting).error(R.drawable.ic_lock).into(holder.imgNote);
         }
     }

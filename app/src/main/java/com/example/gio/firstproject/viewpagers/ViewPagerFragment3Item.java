@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.gio.firstproject.NoteSQLite.MyDatabaseHelper;
 import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.activities.AddEditNoteActivity;
+import com.example.gio.firstproject.activities.ViewPagerActivity;
 import com.example.gio.firstproject.model.Note;
 import com.squareup.picasso.Picasso;
 
@@ -74,6 +75,11 @@ public class ViewPagerFragment3Item extends Fragment implements View.OnClickList
                 bundle.putParcelable("note_item", mNotes.get(finalPosition));
                 intent.putExtra("mNotes", bundle);
                 intent.putExtra("editNote", NOTE_EDIT);
+
+                // Reload (need to be optimized)
+                ((ViewPagerActivity)getContext()).finish();
+                startActivity(new Intent(getContext(), ViewPagerActivity.class));
+
                 startActivityForResult(intent, 1);
             }
         });
