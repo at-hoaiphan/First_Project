@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewPagerFragment1 extends Fragment {
+public class ViewpagerFragment1 extends Fragment {
 
     private ViewPagerActivity mViewPagerActivity;
     private RecyclerView recyclerViewPagerListNote;
@@ -33,7 +33,7 @@ public class ViewPagerFragment1 extends Fragment {
 
     private static final int NOTE_EDIT = 22;
 
-    public ViewPagerFragment1() {
+    public ViewpagerFragment1() {
     }
 
     @Nullable

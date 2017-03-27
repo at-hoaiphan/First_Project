@@ -40,4 +40,12 @@
         android:layout_toEndOf="@+id/imgAvatar"
         android:layout_marginStart="5dp"
         android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/imgBtnFavourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_staroff"
+        android:layout_above="@+id/tvContent"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

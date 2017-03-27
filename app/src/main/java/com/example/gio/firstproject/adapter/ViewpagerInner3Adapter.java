@@ -12,12 +12,12 @@ import com.example.gio.firstproject.viewpagers.ViewPagerFragment3Item;
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewPagerInner3Adapter extends FragmentStatePagerAdapter {
+public class ViewpagerInner3Adapter extends FragmentStatePagerAdapter {
 
     private MyDatabaseHelper mMyDatabaseHelper;
     private int count;
 
-    public ViewPagerInner3Adapter(FragmentManager fm, Context context) {
+    public ViewpagerInner3Adapter(FragmentManager fm, Context context) {
         super(fm);
         count = (new MyDatabaseHelper(context)).getNotesCount();
     }

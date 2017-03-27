@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.gio.firstproject.R;
-import com.example.gio.firstproject.adapter.ViewPagerAdapter;
+import com.example.gio.firstproject.adapter.ViewpagerAdapter;
 
 /**
  * Created by Gio on 3/23/2017.
@@ -28,7 +28,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         FragmentManager manager = getSupportFragmentManager();
-        ViewPagerAdapter adapter = new ViewPagerAdapter(manager);
+        ViewpagerAdapter adapter = new ViewpagerAdapter(manager);
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));

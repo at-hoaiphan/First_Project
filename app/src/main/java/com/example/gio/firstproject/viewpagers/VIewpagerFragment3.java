@@ -10,14 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gio.firstproject.R;
-import com.example.gio.firstproject.adapter.ViewPagerInner3Adapter;
+import com.example.gio.firstproject.adapter.ViewpagerInner3Adapter;
 
 /**
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewPagerFragment3 extends Fragment {
-    public ViewPagerFragment3() {
+public class ViewpagerFragment3 extends Fragment {
+    public ViewpagerFragment3() {
     }
 
     @Nullable
@@ -28,7 +28,7 @@ public class ViewPagerFragment3 extends Fragment {
         ViewPager mViewPager = (ViewPager) view.findViewById(R.id.view_pager3);
         TabLayout mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout3);
 
-        ViewPagerInner3Adapter adapter = new ViewPagerInner3Adapter(getChildFragmentManager(), view.getContext());
+        ViewpagerInner3Adapter adapter = new ViewpagerInner3Adapter(getChildFragmentManager(), view.getContext());
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));

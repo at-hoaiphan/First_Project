@@ -11,15 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gio.firstproject.R;
-import com.example.gio.firstproject.adapter.ViewPagerInner2Adapter;
+import com.example.gio.firstproject.adapter.ViewpagerInner2Adapter;
 
 /**
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewPagerFragment2 extends Fragment {
+public class ViewpagerFragment2 extends Fragment {
 
-    public ViewPagerFragment2() {
+    public ViewpagerFragment2() {
     }
 
     @Nullable
@@ -34,7 +34,7 @@ public class ViewPagerFragment2 extends Fragment {
         TabLayout mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout2);
 
         FragmentManager manager = getChildFragmentManager();
-        ViewPagerInner2Adapter adapter = new ViewPagerInner2Adapter(manager);
+        ViewpagerInner2Adapter adapter = new ViewpagerInner2Adapter(manager);
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
