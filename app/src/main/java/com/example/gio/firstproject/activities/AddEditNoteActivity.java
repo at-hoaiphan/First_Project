@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -155,6 +156,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
     public void refreshList() {
         Intent data = new Intent();
         data.putExtra("needRefresh", true);
+        Log.d("", "refreshList: ");
         this.setResult(RESULT_OK, data);
     }
 }

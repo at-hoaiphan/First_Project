@@ -20,6 +20,8 @@ import com.example.gio.firstproject.model.Note;
 
 import java.util.ArrayList;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by Gio on 3/23/2017.
  */
@@ -63,11 +65,6 @@ public class ViewpagerFragment1 extends Fragment {
                 bundle.putParcelable("note_item", mNotes.get(id));
                 intent.putExtra("mNotes", bundle);
                 intent.putExtra("editNote", NOTE_EDIT);
-
-                // Reload (need to be optimized)
-                mViewPagerActivity.finish();
-                startActivity(new Intent(mViewPagerActivity, ViewPagerActivity.class));
-
                 startActivityForResult(intent, 1);
             }
         });
@@ -81,6 +78,24 @@ public class ViewpagerFragment1 extends Fragment {
         super.onAttach(context);
         if (context instanceof ViewPagerActivity) {
             this.mViewPagerActivity = (ViewPagerActivity) context;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                boolean needRefresh = data.getBooleanExtra("needRefresh", true);
+                if (needRefresh) {
+                    this.mNotes.clear();
+                    MyDatabaseHelper db = new MyDatabaseHelper(mViewPagerActivity);
+                    ArrayList<Note> list = db.getAllNotes();
+                    this.mNotes.addAll(list);
+                    // Notify data set Changed.
+                    noteAdapter.notifyDataSetChanged();
+                }
+            }
         }
     }
 }
