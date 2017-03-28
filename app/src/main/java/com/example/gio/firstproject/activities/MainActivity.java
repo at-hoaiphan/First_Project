@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.fragmentdemo.FragmentDemoActivity;
 import com.example.gio.firstproject.fragmentdemo.FragmentMainDemo2;
+import com.example.gio.firstproject.servicedemo.Test;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnFragmentDemo2.setOnClickListener(this);
         Button btnViewpager = (Button) findViewById(R.id.btnViewpager);
         btnViewpager.setOnClickListener(this);
+        Button btnService = (Button) findViewById(R.id.btnService);
+        btnService.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +106,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Navigate to FragmentMainDemo2 Layout  Screen
                 Intent intentViewpager = new Intent(this, ViewPagerActivity.class);
                 startActivity(intentViewpager);
+                break;
+            case R.id.btnService:
+                //Navigate to FragmentMainDemo2 Layout  Screen
+                Intent intentService = new Intent(this, Test.class);
+                startActivity(intentService);
                 break;
 
         }
