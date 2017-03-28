@@ -29,13 +29,13 @@ public class Note implements Serializable, Parcelable {
         this.noteContent = noteContent;
         this.noteImageUri = noteImageUri;
     }
-
-    public Note(String noteTitle, String noteContent, String noteImageUri, boolean isNoteFavourite) {
-        this.noteTitle = noteTitle;
-        this.noteContent = noteContent;
-        this.noteImageUri = noteImageUri;
-        this.isNoteFavourite = isNoteFavourite;
-    }
+//
+//    public Note(String noteTitle, String noteContent, String noteImageUri, boolean isNoteFavourite) {
+//        this.noteTitle = noteTitle;
+//        this.noteContent = noteContent;
+//        this.noteImageUri = noteImageUri;
+//        this.isNoteFavourite = isNoteFavourite;
+//    }
 
     public void setNoteFavourite(boolean noteFavourite) {
         isNoteFavourite = noteFavourite;
@@ -90,12 +90,12 @@ public class Note implements Serializable, Parcelable {
         return noteContent;
     }
 
-    public Note(int noteId, String noteTitle, String noteContent, String noteImageUri, boolean isNoteFavourite) {
+    public Note(int noteId, String noteTitle, String noteContent, String noteImageUri) {
         this.noteId = noteId;
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
         this.noteImageUri = noteImageUri;
-        this.isNoteFavourite = isNoteFavourite;
+//        this.isNoteFavourite = isNoteFavourite;
     }
 
     @Override

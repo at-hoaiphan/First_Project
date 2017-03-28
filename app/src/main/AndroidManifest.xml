@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -60,10 +64,11 @@
         <activity android:name=".activities.SharedPreferenceActivity" />
         <activity android:name=".activities.InternalStorageActivity" />
         <activity android:name=".activities.LogInSuccessActivity" />
-        <activity android:name=".fragmentdemo.FragmentDemoActivity"/>
-        <activity android:name=".fragmentdemo.FragmentMainDemo2"/>
+        <activity android:name=".fragmentdemo.FragmentDemoActivity" />
+        <activity android:name=".fragmentdemo.FragmentMainDemo2" />
         <activity android:name=".activities.ViewPagerActivity" />
         <activity android:name=".servicedemo.Test" />
+        <activity android:name=".broadcast_receiver.SmsBroadcastReceiver" />
         <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more item_user.
@@ -71,7 +76,19 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <service android:name=".servicedemo.PlayAudio"  android:enabled="true"></service>
+        <service
+            android:name=".servicedemo.PlayAudio"
+            android:enabled="true"></service>
+
+        <receiver android:name=".broadcast_receiver.MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.gio.android.A_CUSTOM_INTENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.gio.firstproject.R;
+import com.example.gio.firstproject.broadcast_receiver.SmsBroadcastReceiver;
 import com.example.gio.firstproject.fragmentdemo.FragmentDemoActivity;
 import com.example.gio.firstproject.fragmentdemo.FragmentMainDemo2;
 import com.example.gio.firstproject.servicedemo.Test;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnViewpager.setOnClickListener(this);
         Button btnService = (Button) findViewById(R.id.btnService);
         btnService.setOnClickListener(this);
+        Button btnBroadcast = (Button) findViewById(R.id.btnBroadcastReceiver);
+        btnBroadcast.setOnClickListener(this);
     }
 
     @Override
@@ -103,14 +106,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentFragmentDemo2);
                 break;
             case R.id.btnViewpager:
-                //Navigate to FragmentMainDemo2 Layout  Screen
+                //Navigate to ViewPager Layout  Screen
                 Intent intentViewpager = new Intent(this, ViewPagerActivity.class);
                 startActivity(intentViewpager);
                 break;
             case R.id.btnService:
-                //Navigate to FragmentMainDemo2 Layout  Screen
+                //Navigate to ServiceDemo Layout  Screen
                 Intent intentService = new Intent(this, Test.class);
                 startActivity(intentService);
+                break;
+            case R.id.btnBroadcastReceiver:
+                //Navigate to FragmentMainDemo2 Layout  Screen
+                Intent intentBroadcast = new Intent(this, SmsBroadcastReceiver.class);
+                startActivity(intentBroadcast);
                 break;
 
         }

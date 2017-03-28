@@ -94,6 +94,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnFragment"
         android:text="Service" />
+    <Button
+        android:id="@+id/btnBroadcastReceiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/btnService"
+        android:layout_below="@+id/btnFragment"
+        android:text="Broadcast" />
 </RelativeLayout>
 
 
