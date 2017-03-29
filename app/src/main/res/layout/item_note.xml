@@ -2,21 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
     android:background="?android:attr/selectableItemBackground">
 
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:text="Item"
-        android:textColor="#000"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_alignTop="@+id/imgAvatar"
-        android:layout_toEndOf="@+id/imgAvatar"
-        android:layout_marginStart="5dp"/>
 
     <TextView
         android:id="@+id/tvContent"
@@ -25,8 +13,7 @@
         android:layout_below="@+id/tvTitle"
         android:gravity="center_vertical"
         android:layout_alignBottom="@+id/imgAvatar"
-        android:layout_toEndOf="@+id/imgAvatar"
-        android:layout_marginStart="5dp"
+        android:layout_alignLeft="@+id/tvTitle"
         android:text="COntent" />
 
     <ImageView
@@ -38,4 +25,30 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="Item"
+        android:textColor="#000"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:background="#460019fb"
+        android:layout_alignTop="@+id/imgAvatar"
+        android:layout_toEndOf="@+id/imgAvatar"
+        android:layout_marginStart="5dp"
+        android:layout_toStartOf="@+id/imgBtnFavourite"
+        android:lines="1"
+        android:ellipsize="end"/>
+
+    <ImageButton
+        android:id="@+id/imgBtnFavourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_staroff"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imgAvatar"/>
 </RelativeLayout>

@@ -9,18 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="List note"
+        android:text="VIEW PAGER"
         android:textSize="30sp" />
 
-    <FrameLayout
-        android:id="@+id/frameListNote"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="#76003cff" />
-
-    <FrameLayout
-        android:id="@+id/frameDetailNote"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/img_avatar"
+        android:layout_marginBottom="10dp"/>
 
 </LinearLayout>

@@ -63,6 +63,7 @@
         <activity android:name=".fragmentdemo.FragmentDemoActivity"/>
         <activity android:name=".fragmentdemo.FragmentMainDemo2"/>
         <activity android:name=".activities.ViewPagerActivity" />
+        <activity android:name=".servicedemo.Test" />
         <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more item_user.
@@ -70,7 +71,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
+        <service android:name=".servicedemo.PlayAudio"  android:enabled="true"></service>
     </application>
 
 </manifest>

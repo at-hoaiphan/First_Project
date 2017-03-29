@@ -14,8 +14,8 @@ import com.example.gio.firstproject.adapter.ViewpagerAdapter;
  */
 
 public class ViewPagerActivity extends AppCompatActivity {
-    ViewPager pager;
-    TabLayout tabLayout;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,14 @@ public class ViewPagerActivity extends AppCompatActivity {
         // Hide ActionBar
         getSupportActionBar().hide();
 
-        pager = (ViewPager) findViewById(R.id.view_pager);
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         FragmentManager manager = getSupportFragmentManager();
         ViewpagerAdapter adapter = new ViewpagerAdapter(manager);
-        pager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(pager);
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setTabsFromPagerAdapter(adapter);
+        mViewPager.setAdapter(adapter);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.setTabsFromPagerAdapter(adapter);
     }
 }

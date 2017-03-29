@@ -14,6 +14,7 @@ public class Note implements Serializable, Parcelable {
     private String noteTitle;
     private String noteContent;
     private String noteImageUri;
+    private boolean isNoteFavourite;
 
     public Note() {
     }
@@ -29,11 +30,28 @@ public class Note implements Serializable, Parcelable {
         this.noteImageUri = noteImageUri;
     }
 
+    public Note(String noteTitle, String noteContent, String noteImageUri, boolean isNoteFavourite) {
+        this.noteTitle = noteTitle;
+        this.noteContent = noteContent;
+        this.noteImageUri = noteImageUri;
+        this.isNoteFavourite = isNoteFavourite;
+    }
+
+    public void setNoteFavourite(boolean noteFavourite) {
+        isNoteFavourite = noteFavourite;
+    }
+
+    public boolean isNoteFavourite() {
+
+        return isNoteFavourite;
+    }
+
     protected Note(Parcel in) {
         noteId = in.readInt();
         noteTitle = in.readString();
         noteContent = in.readString();
         noteImageUri = in.readString();
+        isNoteFavourite = in.readByte() != 0;
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
@@ -72,11 +90,12 @@ public class Note implements Serializable, Parcelable {
         return noteContent;
     }
 
-    public Note(int noteId, String noteTitle, String noteContent, String noteImageUri) {
+    public Note(int noteId, String noteTitle, String noteContent, String noteImageUri, boolean isNoteFavourite) {
         this.noteId = noteId;
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
         this.noteImageUri = noteImageUri;
+        this.isNoteFavourite = isNoteFavourite;
     }
 
     @Override
@@ -98,5 +117,6 @@ public class Note implements Serializable, Parcelable {
         dest.writeString(noteTitle);
         dest.writeString(noteContent);
         dest.writeString(noteImageUri);
+        dest.writeInt(isNoteFavourite ? 1 : 0);
     }
 }
