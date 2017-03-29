@@ -21,7 +21,6 @@ public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.N
 
     private static final int NOTE_EDIT = 22;
 
-    private LinearLayoutManager linearLayoutManager;
     private ArrayList<Note> mNotes = new ArrayList<>();
 
     private NoteAdapter noteAdapter;
@@ -55,7 +54,7 @@ public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.N
         });
 
         //RecyclerView scroll vertical
-        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rlListItem.setLayoutManager(linearLayoutManager);
     }
 

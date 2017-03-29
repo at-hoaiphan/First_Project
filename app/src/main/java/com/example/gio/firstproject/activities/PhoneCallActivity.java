@@ -16,7 +16,8 @@ import android.widget.Toast;
 import com.example.gio.firstproject.R;
 
 /**
- * Created by Gio on 3/15/2017.
+ * Copyright by Gio.
+ * Created on 3/15/2017.
  */
 
 public class PhoneCallActivity extends AppCompatActivity implements View.OnClickListener {
@@ -49,6 +50,8 @@ public class PhoneCallActivity extends AppCompatActivity implements View.OnClick
         btn7 = (Button) findViewById(R.id.btn7);
         btn8 = (Button) findViewById(R.id.btn8);
         btn9 = (Button) findViewById(R.id.btn9);
+        btnAsterisk = (Button) findViewById(R.id.btnAsterisk);
+        btnHash = (Button) findViewById(R.id.btnHash);
         btn0.setOnClickListener(this);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
@@ -70,9 +73,6 @@ public class PhoneCallActivity extends AppCompatActivity implements View.OnClick
         //get data from Medial Application
         Intent intent = getIntent();
         number = intent.getDataString();
-        // TODO: 3/15/2017 trim data-string: tel:123123  --> 123123
-//        //trim Number string
-//        number = number.substring(4, number.length() - 1);
         if (number != null) {
             edtNumber.setText(number);
         } else {

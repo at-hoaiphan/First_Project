@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentService);
                 break;
             case R.id.btnBroadcastReceiver:
-                //Navigate to FragmentMainDemo2 Layout  Screen
+                //Navigate to BroadcastReceiver Layout  Screen
                 Intent intentBroadcast = new Intent(this, SmsBroadcastReceiver.class);
                 startActivity(intentBroadcast);
                 break;

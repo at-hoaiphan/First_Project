@@ -12,7 +12,8 @@ import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.model.ItemUser;
 
 /**
- * Created by Gio on 3/13/2017.
+ * Copyright by Gio.
+ * Created on 3/13/2017.
  */
 public class DetailItemActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton imgBtnIsFavourite;
@@ -34,7 +35,6 @@ public class DetailItemActivity extends AppCompatActivity implements View.OnClic
 
         TextView tvId = (TextView) findViewById(R.id.tvId);
         tvId.setText(String.valueOf(user.getId()));
-
     }
 
     @Override

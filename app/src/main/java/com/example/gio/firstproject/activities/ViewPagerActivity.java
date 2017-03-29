@@ -10,22 +10,19 @@ import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.adapter.ViewpagerAdapter;
 
 /**
- * Created by Gio on 3/23/2017.
+ * Copyright by Gio.
+ * Created on 3/23/2017.
  */
 
 public class ViewPagerActivity extends AppCompatActivity {
-    private ViewPager mViewPager;
-    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewpager_fragment);
-        // Hide ActionBar
-        getSupportActionBar().hide();
 
-        mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         FragmentManager manager = getSupportFragmentManager();
         ViewpagerAdapter adapter = new ViewpagerAdapter(manager);

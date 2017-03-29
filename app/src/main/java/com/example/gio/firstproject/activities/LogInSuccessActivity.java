@@ -11,11 +11,11 @@ import android.widget.TextView;
 import com.example.gio.firstproject.R;
 
 /**
- * Created by Gio on 3/20/2017.
+ * Copyright by Gio.
+ * Created on 3/20/2017.
  */
 
 public class LogInSuccessActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView tvLogOut;
     private SharedPreferences.Editor editor;
 
     @Override
@@ -27,12 +27,11 @@ public class LogInSuccessActivity extends AppCompatActivity implements View.OnCl
 
         editor = sharedPreferences.edit();
 
-        tvLogOut = (TextView) findViewById(R.id.tvLogOut);
+        TextView tvLogOut = (TextView) findViewById(R.id.tvLogOut);
         tvLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editor.clear().commit();
-//                editor.remove("isLogIn").commit();
                 finish();
             }
         });
@@ -47,12 +46,4 @@ public class LogInSuccessActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
 
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        editor.putBoolean("isLogIn", true);
-//        // Save.
-//        editor.apply();
-//        finish();
-//    }
 }

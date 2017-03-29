@@ -69,23 +69,20 @@
         <activity android:name=".activities.ViewPagerActivity" />
         <activity android:name=".servicedemo.Test" />
         <activity android:name=".broadcast_receiver.SmsBroadcastReceiver" />
-        <!--
-     ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more item_user.
-        -->
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <service
             android:name=".servicedemo.PlayAudio"
-            android:enabled="true"></service>
+            android:enabled="true" />
 
         <receiver android:name=".broadcast_receiver.MyBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.gio.android.A_CUSTOM_INTENT" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="app2" />
             </intent-filter>
         </receiver>
 

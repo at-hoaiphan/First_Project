@@ -19,7 +19,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by Gio on 1/4/2017.
+ * Copyright by Gio.
+ * Created on 1/4/2017.
  */
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> {
@@ -53,13 +54,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         }
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
         TextView tvContent;
         ImageView imgNote;
         ImageButton isFavourite;
 
-        public MyViewHolder(final View itemView) {
+        MyViewHolder(final View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             tvContent = (TextView) itemView.findViewById(R.id.tvContent);

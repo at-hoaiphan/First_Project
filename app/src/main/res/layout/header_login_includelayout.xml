@@ -5,62 +5,65 @@
 
     <ImageView
         android:id="@+id/imgView"
-        android:src="@drawable/img_avatar"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:src="@drawable/img_avatar" />
+
     <TextView
         android:id="@+id/tvName"
-        android:text="Name:"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_below="@+id/imgView"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:gravity="center_vertical"/>
+        android:gravity="center_vertical"
+        android:text="@string/name"
+        android:textSize="20sp" />
+
     <EditText
         android:id="@+id/edtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:hint="Tên"
-        android:layout_toRightOf="@+id/tvName"
         android:layout_alignTop="@+id/tvName"
         android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/tvName"
+        android:drawableLeft="@drawable/ic_user"
+        android:hint="@string/ten"
         android:maxLines="1"
-        android:drawableLeft="@drawable/ic_user"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tvPassword"
-        android:text="Password:"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_below="@+id/tvName"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:gravity="center_vertical"/>
+        android:gravity="center_vertical"
+        android:text="@string/password"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:hint="Mật khẩu"
-        android:layout_alignTop="@+id/tvPassword"
         android:layout_alignLeft="@+id/imgView"
+        android:layout_alignTop="@+id/tvPassword"
         android:layout_toLeftOf="@+id/imgBtnShow"
+        android:drawableLeft="@drawable/ic_lock"
+        android:hint="@string/mat_khau"
         android:inputType="textPassword"
-        android:drawableLeft="@drawable/ic_lock"/>
+        android:textSize="20sp" />
+
     <ImageButton
         android:id="@+id/imgBtnShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvPassword"
         android:layout_alignParentRight="true"
-        android:background="@drawable/ic_eye"/>
+        android:layout_alignTop="@+id/tvPassword"
+        android:background="@drawable/ic_eye" />
 
 
 </RelativeLayout>

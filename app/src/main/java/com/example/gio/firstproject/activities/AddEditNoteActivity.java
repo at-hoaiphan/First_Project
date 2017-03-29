@@ -23,11 +23,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
 
     private Note note;
     private ImageView imgAvatar;
-    private TextView tvHeaderAddEdit;
     private EditText edtTitle;
     private EditText edtContent;
-    private Button btnAddEdit;
-    private Button btnDeleteNote;
     private static final int SELECT_PICTURE = 7;
     private static int noteState = 0;
     private static final int NOTE_ADD = 11;
@@ -40,19 +37,18 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_note);
 
-
         edtTitle = (EditText) findViewById(R.id.edtNoteTitle);
         edtContent = (EditText) findViewById(R.id.edtNoteContent);
-        btnAddEdit = (Button) findViewById(R.id.btnAddEdit);
-        btnDeleteNote = (Button) findViewById(R.id.btnDelete);
+        Button btnAddEdit = (Button) findViewById(R.id.btnAddEdit);
+        Button btnDeleteNote = (Button) findViewById(R.id.btnDelete);
         imgAvatar = (ImageView) findViewById(R.id.imgAvatar);
-        tvHeaderAddEdit = (TextView) findViewById(R.id.tvHeaderAddEdit);
-
+        TextView tvHeaderAddEdit = (TextView) findViewById(R.id.tvHeaderAddEdit);
 
         noteState = NOTE_ADD;
         noteState = getIntent().getIntExtra("editNote", NOTE_ADD);
         if (noteState == NOTE_EDIT) {
             note = getIntent().getBundleExtra("mNotes").getParcelable("note_item");
+            assert note != null;
             edtTitle.setText(note.getNoteTitle());
             edtContent.setText(note.getNoteContent());
             noteUri = note.getNoteImageUri();
@@ -85,7 +81,6 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
                             Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString(), noteUri);
                             myDatabaseHelper.addNote(newNote);
                         } else {
-
                             Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString());
                             myDatabaseHelper.addNote(newNote);
                         }
@@ -146,10 +141,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
             // Get the url from data
             Uri selectedImageUri = data.getData();
             noteUri = selectedImageUri.toString();
-            if (null != selectedImageUri) {
-                // Set the image in ImageView
-                imgAvatar.setImageURI(selectedImageUri);
-            }
+            // Set the image in ImageView
+            imgAvatar.setImageURI(selectedImageUri);
         }
     }
 

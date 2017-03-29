@@ -9,6 +9,6 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Landscape - rotate screen"
+        android:text="@string/landscape_rotate_screen"
         android:textSize="30sp" />
 </LinearLayout>

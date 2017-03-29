@@ -5,49 +5,49 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:text="Input Text:"
+        android:id="@+id/tvInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvInput"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:text="@string/input_text" />
 
     <TextView
+        android:id="@+id/tvOutput"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:id="@+id/tvOutput"
-        android:textSize="20dp"
-        android:layout_below="@+id/edtInput"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/edtInput"
+        android:textSize="20sp" />
 
     <Button
-        android:text=" Save to file"
+        android:id="@+id/btnSave"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSave"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_margin="20dp"
-        android:layout_marginBottom="36dp" />
+        android:layout_marginBottom="36dp"
+        android:text="@string/save_to_file" />
 
     <Button
-        android:text="Read file"
+        android:id="@+id/btnReadFile"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:id="@+id/btnReadFile"
         android:layout_alignBaseline="@+id/btnSave"
         android:layout_alignBottom="@+id/btnSave"
+        android:layout_margin="20dp"
         android:layout_toEndOf="@+id/btnSave"
-        android:layout_margin="20dp"/>
+        android:text="@string/read_file" />
 
     <EditText
         android:id="@+id/edtInput"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:hint="Write your text..."
-        android:textSize="20dp"
-        android:layout_below="@+id/tvInput"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/tvInput"
+        android:hint="@string/write_your_text"
+        android:textSize="20sp" />
 </RelativeLayout>

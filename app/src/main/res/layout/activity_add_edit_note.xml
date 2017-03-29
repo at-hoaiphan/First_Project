@@ -3,15 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/tvHeaderAddEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Add Note"
+        android:text="@string/add_note"
         android:textColor="#f60000"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <ImageView
@@ -20,6 +19,7 @@
         android:layout_height="150dp"
         android:layout_below="@+id/tvHeaderAddEdit"
         android:layout_centerHorizontal="true"
+        android:contentDescription="@string/add"
         android:src="@drawable/img_nullavatar" />
 
     <TextView
@@ -28,16 +28,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgAvatar"
         android:layout_marginTop="20dp"
-        android:text="Title:"
-        android:textSize="20dp" />
+        android:text="@string/title"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/edtNoteTitle"
-        android:textSize="30sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
-        android:background="#a0e7fc"/>
+        android:background="#a0e7fc"
+        android:inputType=""
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvContent"
@@ -45,31 +46,32 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtNoteTitle"
         android:layout_marginTop="20dp"
-        android:text="Content:"
-        android:textSize="20dp" />
+        android:text="@string/content"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/edtNoteContent"
-        android:textSize="30sp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_below="@+id/tvContent"
-        android:background="#a0e7fc"/>
+        android:background="#a0e7fc"
+        android:inputType="text"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/btnAddEdit"
-        android:text="Add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtNoteContent"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="@string/add" />
 
     <Button
         android:id="@+id/btnDelete"
-        android:text="Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnAddEdit"
         android:layout_alignStart="@+id/btnAddEdit"
-        android:visibility="gone"/>
+        android:layout_below="@+id/btnAddEdit"
+        android:text="@string/delete"
+        android:visibility="gone" />
 </RelativeLayout>

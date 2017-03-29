@@ -23,13 +23,13 @@ import java.util.ArrayList;
 import static android.app.Activity.RESULT_OK;
 
 /**
- * Created by Gio on 3/23/2017.
+ * Copyright by Gio.
+ * Created on 3/23/2017.
  */
 
 public class ViewpagerFragment1 extends Fragment {
 
     private ViewPagerActivity mViewPagerActivity;
-    private RecyclerView recyclerViewPagerListNote;
     private ArrayList<Note> mNotes = new ArrayList<>();
     private NoteAdapter noteAdapter;
 
@@ -43,7 +43,7 @@ public class ViewpagerFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_item, container, false);
 
-        recyclerViewPagerListNote = (RecyclerView) view.findViewById(R.id.recylerView);
+        RecyclerView recyclerViewPagerListNote = (RecyclerView) view.findViewById(R.id.recylerView);
 
         MyDatabaseHelper db = new MyDatabaseHelper(mViewPagerActivity);
         db.createDefaultNotesIfNeed();

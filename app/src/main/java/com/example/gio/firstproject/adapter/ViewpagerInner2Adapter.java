@@ -7,7 +7,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.example.gio.firstproject.viewpagers.ViewpagerFragment3;
 
 /**
- * Created by Gio on 3/23/2017.
+ * Copyright by Gio.
+ * Created on 3/23/2017.
  */
 
 public class ViewpagerInner2Adapter extends FragmentStatePagerAdapter {

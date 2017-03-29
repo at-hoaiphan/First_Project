@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <EditText
+        android:id="@+id/edtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Name..."
         android:ems="10"
-        android:id="@+id/edtName" />
+        android:hint="@string/name"
+        android:inputType="textPersonName" />
 
     <EditText
+        android:id="@+id/edtAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Age..."
         android:ems="10"
-        android:id="@+id/edtAge" />
+        android:hint="@string/age"
+        android:inputType="textPersonName" />
 
     <Button
-        android:text="Apply"
+        android:id="@+id/btnApply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnApply" />
+        android:text="@string/apply" />
 </LinearLayout>

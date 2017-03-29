@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include
+        layout="@layout/header_login_includelayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/header_login_includelayout"/>
+        android:layout_height="wrap_content" />
 
     <CheckBox
         android:id="@+id/ckRememberPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember password"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:text="@string/remember_password" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"/>
+        android:text="@string/login" />
 
     <TextView
         android:id="@+id/tvSignUp"
-        android:text="Sign up?"
-        android:textStyle="italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="#0f67fa"/>
+        android:text="@string/sign_up"
+        android:textColor="#0f67fa"
+        android:textStyle="italic" />
 </LinearLayout>
