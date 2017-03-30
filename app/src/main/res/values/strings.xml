@@ -87,4 +87,19 @@
     <string name="note_title">Note Title</string>
     <string name="send_to_app2">Send to app2</string>
     <string name="send">Send</string>
+    <string name="toolbar">Toolbar</string>
+    <string name="ui_view">UI view</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="menu">Menu</string>
+    <string name="notifications">Notifications</string>
+    <string name="dialog">Dialog</string>
+    <string name="fragment_dialog">FragmentDialog</string>
+    <string name="toolbar_title">Toolbar Title</string>
+    <string name="done">Done</string>
+    <string name="drawer_header">Drawer Header</string>
+    <string name="attachment">Attachment</string>
+    <string name="Images">images</string>
+    <string name="swipe_to_see">Swipe to see</string>
+    <string name="swipe_here">Swipe here</string>
 </resources>

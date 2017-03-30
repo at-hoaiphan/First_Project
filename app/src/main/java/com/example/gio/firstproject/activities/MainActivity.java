@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnService.setOnClickListener(this);
         Button btnBroadcast = (Button) findViewById(R.id.btnBroadcastReceiver);
         btnBroadcast.setOnClickListener(this);
+        Button btnUI = (Button) findViewById(R.id.btnUI);
+        btnUI.setOnClickListener(this);
     }
 
     @Override
@@ -119,6 +121,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Navigate to BroadcastReceiver Layout  Screen
                 Intent intentBroadcast = new Intent(this, SmsBroadcastReceiver.class);
                 startActivity(intentBroadcast);
+                break;
+            case R.id.btnUI:
+                //Navigate to UI Layout  Screen
+                Intent intentUI = new Intent(this, UIActivity.class);
+                startActivity(intentUI);
                 break;
 
         }

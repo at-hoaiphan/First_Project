@@ -69,10 +69,12 @@
         <activity android:name=".activities.ViewPagerActivity" />
         <activity android:name=".servicedemo.Test" />
         <activity android:name=".broadcast_receiver.SmsBroadcastReceiver" />
+        <activity android:name=".activities.UIActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <service
             android:name=".servicedemo.PlayAudio"
             android:enabled="true" />
