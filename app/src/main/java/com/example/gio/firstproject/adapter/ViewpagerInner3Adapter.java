@@ -9,12 +9,11 @@ import com.example.gio.firstproject.NoteSQLite.MyDatabaseHelper;
 import com.example.gio.firstproject.viewpagers.ViewPagerFragment3Item;
 
 /**
- * Created by Gio on 3/23/2017.
+ * Copyright by Gio.
+ * Created on 3/23/2017.
  */
 
 public class ViewpagerInner3Adapter extends FragmentStatePagerAdapter {
-
-    private MyDatabaseHelper mMyDatabaseHelper;
     private int count;
 
     public ViewpagerInner3Adapter(FragmentManager fm, Context context) {

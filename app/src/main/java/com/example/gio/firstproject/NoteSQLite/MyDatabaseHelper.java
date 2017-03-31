@@ -33,7 +33,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_NOTE_TITLE ="Note_Title";
     private static final String COLUMN_NOTE_CONTENT = "Note_Content";
     private static final String COLUMN_NOTE_URI = "Note_Uri";
-    private static final String COLUMN_NOTE_FAVOURITE = "Note_Favourite";
+//    private static final String COLUMN_NOTE_FAVOURITE = "Note_Favourite";
 
     public MyDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,8 +48,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_NOTE_ID + " INTEGER PRIMARY KEY,"
                 + COLUMN_NOTE_TITLE + " TEXT,"
                 + COLUMN_NOTE_CONTENT + " TEXT,"
-                + COLUMN_NOTE_URI + " TEXT,"
-                + COLUMN_NOTE_FAVOURITE + " BOOLEAN )";
+                + COLUMN_NOTE_URI + " TEXT )";
+//                + COLUMN_NOTE_FAVOURITE + " BOOLEAN )";
 
         // ExecuteSQL
         db.execSQL(createQuery);
@@ -98,7 +98,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NOTE_TITLE, note.getNoteTitle());
         values.put(COLUMN_NOTE_CONTENT, note.getNoteContent());
         values.put(COLUMN_NOTE_URI, note.getNoteImageUri());
-        values.put(COLUMN_NOTE_FAVOURITE, note.isNoteFavourite());
+//        values.put(COLUMN_NOTE_FAVOURITE, note.isNoteFavourite());
 
         // Insert a record into Table
         db.insert(TABLE, null, values);
@@ -114,13 +114,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE, new String[] { COLUMN_NOTE_ID,
-                        COLUMN_NOTE_TITLE, COLUMN_NOTE_CONTENT, COLUMN_NOTE_URI, COLUMN_NOTE_FAVOURITE }, COLUMN_NOTE_ID + "=?",
+                        COLUMN_NOTE_TITLE, COLUMN_NOTE_CONTENT, COLUMN_NOTE_URI }, COLUMN_NOTE_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
 
-        Note note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), Boolean.parseBoolean(cursor.getString(4)));
+        Note note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
 
         // return note
         return note;
@@ -145,7 +145,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 note.setNoteTitle(cursor.getString(1));
                 note.setNoteContent(cursor.getString(2));
                 note.setNoteImageUri(cursor.getString(3));
-                note.setNoteFavourite(Boolean.parseBoolean(cursor.getString(4)));
+//                note.setNoteFavourite(Boolean.parseBoolean(cursor.getString(4)));
 
                 // Add into list.
                 noteList.add(note);
@@ -183,7 +183,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NOTE_TITLE, note.getNoteTitle());
         values.put(COLUMN_NOTE_CONTENT, note.getNoteContent());
         values.put(COLUMN_NOTE_URI, note.getNoteImageUri());
-        values.put(COLUMN_NOTE_FAVOURITE, note.isNoteFavourite());
+//        values.put(COLUMN_NOTE_FAVOURITE, note.isNoteFavourite());
         // updating row
         return db.update(TABLE, values, COLUMN_NOTE_ID + " = ?", new String[]{String.valueOf(note.getNoteId())});
     }

@@ -13,7 +13,8 @@ import android.widget.TextView;
 import com.example.gio.firstproject.R;
 
 /**
- * Created by Gio on 3/8/2017.
+ * Copyright by Gio.
+ * Created on 3/8/2017.
  */
 
 public class RegisterScreenActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {

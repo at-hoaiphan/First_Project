@@ -24,22 +24,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Sex:"
-                android:textSize="20dp" />
+                android:text="@string/sex"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rbMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="90dp"
-                android:text="Male" />
+                android:text="@string/male" />
 
             <RadioButton
                 android:id="@+id/rbFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Female" />
+                android:text="@string/female" />
         </RadioGroup>
 
         <TableLayout
@@ -53,17 +53,18 @@
 
                 <CheckBox
                     android:id="@+id/chkHobby1"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
-                    android:text="Hobby 1" />
+                    android:layout_weight="1"
+                    android:text="@string/hobby_1" />
+
                 <CheckBox
                     android:id="@+id/chkHobby4"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hobby 4" />
+                    android:layout_weight="1"
+                    android:text="@string/hobby_4" />
             </TableRow>
 
             <TableRow
@@ -73,17 +74,18 @@
 
                 <CheckBox
                     android:id="@+id/chkHobby2"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
-                    android:text="Hobby 2" />
+                    android:layout_weight="1"
+                    android:text="@string/hobby_2" />
+
                 <CheckBox
                     android:id="@+id/chkHobby5"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hobby 5" />
+                    android:layout_weight="1"
+                    android:text="@string/hobby_5" />
             </TableRow>
 
             <TableRow
@@ -93,17 +95,18 @@
 
                 <CheckBox
                     android:id="@+id/chkHobby3"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
-                    android:text="Hobby 3" />
+                    android:layout_weight="1"
+                    android:text="@string/hobby_3" />
+
                 <CheckBox
                     android:id="@+id/chkHobby6"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hobby 6" />
+                    android:layout_weight="1"
+                    android:text="@string/hobby_6" />
             </TableRow>
         </TableLayout>
 
@@ -112,7 +115,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Register" />
+            android:text="@string/register" />
 
         <TextView
             android:id="@+id/tvHadUsername"
@@ -120,9 +123,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="Did you have an account?"
-            android:textSize="10dp"
+            android:text="@string/did_you_have_an_account"
             android:textColor="#0738fa"
-            android:textStyle="italic"/>
+            android:textSize="10sp"
+            android:textStyle="italic" />
     </LinearLayout>
 </LinearLayout>

@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#5511ff0d">
+    android:background="#5511ff0d"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_marginTop="30dp"
-        android:textSize="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextViewName" />
+        android:layout_marginTop="30dp"
+        android:text="@string/textviewname"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextViewAge" />
+        android:text="@string/textviewage" />
 </LinearLayout>

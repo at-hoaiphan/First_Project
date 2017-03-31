@@ -1,7 +1,6 @@
 package com.example.gio.firstproject.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,15 +15,16 @@ import android.widget.Toast;
 
 import com.example.gio.firstproject.R;
 
+import java.util.Objects;
+
 /**
- * Created by Gio on 3/7/2017.
+ * Copyright by Gio.
+ * Created on 3/7/2017.
  */
 
 public class LoginScreenActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     private EditText edtName;
     private EditText edtPassword;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,12 +41,6 @@ public class LoginScreenActivity extends AppCompatActivity implements View.OnCli
         edtPassword.setOnClickListener(this);
         ImageButton imgBtnShow = (ImageButton) findViewById(R.id.imgBtnShow);
         imgBtnShow.setOnTouchListener(this);
-
-//        if (sharedPreferences != null) {
-//            sharedPreferences = getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
-//            String username = sharedPreferences.getString("strUsername", null);
-//            edtName.setText(username);
-//        }
     }
 
     @Override
@@ -61,17 +55,10 @@ public class LoginScreenActivity extends AppCompatActivity implements View.OnCli
                 // Get value of Username and Password
                 String strName = edtName.getText().toString();
                 String strPassword = edtPassword.getText().toString();
-
-                // Remember Username
-//                sharedPreferences = this.getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
-//                editor = sharedPreferences.edit();
-//                editor.putString("strUsername", edtName.getText().toString());
-//                editor.apply();
-                if (strName != "" && strPassword != "") {
+                if (!Objects.equals(strName, "") && !Objects.equals(strPassword, "")) {
                     startActivity(new Intent(this, LogInSuccessActivity.class));
                 } else {
                     Toast.makeText(LoginScreenActivity.this, "Please type your Username/Password!", Toast.LENGTH_SHORT).show();
-
                 }
                 break;
         }

@@ -31,15 +31,6 @@ public class PlayAudio extends Service{
         return 1;
     }
 
-    public void onStop(){
-        objPlayer.stop();
-        objPlayer.release();
-    }
-
-    public void onPause(){
-        objPlayer.stop();
-        objPlayer.release();
-    }
     public void onDestroy(){
         objPlayer.stop();
         objPlayer.release();

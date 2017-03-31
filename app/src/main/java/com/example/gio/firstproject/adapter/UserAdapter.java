@@ -1,7 +1,6 @@
 package com.example.gio.firstproject.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,7 +18,8 @@ import com.example.gio.firstproject.model.ListItem;
 import java.util.ArrayList;
 
 /**
- * Created by Gio on 3/10/2017.
+ * Copyright by Gio.
+ * Created on 3/10/2017.
  */
 
 public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -77,14 +77,13 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    class VHUser extends RecyclerView.ViewHolder {
-        private CardView cardView;
+    private class VHUser extends RecyclerView.ViewHolder {
         private TextView tvName;
         private TextView tvCompany;
         private TextView tvMajor;
         private ImageButton imgBtnIsFavourite;
 
-        public VHUser(final View itemView) {
+        VHUser(final View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvCompany = (TextView) itemView.findViewById(R.id.tvCompany);
@@ -142,10 +141,10 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return mListItems.get(position).getType();
     }
 
-    class HeaderViewHolder extends RecyclerView.ViewHolder {
+    private class HeaderViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvHeader;
 
-        public HeaderViewHolder(View itemView) {
+        HeaderViewHolder(View itemView) {
             super(itemView);
             this.mTvHeader = (TextView) itemView.findViewById(R.id.tvHeader);
         }

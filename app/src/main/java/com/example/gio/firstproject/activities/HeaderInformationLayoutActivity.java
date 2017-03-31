@@ -9,7 +9,8 @@ import android.widget.ImageButton;
 import com.example.gio.firstproject.R;
 
 /**
- * Created by Gio on 3/9/2017.
+ * Copyright by Gio.
+ * Created on 3/9/2017.
  */
 
 public class HeaderInformationLayoutActivity extends AppCompatActivity implements View.OnClickListener {
@@ -26,12 +27,12 @@ public class HeaderInformationLayoutActivity extends AppCompatActivity implement
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.imgBtnSettings:
-                //Navigate to Information Layout  Screen
+                // Navigate to ListUser  Screen
                 startActivity(new Intent(this, ListUserActivity.class));
                 break;
-            case  R.id.imgBtnBack:
+            case R.id.imgBtnBack:
                 finish();
         }
     }

@@ -15,7 +15,8 @@ import com.example.gio.firstproject.R;
 import java.util.Locale;
 
 /**
- * Created by Gio on 3/16/2017.
+ * Copyright by Gio.
+ * Created on 3/16/2017.
  */
 
 public class IntentFilterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -47,7 +48,6 @@ public class IntentFilterActivity extends AppCompatActivity implements View.OnCl
         btnCameraIntent.setOnClickListener(this);
         imgView = (ImageView) findViewById(R.id.imgView);
         imgView.setOnClickListener(this);
-
     }
 
     @Override

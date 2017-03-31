@@ -14,11 +14,13 @@ import android.widget.TextView;
 import com.example.gio.firstproject.NoteSQLite.MyDatabaseHelper;
 import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.activities.AddEditNoteActivity;
-import com.example.gio.firstproject.activities.ViewPagerActivity;
+import com.example.gio.firstproject.adapter.NoteAdapter;
 import com.example.gio.firstproject.model.Note;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by Gio on 3/24/2017.
@@ -31,6 +33,7 @@ public class ViewPagerFragment3Item extends Fragment implements View.OnClickList
     private TextView tvTitle;
     private TextView tvContent;
     private Note note;
+    private NoteAdapter mAdapter;
     private ArrayList<Note> mNotes = new ArrayList<>();
 
     private static final int NOTE_EDIT = 22;
@@ -69,17 +72,11 @@ public class ViewPagerFragment3Item extends Fragment implements View.OnClickList
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getContext(), AddEditNoteActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("note_item", mNotes.get(finalPosition));
                 intent.putExtra("mNotes", bundle);
                 intent.putExtra("editNote", NOTE_EDIT);
-
-                // Reload (need to be optimized)
-                ((ViewPagerActivity)getContext()).finish();
-                startActivity(new Intent(getContext(), ViewPagerActivity.class));
-
                 startActivityForResult(intent, 1);
             }
         });
@@ -98,5 +95,26 @@ public class ViewPagerFragment3Item extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                boolean needRefresh = data.getBooleanExtra("needRefresh", true);
+                if (needRefresh) {
+                    this.mNotes.clear();
+                    MyDatabaseHelper db = new MyDatabaseHelper(getContext());
+                    ArrayList<Note> list = db.getAllNotes();
+                    this.mNotes.addAll(list);
+                    // Notify data set Changed.
+//                    mAdapter = new ViewpagerInner3Adapter(getChildFragmentManager(), getContext());
+                    mAdapter = new NoteAdapter(getContext(), mNotes);
+                    mAdapter.notifyDataSetChanged();
+                    Log.d("Refresh", "onActivityResult: ------- fragment3Item");
+                }
+            }
+        }
     }
 }

@@ -24,7 +24,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.util.ArrayList;
 
 /**
- * Created by Gio on 3/10/2017.
+ * Copyright by Gio.
+ * Created on 3/10/2017.
  */
 
 public class ListUserActivity extends AppCompatActivity implements UserAdapter.MyOnClickListener, UserAdapter.IsOnFavouriteListener {
@@ -163,8 +164,7 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
      */
     private Action getIndexApiAction() {
         Thing object = new Thing.Builder()
-                .setName("ItemUser Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
+                .setName("ItemUser Page")
                 .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
                 .build();
         return new Action.Builder(Action.TYPE_VIEW)

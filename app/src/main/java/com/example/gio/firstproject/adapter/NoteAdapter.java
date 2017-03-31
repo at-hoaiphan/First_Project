@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +19,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by Gio on 1/4/2017.
+ * Copyright by Gio.
+ * Created on 1/4/2017.
  */
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> {
@@ -52,16 +54,34 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         }
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
         TextView tvContent;
         ImageView imgNote;
+        ImageButton isFavourite;
 
-        public MyViewHolder(final View itemView) {
+        MyViewHolder(final View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             tvContent = (TextView) itemView.findViewById(R.id.tvContent);
             imgNote = (ImageView) itemView.findViewById(R.id.imgAvatar);
+            isFavourite = (ImageButton) itemView.findViewById(R.id.imgBtnFavourite);
+//            isFavourite.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Note note = (Note) mNotes.get(getAdapterPosition());
+//                    if (note.is()) {
+//                        imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_staroff);
+//                        user.setIsFavourite(false);
+//                        Log.d(TAG, "ItemUser set " + user.getIsFavourite());
+//                    } else {
+//                        imgBtnIsFavourite.setBackgroundResource(R.drawable.ic_stargold);
+//                        user.setIsFavourite(true);
+//                    }
+//                    mIsOnFavouriteListener.onFavouriteClick();
+//                    Log.d(TAG, "click Item_Detail1 " + user.getId() + user.getName() + user.getCompany() + user.getMajor() + user.getAbout() + user.getIsFavourite());
+//                }
+//            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

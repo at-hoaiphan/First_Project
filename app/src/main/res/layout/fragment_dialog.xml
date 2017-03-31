@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitleFragemnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/fragment_dialog"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitleFragemnt"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/name" />
+
+    <Button
+        android:id="@+id/btnDone"
+        android:text="@string/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtFragment"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
