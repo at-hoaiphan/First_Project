@@ -2,7 +2,6 @@ package com.example.gio.firstproject.activities;
 
 import android.app.FragmentManager;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -32,7 +31,7 @@ public class UIActivity extends AppCompatActivity implements NameFragmentDialog.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ui);
+        setContentView(R.layout.activity_ui_main_navigate);
 
         final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.activity_ui);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_navigation);
@@ -53,7 +52,13 @@ public class UIActivity extends AppCompatActivity implements NameFragmentDialog.
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                relativeLayout.setBackgroundColor(Color.parseColor("#BDB0C3F6"));
+//                relativeLayout.setBackgroundColor(Color.parseColor("#BDB0C3F6"));
+                Snackbar.make(v, "I'm a Snackbar", Snackbar.LENGTH_LONG).setAction("Action", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(UIActivity.this, "Snackbar Action", Toast.LENGTH_LONG).show();
+                    }
+                }).show();
             }
         });
         setSupportActionBar(toolbar);
@@ -63,12 +68,7 @@ public class UIActivity extends AppCompatActivity implements NameFragmentDialog.
 
         relativeLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
             public void onSwipeTop() {
-                Snackbar.make(findViewById(R.id.drawer_layout), "I'm a Snackbar", Snackbar.LENGTH_LONG).setAction("Action", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(UIActivity.this, "Snackbar Action", Toast.LENGTH_LONG).show();
-                    }
-                }).show();
+
             }
 
             public void onSwipeRight() {
@@ -80,6 +80,7 @@ public class UIActivity extends AppCompatActivity implements NameFragmentDialog.
             }
 
             public void onSwipeBottom() {
+                drawerLayout.closeDrawer(GravityCompat.START);
                 Toast.makeText(UIActivity.this, "bottom", Toast.LENGTH_LONG).show();
             }
         });

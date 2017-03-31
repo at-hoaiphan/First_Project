@@ -39,19 +39,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/swipe_here"
-        android:layout_above="@+id/tvFagment"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/textView2" />
-
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/fab" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -61,22 +48,15 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="38dp"
         android:layout_marginEnd="13dp"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:src="@drawable/ic_eye" />
+        android:src="@drawable/ic_eye"
+        app:pressedTranslationZ="20dp"/>
 
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout_navigation"
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/relativeLayout">
-
-        <android.support.design.widget.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/drawer_header"
-            app:menu="@menu/drawer" />
-    </android.support.v4.widget.DrawerLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/swipe_here"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/tvFagment"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
