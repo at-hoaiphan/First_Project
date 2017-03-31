@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnBroadcast.setOnClickListener(this);
         Button btnUI = (Button) findViewById(R.id.btnUI);
         btnUI.setOnClickListener(this);
+        Button btnGoogleMap = (Button) findViewById(R.id.btnGoogleMap);
+        btnGoogleMap.setOnClickListener(this);
     }
 
     @Override
@@ -126,6 +128,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Navigate to UI Layout  Screen
                 Intent intentUI = new Intent(this, UIActivity.class);
                 startActivity(intentUI);
+                break;
+            case R.id.btnGoogleMap:
+                //Navigate to Google Map Layout  Screen
+                Intent intentMap = new Intent(this, MapActivity.class);
+                startActivity(intentMap);
                 break;
 
         }

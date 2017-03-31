@@ -90,13 +90,6 @@
         android:text="@string/viewpager" />
 
     <Button
-        android:id="@+id/btnService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnFragment"
-        android:text="@string/service" />
-
-    <Button
         android:id="@+id/btnBroadcastReceiver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,6 +103,22 @@
         android:layout_below="@+id/btnFragment"
         android:layout_toEndOf="@+id/btnBroadcastReceiver"
         android:text="@string/ui_view" />
+
+    <Button
+        android:id="@+id/btnService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/service"
+        android:layout_below="@+id/btnFragment"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btnGoogleMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gg_nap"
+        android:layout_below="@+id/btnService"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
 
 
