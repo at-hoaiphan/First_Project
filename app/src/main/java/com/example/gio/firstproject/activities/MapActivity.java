@@ -11,12 +11,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.gio.firstproject.MockMarker;
 import com.example.gio.firstproject.R;
+import com.example.gio.firstproject.adapter.ViewPagerMarkerAdapter;
+import com.example.gio.firstproject.model.MyMarker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,17 +32,22 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * Copyright by Gio.
  * Created on 3/31/2017.
  */
 
-public class MapActivity extends AppCompatActivity implements LocationListener, GoogleMap.OnMyLocationButtonClickListener {
+public class MapActivity extends AppCompatActivity implements LocationListener, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener, ViewPager.OnPageChangeListener {
 
+    private MyMarker myMarker;
+    private ViewPager mViewPager;
+    private ArrayList<MyMarker> mMyMarkers = MockMarker.getData();
+    private ArrayList<Marker> mListMarkers = new ArrayList<>();
     private GoogleMap myMap;
     private ProgressDialog myProgress;
+    private Marker previousSelectedMarker;
 
     private static final String MYTAG = "MYTAG";
 
@@ -72,18 +82,14 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
             }
         });
 
-//        // Add Detail location
-//
-//        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager_location);
-//        FragmentManager manager = getSupportFragmentManager();
-//        ViewpagerInner3Adapter mAdapter = new ViewpagerInner3Adapter(manager, this);
-//        mViewPager.setAdapter(mAdapter);
-//        FragmentTransaction ft = manager.beginTransaction();
-//        ViewPagerFragment3Item fragment = new ViewPagerFragment3Item();
-//        ft.replace(R.id.frameDetailLocation, fragment, "F1");
-//        ft.addToBackStack(null);
-//        ft.commit();
+        // Add Detail location
+        mViewPager = (ViewPager) findViewById(R.id.viewpager_location);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        ViewPagerMarkerAdapter mAdapter = new ViewPagerMarkerAdapter(fragmentManager);
+        mViewPager.setAdapter(mAdapter);
 
+        // Set onPageChange
+        mViewPager.setOnPageChangeListener(this);
     }
 
     private void onMyMapReady(GoogleMap googleMap) {
@@ -108,6 +114,46 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         myMap.getUiSettings().setZoomControlsEnabled(true);
         myMap.setMyLocationEnabled(true);
 
+        // Add marker
+        for (int i = 0; i < mMyMarkers.size(); i++) {
+            myMarker = mMyMarkers.get(i);
+            MarkerOptions option = new MarkerOptions();
+            option.title(myMarker.getMarkerTitle());
+            option.snippet(myMarker.getMarkerLatitude() + ";" + myMarker.getMarkerLongitude());
+            option.position(new LatLng(myMarker.getMarkerLatitude(), myMarker.getMarkerLongitude()));
+            Marker marker = myMap.addMarker(option);
+            mListMarkers.add(marker);
+            marker.showInfoWindow();
+        }
+
+
+        myMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                for (int i = 0; i < mListMarkers.size(); i++) {
+                    if (marker.equals(mListMarkers.get(i))) {
+                        mViewPager.setCurrentItem(i, true);
+                        if (previousSelectedMarker != null) {
+                            previousSelectedMarker.setVisible(false);
+                            Log.d("previous", "onMarkerClick: " + previousSelectedMarker.getId());
+                        }
+
+                        mListMarkers.get(i).setVisible(false);
+                        MarkerOptions option = new MarkerOptions();
+                        option.title(marker.getTitle());
+                        option.snippet(marker.getSnippet());
+                        option.position(marker.getPosition());
+                        option.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location));
+                        Marker markerSelected = myMap.addMarker(option);
+                        markerSelected.showInfoWindow();
+                        previousSelectedMarker = marker;
+                        Log.d("Marker titlte", "onMarkerClick: " + i);
+                    }
+                }
+                return false;
+            }
+        });
+
     }
 
     private void askPermissionsAndShowMyLocation() {
@@ -118,7 +164,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
                     = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
             int accessFinePermission
                     = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-
 
             if (accessCoarsePermission != PackageManager.PERMISSION_GRANTED
                     || accessFinePermission != PackageManager.PERMISSION_GRANTED) {
@@ -226,21 +271,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
             return;
         }
 
-
-        // Add marker
-        for (int i = 1; i < 11; i++) {
-
-            MarkerOptions option2 = new MarkerOptions();
-            option2.title("Marker " + i);
-            Random rdm = new Random();
-            double deltaX = rdm.nextInt(20);
-            double deltaY = rdm.nextInt(20);
-            option2.snippet("....");
-            option2.position(new LatLng(16.078 + deltaX/2500, 108.215 + deltaY/2000));
-            Marker marker2 = myMap.addMarker(option2);
-            marker2.showInfoWindow();
-        }
-
         if (myLocation != null) {
 
             LatLng latLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
@@ -253,10 +283,10 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             myMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            // Thêm Marker cho Map:
+            // Thêm MyMarker cho Map:
             MarkerOptions option = new MarkerOptions();
-            option.title("Tui đây nè!");
-            option.snippet(myLocation.getLatitude()+ "+" + myLocation.getLongitude());
+            option.title("My Location!");
+            option.snippet(myLocation.getLatitude() + "+" + myLocation.getLongitude());
             option.position(latLng);
             option.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location));
             final Marker currentMarker = myMap.addMarker(option);
@@ -272,7 +302,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
             });
         } else {
             Toast.makeText(this, "Location not found!", Toast.LENGTH_LONG).show();
-            Log.i(MYTAG, "Location not found");
         }
 
     }
@@ -302,5 +331,40 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     public boolean onMyLocationButtonClick() {
 
         return false;
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+        myMarker = mMyMarkers.get(position);
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(myMarker.getMarkerLatitude(), myMarker.getMarkerLongitude()))             // Sets the center of the map to location user
+                .zoom(16)                   // Sets the zoom
+                .bearing(90)                // Sets the orientation of the camera to east
+                .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        myMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        MarkerOptions option = new MarkerOptions();
+        option.title(myMarker.getMarkerTitle());
+        option.snippet(myMarker.getMarkerLatitude() + ";" + myMarker.getMarkerLongitude());
+        option.position(new LatLng(myMarker.getMarkerLatitude(), myMarker.getMarkerLongitude()));
+        Marker marker = myMap.addMarker(option);
+        marker.showInfoWindow();
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }
