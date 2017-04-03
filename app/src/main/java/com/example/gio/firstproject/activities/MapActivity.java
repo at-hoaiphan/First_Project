@@ -41,7 +41,6 @@ import java.util.ArrayList;
 
 public class MapActivity extends AppCompatActivity implements LocationListener, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener, ViewPager.OnPageChangeListener {
 
-    private MyMarker myMarker;
     private ViewPager mViewPager;
     private ArrayList<MyMarker> mMyMarkers = MockMarker.getData();
     private ArrayList<Marker> mListMarkers = new ArrayList<>();
@@ -69,10 +68,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         // Hiển thị Progress Bar
         myProgress.show();
 
-
-        SupportMapFragment mapFragment
-                = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMap);
-
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMap);
 
         // Sét đặt sự kiện thời điểm GoogleMap đã sẵn sàng.
         mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -102,7 +98,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
 
             @Override
             public void onMapLoaded() {
-
                 // Đã tải thành công thì tắt Dialog Progress đi
                 myProgress.dismiss();
 
@@ -116,54 +111,42 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
 
         // Add marker
         for (int i = 0; i < mMyMarkers.size(); i++) {
-            myMarker = mMyMarkers.get(i);
+            MyMarker myMarker = mMyMarkers.get(i);
             MarkerOptions option = new MarkerOptions();
             option.title(myMarker.getMarkerTitle());
             option.snippet(myMarker.getMarkerLatitude() + ";" + myMarker.getMarkerLongitude());
             option.position(new LatLng(myMarker.getMarkerLatitude(), myMarker.getMarkerLongitude()));
+            option.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker));
             Marker marker = myMap.addMarker(option);
             mListMarkers.add(marker);
             marker.showInfoWindow();
         }
-
 
         myMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 for (int i = 0; i < mListMarkers.size(); i++) {
                     if (marker.equals(mListMarkers.get(i))) {
+                        mListMarkers.get(i).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_selected_marker));
                         mViewPager.setCurrentItem(i, true);
                         if (previousSelectedMarker != null) {
-                            previousSelectedMarker.setVisible(false);
-                            Log.d("previous", "onMarkerClick: " + previousSelectedMarker.getId());
+                            previousSelectedMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker));
                         }
-
-                        mListMarkers.get(i).setVisible(false);
-                        MarkerOptions option = new MarkerOptions();
-                        option.title(marker.getTitle());
-                        option.snippet(marker.getSnippet());
-                        option.position(marker.getPosition());
-                        option.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location));
-                        Marker markerSelected = myMap.addMarker(option);
-                        markerSelected.showInfoWindow();
+                        marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_selected_marker));
                         previousSelectedMarker = marker;
-                        Log.d("Marker titlte", "onMarkerClick: " + i);
                     }
                 }
                 return false;
             }
         });
-
     }
 
     private void askPermissionsAndShowMyLocation() {
 
         // Với API >= 23, bạn phải hỏi người dùng cho phép xem vị trí của họ.
         if (Build.VERSION.SDK_INT >= 23) {
-            int accessCoarsePermission
-                    = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-            int accessFinePermission
-                    = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+            int accessCoarsePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+            int accessFinePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
 
             if (accessCoarsePermission != PackageManager.PERMISSION_GRANTED
                     || accessFinePermission != PackageManager.PERMISSION_GRANTED) {
@@ -175,7 +158,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
                 // Hiển thị một Dialog hỏi người dùng cho phép các quyền trên.
                 ActivityCompat.requestPermissions(this, permissions,
                         REQUEST_ID_ACCESS_COURSE_FINE_LOCATION);
-
                 return;
             }
         }
@@ -188,12 +170,9 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     // Khi người dùng trả lời yêu cầu cấp quyền (cho phép hoặc từ chối).
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //
         switch (requestCode) {
             case REQUEST_ID_ACCESS_COURSE_FINE_LOCATION: {
-
 
                 // Chú ý: Nếu yêu cầu bị bỏ qua, mảng kết quả là rỗng.
                 if (grantResults.length > 1
@@ -263,6 +242,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
             // Lấy ra vị trí.
             myLocation = locationManager.getLastKnownLocation(locationProvider);
         }
+
         // Với Android API >= 23 phải catch SecurityException.
         catch (SecurityException e) {
             Toast.makeText(this, "Show My Location Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -272,7 +252,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         }
 
         if (myLocation != null) {
-
             LatLng latLng = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
             myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
 
@@ -283,18 +262,22 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             myMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
             // Thêm MyMarker cho Map:
             MarkerOptions option = new MarkerOptions();
             option.title("My Location!");
             option.snippet(myLocation.getLatitude() + "+" + myLocation.getLongitude());
             option.position(latLng);
-            option.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_location));
+            option.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_my_location));
             final Marker currentMarker = myMap.addMarker(option);
             currentMarker.showInfoWindow();
 
             myMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
                 @Override
                 public boolean onMyLocationButtonClick() {
+                    if (previousSelectedMarker != null) {
+                        previousSelectedMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker));
+                    }
                     myMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                     currentMarker.showInfoWindow();
                     return true;
@@ -303,9 +286,24 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         } else {
             Toast.makeText(this, "Location not found!", Toast.LENGTH_LONG).show();
         }
-
     }
 
+    @Override
+    public void onPageSelected(int position) {
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(mListMarkers.get(position).getPosition().latitude, mListMarkers.get(position).getPosition().longitude))             // Sets the center of the map to location user
+                .zoom(16)                   // Sets the zoom
+                .bearing(90)                // Sets the orientation of the camera to east
+                .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                .build();                   // Creates a CameraPosition from the builder
+        myMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        if (previousSelectedMarker != null) {
+            previousSelectedMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker));
+        }
+        mListMarkers.get(position).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_selected_marker));
+        mListMarkers.get(position).showInfoWindow();
+        previousSelectedMarker = mListMarkers.get(position);
+    }
 
     @Override
     public void onLocationChanged(Location location) {
@@ -343,25 +341,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
 
     }
 
-    @Override
-    public void onPageSelected(int position) {
-
-        myMarker = mMyMarkers.get(position);
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(myMarker.getMarkerLatitude(), myMarker.getMarkerLongitude()))             // Sets the center of the map to location user
-                .zoom(16)                   // Sets the zoom
-                .bearing(90)                // Sets the orientation of the camera to east
-                .tilt(40)                   // Sets the tilt of the camera to 30 degrees
-                .build();                   // Creates a CameraPosition from the builder
-        myMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-        MarkerOptions option = new MarkerOptions();
-        option.title(myMarker.getMarkerTitle());
-        option.snippet(myMarker.getMarkerLatitude() + ";" + myMarker.getMarkerLongitude());
-        option.position(new LatLng(myMarker.getMarkerLatitude(), myMarker.getMarkerLongitude()));
-        Marker marker = myMap.addMarker(option);
-        marker.showInfoWindow();
-    }
 
     @Override
     public void onPageScrollStateChanged(int state) {
