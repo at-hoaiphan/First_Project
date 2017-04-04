@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -70,10 +73,15 @@
         <activity android:name=".servicedemo.Test" />
         <activity android:name=".broadcast_receiver.SmsBroadcastReceiver" />
         <activity android:name=".activities.UIActivity" />
-
+        <activity android:name=".activities.MapActivity" />
+        <activity android:name=".thread_handler_asynctask.MultiThread" />
+        <activity android:name=".thread_handler_asynctask.DownloadImageActivity" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyD02-1rFyVgUOVmlR5mnvah9bODtGqPE6Q" />
 
         <service
             android:name=".servicedemo.PlayAudio"

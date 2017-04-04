@@ -14,6 +14,8 @@ import com.example.gio.firstproject.broadcast_receiver.SmsBroadcastReceiver;
 import com.example.gio.firstproject.fragmentdemo.FragmentDemoActivity;
 import com.example.gio.firstproject.fragmentdemo.FragmentMainDemo2;
 import com.example.gio.firstproject.servicedemo.Test;
+import com.example.gio.firstproject.thread_handler_asynctask.DownloadImageActivity;
+import com.example.gio.firstproject.thread_handler_asynctask.MultiThread;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -47,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnBroadcast.setOnClickListener(this);
         Button btnUI = (Button) findViewById(R.id.btnUI);
         btnUI.setOnClickListener(this);
+        Button btnGoogleMap = (Button) findViewById(R.id.btnGoogleMap);
+        btnGoogleMap.setOnClickListener(this);
+        Button btnThreadDemo = (Button) findViewById(R.id.btnThreadDemo);
+        btnThreadDemo.setOnClickListener(this);
+        Button btnDownloader = (Button) findViewById(R.id.btnAsyncTask);
+        btnDownloader.setOnClickListener(this);
     }
 
     @Override
@@ -126,6 +134,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Navigate to UI Layout  Screen
                 Intent intentUI = new Intent(this, UIActivity.class);
                 startActivity(intentUI);
+                break;
+            case R.id.btnGoogleMap:
+                //Navigate to Google Map Layout  Screen
+                Intent intentMap = new Intent(this, MapActivity.class);
+                startActivity(intentMap);
+                break;
+            case R.id.btnThreadDemo:
+                //Navigate to Demo Multi-Thread Layout  Screen
+                Intent intentThread = new Intent(this, MultiThread.class);
+                startActivity(intentThread);
+                break;
+            case R.id.btnAsyncTask:
+                //Navigate to Demo Multi-Thread Layout  Screen
+                Intent intentDownloader = new Intent(this, DownloadImageActivity.class);
+                startActivity(intentDownloader);
                 break;
 
         }
