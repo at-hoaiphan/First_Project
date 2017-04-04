@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTitleThread"
+        android:text="@string/multi_thread_demo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="#ff0000"/>
+    <Button
+        android:id="@+id/btnThreadDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitleThread"
+        android:layout_marginTop="10dp"
+        android:text="@string/draw"/>
+    <EditText
+        android:id="@+id/edtNumberThread"
+        android:inputType="number"
+        android:layout_alignTop="@+id/btnThreadDraw"
+        android:layout_toEndOf="@id/btnThreadDraw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:layout_below="@+id/btnThreadDraw">
+
+        <LinearLayout
+            android:id="@+id/llListButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+</RelativeLayout>

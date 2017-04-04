@@ -20,7 +20,7 @@ public class MockMarker {
         return list;
     }
 
-    public static MyMarker getMarkerById(int id, ArrayList<MyMarker> list) {
-        return list.get(id);
-    }
+//    public static MyMarker getMarkerById(int id, ArrayList<MyMarker> list) {
+//        return list.get(id);
+//    }
 }

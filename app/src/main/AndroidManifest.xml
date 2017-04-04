@@ -74,6 +74,8 @@
         <activity android:name=".broadcast_receiver.SmsBroadcastReceiver" />
         <activity android:name=".activities.UIActivity" />
         <activity android:name=".activities.MapActivity" />
+        <activity android:name=".thread_handler_asynctask.MultiThread" />
+        <activity android:name=".thread_handler_asynctask.DownloadImageActivity" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

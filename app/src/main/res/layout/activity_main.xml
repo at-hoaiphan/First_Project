@@ -96,6 +96,7 @@
         android:layout_below="@+id/btnFragment"
         android:layout_toEndOf="@+id/btnService"
         android:text="@string/broadcast" />
+
     <Button
         android:id="@+id/btnUI"
         android:layout_width="wrap_content"
@@ -108,17 +109,32 @@
         android:id="@+id/btnService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/service"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/btnFragment"
-        android:layout_alignParentStart="true" />
+        android:text="@string/service" />
 
     <Button
         android:id="@+id/btnGoogleMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gg_nap"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/btnService"
-        android:layout_alignParentStart="true" />
+        android:text="@string/gg_nap" />
+
+    <Button
+        android:id="@+id/btnThreadDemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/btnGoogleMap"
+        android:layout_below="@+id/btnService"
+        android:text="@string/thread_demo" />
+    <Button
+        android:id="@+id/btnAsyncTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/btnThreadDemo"
+        android:layout_below="@+id/btnService"
+        android:text="@string/async_task" />
 </RelativeLayout>
 
 

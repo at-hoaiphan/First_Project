@@ -20,10 +20,6 @@ import java.util.ArrayList;
  */
 
 public class ViewPagerMarker extends Fragment implements View.OnClickListener {
-    private static final String TAG ="ViewPagerMarker" ;
-    private TextView tvMarkerTitle;
-    private TextView tvmarkerLongLat;
-    private MyMarker mMyMarker;
     private ArrayList<MyMarker> mMyMarkers = new ArrayList<>();
 
     public ViewPagerMarker() {
@@ -34,8 +30,8 @@ public class ViewPagerMarker extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.google_map_detail_marker, container, false);
 
-        tvMarkerTitle = (TextView) view.findViewById(R.id.tvMarkerTitle);
-        tvmarkerLongLat = (TextView) view.findViewById(R.id.tvMarkerLongLat);
+        TextView tvMarkerTitle = (TextView) view.findViewById(R.id.tvMarkerTitle);
+        TextView tvmarkerLongLat = (TextView) view.findViewById(R.id.tvMarkerLongLat);
         int position = 0;
 
         if(getArguments()!=null){
@@ -44,7 +40,7 @@ public class ViewPagerMarker extends Fragment implements View.OnClickListener {
 
         // Replace item on fragment
         mMyMarkers.addAll(MockMarker.getData());
-        mMyMarker = mMyMarkers.get(position);
+        MyMarker mMyMarker = mMyMarkers.get(position);
         tvMarkerTitle.setText(mMyMarker.getMarkerTitle());
         tvmarkerLongLat.setText(String.valueOf("Lat: " + mMyMarker.getMarkerLatitude())
                 + "; Long: " + String.valueOf(mMyMarker.getMarkerLongitude()));

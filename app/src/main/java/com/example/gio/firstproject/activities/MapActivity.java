@@ -15,7 +15,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.gio.firstproject.MockMarker;
@@ -48,8 +47,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     private ProgressDialog myProgress;
     private Marker previousSelectedMarker;
 
-    private static final String MYTAG = "MYTAG";
-
     // Request for location (***).
     // value 8bit (value < 256).
     public static final int REQUEST_ID_ACCESS_COURSE_FINE_LOCATION = 100;
@@ -59,18 +56,18 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.google_map);
 
-        // Tạo Progress Bar
+        // Create Progress Bar
         myProgress = new ProgressDialog(this);
         myProgress.setTitle("Map Loading ...");
         myProgress.setMessage("Please wait...");
         myProgress.setCancelable(true);
 
-        // Hiển thị Progress Bar
+        // Display Progress Bar
         myProgress.show();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMap);
 
-        // Sét đặt sự kiện thời điểm GoogleMap đã sẵn sàng.
+        // Put event when GoogleMap is ready.
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
@@ -90,10 +87,10 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
 
     private void onMyMapReady(GoogleMap googleMap) {
 
-        // Lấy đối tượng Google Map ra:
+        // Get GoogleMap object:
         myMap = googleMap;
 
-        // Thiết lập sự kiện đã tải Map thành công
+        // Map loaded
         myMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
 
             @Override
@@ -143,7 +140,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
 
     private void askPermissionsAndShowMyLocation() {
 
-        // Với API >= 23, bạn phải hỏi người dùng cho phép xem vị trí của họ.
+        // Ask for permission with API >= 23.
         if (Build.VERSION.SDK_INT >= 23) {
             int accessCoarsePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
             int accessFinePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
@@ -151,40 +148,40 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
             if (accessCoarsePermission != PackageManager.PERMISSION_GRANTED
                     || accessFinePermission != PackageManager.PERMISSION_GRANTED) {
 
-                // Các quyền cần người dùng cho phép.
+                // Permissions.
                 String[] permissions = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.ACCESS_FINE_LOCATION};
 
-                // Hiển thị một Dialog hỏi người dùng cho phép các quyền trên.
+                // Dialog.
                 ActivityCompat.requestPermissions(this, permissions,
                         REQUEST_ID_ACCESS_COURSE_FINE_LOCATION);
                 return;
             }
         }
 
-        // Hiển thị vị trí hiện thời trên bản đồ.
+        // Show Current location.
         this.showMyLocation();
     }
 
 
-    // Khi người dùng trả lời yêu cầu cấp quyền (cho phép hoặc từ chối).
+    // User agree or ignore.
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case REQUEST_ID_ACCESS_COURSE_FINE_LOCATION: {
 
-                // Chú ý: Nếu yêu cầu bị bỏ qua, mảng kết quả là rỗng.
+                // If ignore: array null.
                 if (grantResults.length > 1
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED
                         && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
 
                     Toast.makeText(this, "Permission granted!", Toast.LENGTH_LONG).show();
 
-                    // Hiển thị vị trí hiện thời trên bản đồ.
+                    // Display current location.
                     this.showMyLocation();
                 }
-                // Hủy bỏ hoặc từ chối.
+                // Cancel or refuse.
                 else {
                     Toast.makeText(this, "Permission denied!", Toast.LENGTH_LONG).show();
                 }
@@ -209,7 +206,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
 
         if (!enabled) {
             Toast.makeText(this, "No location provider enabled!", Toast.LENGTH_LONG).show();
-            Log.i(MYTAG, "No location provider enabled!");
             return null;
         }
         return bestProvider;
@@ -246,7 +242,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         // Với Android API >= 23 phải catch SecurityException.
         catch (SecurityException e) {
             Toast.makeText(this, "Show My Location Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            Log.e(MYTAG, "Show My Location Error:" + e.getMessage());
             e.printStackTrace();
             return;
         }

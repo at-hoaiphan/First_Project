@@ -103,4 +103,9 @@
     <string name="swipe_to_see">Swipe to see</string>
     <string name="swipe_here">Swipe here</string>
     <string name="gg_nap">Google Map</string>
+    <string name="multi_thread_demo">Multi-Thread Demo</string>
+    <string name="draw">Draw</string>
+    <string name="thread_demo">Thread Demo</string>
+    <string name="download_image">Download Image</string>
+    <string name="async_task">AsyncTask</string>
 </resources>
