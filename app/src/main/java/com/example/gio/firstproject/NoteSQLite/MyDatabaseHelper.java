@@ -12,7 +12,8 @@ import com.example.gio.firstproject.model.Note;
 import java.util.ArrayList;
 
 /**
- * Created by Gio on 3/17/2017.
+ * Copyright by Gio.
+ * Created on 3/17/2017.
  */
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
@@ -120,17 +121,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
 
-        Note note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
-
         // return note
-        return note;
+        return new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
     }
 
     // Get all Note
     public ArrayList<Note> getAllNotes() {
         Log.i(TAG, "MyDatabaseHelper.getAllNotes ... ");
 
-        ArrayList<Note> noteList = new ArrayList<Note>();
+        ArrayList<Note> noteList = new ArrayList<>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE;
 

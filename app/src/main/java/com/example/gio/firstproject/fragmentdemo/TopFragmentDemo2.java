@@ -13,7 +13,8 @@ import android.widget.EditText;
 import com.example.gio.firstproject.R;
 
 /**
- * Created by Gio on 3/23/2017.
+ * Copyright by Gio.
+ * Created on 3/23/2017.
  */
 
 public class TopFragmentDemo2 extends Fragment {

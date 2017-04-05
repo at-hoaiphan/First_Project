@@ -108,4 +108,7 @@
     <string name="thread_demo">Thread Demo</string>
     <string name="download_image">Download Image</string>
     <string name="async_task">AsyncTask</string>
+    <string name="list_note">List Note</string>
+    <string name="view_pager">VIEW PAGER</string>
+    <string name="fragment_3">Fragment 3</string>
 </resources>

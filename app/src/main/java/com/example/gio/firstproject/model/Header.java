@@ -1,7 +1,8 @@
 package com.example.gio.firstproject.model;
 
 /**
- * Created by Gio on 3/17/2017.
+ * Copyright by Gio.
+ * Created on 3/17/2017.
  */
 
 public class Header extends ListItem{

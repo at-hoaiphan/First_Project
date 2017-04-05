@@ -8,7 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.gio.firstproject.R;
 
 /**
- * Created by Gio on 3/22/2017.
+ * Copyright by Gio.
+ * Created on 3/22/2017.
  */
 
 public class FragmentDemoActivity extends AppCompatActivity {
@@ -20,21 +21,17 @@ public class FragmentDemoActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        /**
-         * Check the device orientation and act accordingly
-         */
+        // Check the device orientation and act accordingly
         orientation = getResources().getBoolean(R.bool.orientation);
         if (orientation) {
-            /**
-             * Landscape mode of the device
-             */
+
+            // Landscape mode of the device
             LsFragment ls_fragment = new LsFragment();
             fragmentTransaction.replace(android.R.id.content, ls_fragment);
 //            fragmentTransaction.addToBackStack("0");
+
         } else {
-            /**
-             * Portrait mode of the device
-             */
+            // Portrait mode of the device
             PtFragment pm_fragment = new PtFragment();
             fragmentTransaction.replace(android.R.id.content, pm_fragment);
 //            fragmentTransaction.addToBackStack("0");

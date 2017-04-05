@@ -10,7 +10,8 @@ import android.widget.TextView;
 import com.example.gio.firstproject.R;
 
 /**
- * Created by Gio on 3/23/2017.
+ * Copyright by Gio.
+ * Created on 3/23/2017.
  */
 
 public class BottomFragmentDemo2 extends Fragment {

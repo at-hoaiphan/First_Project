@@ -24,7 +24,6 @@ public class MultiThread extends AppCompatActivity {
 
     private LinearLayout linearLayout;
     private EditText edtNumber;
-    private Button btnDraw;
     private Handler handler;
     private AtomicBoolean atomic = null;
 
@@ -35,7 +34,7 @@ public class MultiThread extends AppCompatActivity {
 
         linearLayout = (LinearLayout) findViewById(R.id.llListButton);
         edtNumber = (EditText) findViewById(R.id.edtNumberThread);
-        btnDraw = (Button) findViewById(R.id.btnThreadDraw);
+        Button btnDraw = (Button) findViewById(R.id.btnThreadDraw);
 
         handler = new Handler() {
             @Override

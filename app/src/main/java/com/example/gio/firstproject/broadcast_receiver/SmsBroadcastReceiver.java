@@ -97,7 +97,7 @@ public class SmsBroadcastReceiver extends AppCompatActivity implements View.OnCl
                 // Bundle return message packages at same time
                 Object[] objArr = (Object[]) bundle.get(sms_extra);
                 String sms = "";
-                // Loop for reading message
+                // Loop for reading messages
                 assert objArr != null;
                 for (Object anObjArr : objArr) {
                     // Transferr to createFromPdu message

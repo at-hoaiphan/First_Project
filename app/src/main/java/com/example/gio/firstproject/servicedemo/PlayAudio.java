@@ -1,9 +1,5 @@
 package com.example.gio.firstproject.servicedemo;
 
-/**
- * Created by Gio on 3/27/2017.
- */
-
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -25,7 +21,7 @@ public class PlayAudio extends Service{
     public int onStartCommand(Intent intent, int flags, int startId){
         objPlayer.start();
         Log.d(LOGCAT, "Media Player started!");
-        if(objPlayer.isLooping() != true){
+        if(!objPlayer.isLooping()){
             Log.d(LOGCAT, "Problem in Playing Audio");
         }
         return 1;

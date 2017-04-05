@@ -6,7 +6,8 @@ import android.os.Parcelable;
 import java.io.Serializable;
 
 /**
- * Created by Gio on 3/17/2017.
+ * Copyright by Gio.
+ * Created on 3/17/2017.
  */
 
 public class Note implements Serializable, Parcelable {

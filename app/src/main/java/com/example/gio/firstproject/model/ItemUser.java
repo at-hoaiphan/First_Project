@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Gio on 3/10/2017.
+ * Copyright by Gio.
+ * Created on 3/10/2017.
  */
 
 public class ItemUser extends ListItem implements Parcelable {
