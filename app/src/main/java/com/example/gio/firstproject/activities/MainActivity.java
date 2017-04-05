@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnThreadDemo.setOnClickListener(this);
         Button btnDownloader = (Button) findViewById(R.id.btnAsyncTask);
         btnDownloader.setOnClickListener(this);
+        Button btnAnswersJson = (Button) findViewById(R.id.btnAnswersJson);
+        btnAnswersJson.setOnClickListener(this);
     }
 
     @Override
@@ -146,9 +148,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentThread);
                 break;
             case R.id.btnAsyncTask:
-                //Navigate to Demo Multi-Thread Layout  Screen
+                //Navigate to Downloader AsyncTask Layout  Screen
                 Intent intentDownloader = new Intent(this, DownloadImageActivity.class);
                 startActivity(intentDownloader);
+                break;
+            case R.id.btnAnswersJson:
+                //Navigate to Answers Json Layout  Screen
+                Intent intentAnswerJson = new Intent(this, AnswersActivity.class);
+                startActivity(intentAnswerJson);
                 break;
 
         }

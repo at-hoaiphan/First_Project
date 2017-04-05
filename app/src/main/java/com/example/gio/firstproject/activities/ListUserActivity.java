@@ -1,7 +1,6 @@
 package com.example.gio.firstproject.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +15,6 @@ import com.example.gio.firstproject.adapter.UserAdapter;
 import com.example.gio.firstproject.model.Header;
 import com.example.gio.firstproject.model.ItemUser;
 import com.example.gio.firstproject.model.ListItem;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
@@ -34,11 +29,6 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
     private LinearLayoutManager linearLayoutManager;
     private android.os.Handler mHandler;
     private RelativeLayout rlProgress;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more item_user.
-     */
-    private GoogleApiClient client;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,10 +90,6 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
                 }
             }
         });
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more item_user.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private ArrayList<ListItem> getListItems() {
@@ -156,41 +142,6 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
     @Override
     public void onClick(int id) {
 
-    }
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more item_user.
-     */
-    private Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("ItemUser Page")
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more item_user.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more item_user.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
     }
 
     @Override

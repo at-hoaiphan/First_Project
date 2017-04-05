@@ -6,10 +6,10 @@
 
     <TextView
         android:id="@+id/tvHeader"
-        android:text="HeaderTitle"
+        android:text="@string/headertitle"
         android:gravity="start"
-        android:textSize="30dp"
-        android:background="@drawable/common_signin_btn_icon_dark"
+        android:textSize="30sp"
+        android:background="#841e9800"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
