@@ -1,0 +1,24 @@
+package com.example.gio.firstproject.retrofit_client;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+/**
+ * Copyright by Gio.
+ * Created on 4/5/2017.
+ */
+
+public class RetrofitClient {
+
+    private static Retrofit retrofit = null;
+
+    public static Retrofit getClient(String baseUrl) {
+        if (retrofit==null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(baseUrl)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
+}

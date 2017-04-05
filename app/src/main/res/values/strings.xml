@@ -111,4 +111,8 @@
     <string name="list_note">List Note</string>
     <string name="view_pager">VIEW PAGER</string>
     <string name="fragment_3">Fragment 3</string>
+    <string name="headertitle">HeaderTitle</string>
+    <string name="json_demo">Json Demo</string>
+    <string name="major">Major</string>
+    <string name="company">Company</string>
 </resources>

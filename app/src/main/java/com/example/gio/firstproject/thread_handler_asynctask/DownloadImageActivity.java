@@ -113,7 +113,6 @@ public class DownloadImageActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Log.i("AsyncTask Downloader", "onPostExecute: ");
-//                Picasso.with(getBaseContext()).load(Uri.parse(result)).into(imgdownloaded);
             imgdownloaded.setImageDrawable(Drawable.createFromPath(result));
             Log.d("path", "onPostExecute: " + result);
             Toast.makeText(DownloadImageActivity.this, "Download complete!", Toast.LENGTH_SHORT).show();
