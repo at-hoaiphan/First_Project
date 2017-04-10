@@ -115,4 +115,6 @@
     <string name="json_demo">Json Demo</string>
     <string name="major">Major</string>
     <string name="company">Company</string>
+    <string name="search">Search</string>
+    <string name="aannotation_demo">AAnnotation Demo</string>
 </resources>

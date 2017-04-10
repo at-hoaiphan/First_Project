@@ -146,6 +146,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnGoogleMap"
         android:text="@string/json_demo" />
+
+    <Button
+        android:id="@+id/btnAAnotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGoogleMap"
+        android:layout_toEndOf="@+id/btnAnswersJson"
+        android:text="@string/aannotation_demo" />
 </RelativeLayout>
 </ScrollView>
 

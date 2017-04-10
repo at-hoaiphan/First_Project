@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.model.Note;
@@ -50,6 +51,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         if (java.util.Objects.equals(imageUri, "") || imageUri == null) {
             holder.imgNote.setImageResource(R.drawable.img_nullavatar);
         } else {
+            Toast.makeText(mContext, imageUri, Toast.LENGTH_SHORT).show();
             Picasso.with(mContext).load(imageUri).placeholder(R.drawable.ic_setting).error(R.drawable.ic_lock).into(holder.imgNote);
         }
     }

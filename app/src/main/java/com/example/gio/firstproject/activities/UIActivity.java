@@ -61,7 +61,7 @@ public class UIActivity extends AppCompatActivity implements NameFragmentDialog.
                 }).show();
             }
         });
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
 
         // onTouch Event

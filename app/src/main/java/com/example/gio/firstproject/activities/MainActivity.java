@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDownloader.setOnClickListener(this);
         Button btnAnswersJson = (Button) findViewById(R.id.btnAnswersJson);
         btnAnswersJson.setOnClickListener(this);
+        Button btnAAnotation = (Button) findViewById(R.id.btnAAnotation);
+        btnAAnotation.setOnClickListener(this);
     }
 
     @Override
@@ -154,8 +156,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnAnswersJson:
                 //Navigate to Answers Json Layout  Screen
-                Intent intentAnswerJson = new Intent(this, AnswersActivity.class);
+                Intent intentAnswerJson = new Intent(this, AnswersActivity_.class);
                 startActivity(intentAnswerJson);
+                break;
+            case R.id.btnAAnotation:
+//                AAnnotationDemo_.intent(this).start();
+                Intent iAA = new Intent(this, AAnnotationDemo_.class);
+                startActivity(iAA);
                 break;
 
         }

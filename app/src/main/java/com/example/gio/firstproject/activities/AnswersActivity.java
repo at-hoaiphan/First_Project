@@ -1,6 +1,5 @@
 package com.example.gio.firstproject.activities;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +14,10 @@ import com.example.gio.firstproject.retrofit_client.ApiUtils;
 import com.example.gio.firstproject.retrofit_client.SOAnswersResponse;
 import com.example.gio.firstproject.retrofit_client.SOService;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -25,24 +28,23 @@ import retrofit2.Response;
  * Copyright by Gio.
  * Created on 4/5/2017.
  */
-
+@EActivity(R.layout.activity_answer_api)
 public class AnswersActivity extends AppCompatActivity{
+    @ViewById(R.id.rv_answers)
+    RecyclerView mRecyclerView;
+
     private AnswersAdapter mAdapter;
     private SOService mService;
 
-    @Override
-    protected void onCreate (Bundle savedInstanceState)  {
-        super.onCreate( savedInstanceState );
-        setContentView(R.layout.activity_answer_api );
+    @AfterViews
+    void afterViews() {
         mService = ApiUtils.getSOService();
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_answers);
         mAdapter = new AnswersAdapter(this, new ArrayList<Item>(0), new AnswersAdapter.PostItemListener() {
             @Override
             public void onPostClick(long id) {
                 Toast.makeText(AnswersActivity.this, "Post id is" + id, Toast.LENGTH_SHORT).show();
             }
         });
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -75,4 +77,6 @@ public class AnswersActivity extends AppCompatActivity{
             }
         });
     }
+
+
 }

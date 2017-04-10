@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+def AAVersion = '4.2.0'
 
+dependencies {
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+}
 android {
     compileSdkVersion 24
     buildToolsVersion '25.0.0'

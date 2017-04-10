@@ -96,6 +96,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
                     }
                 }
                 break;
+
             case R.id.btnDelete:
                 // Ask before delete.
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
