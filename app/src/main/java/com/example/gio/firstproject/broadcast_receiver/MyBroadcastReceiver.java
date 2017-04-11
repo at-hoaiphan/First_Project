@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.EReceiver;
+
 /**
  * Created by Gio on 3/28/2017.
  * Copyright by Gio.
  */
-
+@EReceiver
 public class MyBroadcastReceiver extends BroadcastReceiver {
 
     @Override

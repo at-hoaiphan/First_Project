@@ -31,16 +31,22 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 
 /**
  * Copyright by Gio.
  * Created on 3/31/2017.
  */
-
+@EActivity(R.layout.google_map)
 public class MapActivity extends AppCompatActivity implements LocationListener, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener, ViewPager.OnPageChangeListener {
 
-    private ViewPager mViewPager;
+    @ViewById(R.id.viewpager_location)
+    ViewPager mViewPager;
+
     private ArrayList<MyMarker> mMyMarkers = MockMarker.getData();
     private ArrayList<Marker> mListMarkers = new ArrayList<>();
     private GoogleMap myMap;
@@ -51,11 +57,8 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     // value 8bit (value < 256).
     public static final int REQUEST_ID_ACCESS_COURSE_FINE_LOCATION = 100;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.google_map);
-
+    @AfterViews
+    void afterViews() {
         // Create Progress Bar
         myProgress = new ProgressDialog(this);
         myProgress.setTitle("Map Loading ...");
@@ -76,7 +79,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         });
 
         // Add Detail location
-        mViewPager = (ViewPager) findViewById(R.id.viewpager_location);
         FragmentManager fragmentManager = getSupportFragmentManager();
         ViewPagerMarkerAdapter mAdapter = new ViewPagerMarkerAdapter(fragmentManager);
         mViewPager.setAdapter(mAdapter);
@@ -86,7 +88,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     }
 
     private void onMyMapReady(GoogleMap googleMap) {
-
         // Get GoogleMap object:
         myMap = googleMap;
 
@@ -104,6 +105,10 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         });
         myMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         myMap.getUiSettings().setZoomControlsEnabled(true);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
         myMap.setMyLocationEnabled(true);
 
         // Add marker
@@ -139,7 +144,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     }
 
     private void askPermissionsAndShowMyLocation() {
-
         // Ask for permission with API >= 23.
         if (Build.VERSION.SDK_INT >= 23) {
             int accessCoarsePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -170,7 +174,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case REQUEST_ID_ACCESS_COURSE_FINE_LOCATION: {
-
                 // If ignore: array null.
                 if (grantResults.length > 1
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED
@@ -193,8 +196,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     // Tìm một nhà cung cấp vị trị hiện thời đang được mở.
     private String getEnabledLocationProvider() {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-
         // Tiêu chí để tìm một nhà cung cấp vị trí.
         Criteria criteria = new Criteria();
 
@@ -213,7 +214,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
 
     // Chỉ gọi phương thức này khi đã có quyền xem vị trí người dùng.
     private void showMyLocation() {
-
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         String locationProvider = this.getEnabledLocationProvider();
@@ -335,7 +335,6 @@ public class MapActivity extends AppCompatActivity implements LocationListener, 
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }
-
 
     @Override
     public void onPageScrollStateChanged(int state) {

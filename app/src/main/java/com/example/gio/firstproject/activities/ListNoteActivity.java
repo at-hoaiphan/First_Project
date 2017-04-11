@@ -15,24 +15,28 @@ import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.adapter.NoteAdapter;
 import com.example.gio.firstproject.model.Note;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 
+@EActivity(R.layout.list_note)
 public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.NoteOnClickListener, View.OnClickListener {
 
+    @ViewById(R.id.rlListNote)
+    RecyclerView rlListItem;
+
+    @ViewById(R.id.imgBtnAddNote)
+    ImageButton imgBtnAddNote;
+
     private static final int NOTE_EDIT = 22;
-
     private ArrayList<Note> mNotes = new ArrayList<>();
-
     private NoteAdapter noteAdapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_note);
-
+    @AfterViews
+    void afterViews() {
         // Get ListView object from xml
-        RecyclerView rlListItem = (RecyclerView) findViewById(R.id.rlListNote);
-        ImageButton imgBtnAddNote = (ImageButton) findViewById(R.id.imgBtnAddNote);
         imgBtnAddNote.setOnClickListener(this);
         MyDatabaseHelper db = new MyDatabaseHelper(this);
         db.createDefaultNotesIfNeed();
@@ -44,7 +48,7 @@ public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.N
         noteAdapter.setNoteOnClickListener(new NoteAdapter.NoteOnClickListener() {
             @Override
             public void onClick(int id) {
-                Intent intent = new Intent(ListNoteActivity.this, AddEditNoteActivity.class);
+                Intent intent = new Intent(ListNoteActivity.this, AddEditNoteActivity_.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("note_item", mNotes.get(id));
                 intent.putExtra("mNotes", bundle);
@@ -105,7 +109,7 @@ public class ListNoteActivity extends AppCompatActivity implements NoteAdapter.N
     }
 
     private void navigateAddNoteActivity() {
-        Intent intent = new Intent(this, AddEditNoteActivity.class);
+        Intent intent = new Intent(this, AddEditNoteActivity_.class);
         startActivityForResult(intent, 1);
     }
 }

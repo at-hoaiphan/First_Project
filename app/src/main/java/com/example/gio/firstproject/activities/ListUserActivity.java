@@ -47,7 +47,7 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
         mUserAdapter.setMyOnClickListener(new UserAdapter.MyOnClickListener() {
             @Override
             public void onClick(int id) {
-                Intent intent = new Intent(ListUserActivity.this, DetailItemActivity.class);
+                Intent intent = new Intent(ListUserActivity.this, DetailItemActivity_.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("user_item", (Parcelable) mListItems.get(id));
                 intent.putExtra("index", id);

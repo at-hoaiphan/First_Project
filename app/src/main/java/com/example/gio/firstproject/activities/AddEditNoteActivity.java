@@ -3,7 +3,6 @@ package com.example.gio.firstproject.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,12 +18,34 @@ import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.model.Note;
 import com.squareup.picasso.Picasso;
 
-public class AddEditNoteActivity extends AppCompatActivity implements View.OnClickListener {
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
+import org.androidannotations.annotations.ViewById;
+
+@EActivity(R.layout.activity_add_edit_note)
+public class AddEditNoteActivity extends AppCompatActivity {
+    @ViewById(R.id.edtNoteTitle)
+    EditText edtTitle;
+
+    @ViewById(R.id.edtNoteContent)
+    EditText edtContent;
+
+    @ViewById(R.id.btnAddEdit)
+    Button btnAddEdit;
+
+    @ViewById(R.id.btnDelete)
+    Button btnDeleteNote;
+
+    @ViewById(R.id.imgAvatar)
+    ImageView imgAvatar;
+
+    @ViewById(R.id.tvHeaderAddEdit)
+    TextView tvHeaderAddEdit;
+
 
     private Note note;
-    private ImageView imgAvatar;
-    private EditText edtTitle;
-    private EditText edtContent;
     private static final int SELECT_PICTURE = 7;
     private static int noteState = 0;
     private static final int NOTE_ADD = 11;
@@ -32,18 +53,8 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
     private MyDatabaseHelper myDatabaseHelper;
     private String noteUri;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_note);
-
-        edtTitle = (EditText) findViewById(R.id.edtNoteTitle);
-        edtContent = (EditText) findViewById(R.id.edtNoteContent);
-        Button btnAddEdit = (Button) findViewById(R.id.btnAddEdit);
-        Button btnDeleteNote = (Button) findViewById(R.id.btnDelete);
-        imgAvatar = (ImageView) findViewById(R.id.imgAvatar);
-        TextView tvHeaderAddEdit = (TextView) findViewById(R.id.tvHeaderAddEdit);
-
+    @AfterViews
+    void afterViews() {
         noteState = NOTE_ADD;
         noteState = getIntent().getIntExtra("editNote", NOTE_ADD);
         if (noteState == NOTE_EDIT) {
@@ -63,68 +74,64 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
         }
 
         myDatabaseHelper = new MyDatabaseHelper(this);
-        btnAddEdit.setOnClickListener(this);
-        btnDeleteNote.setOnClickListener(this);
-        imgAvatar.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnAddEdit:
-                if (edtTitle.getText().toString().equals("") || edtContent.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter title & content", Toast.LENGTH_LONG).show();
-                    return;
-                } else {
-                    if (noteState == NOTE_ADD) {
-                        if (noteUri != null) {
-                            Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString(), noteUri);
-                            myDatabaseHelper.addNote(newNote);
-                        } else {
-                            Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString());
-                            myDatabaseHelper.addNote(newNote);
-                        }
-                        Toast.makeText(getApplicationContext(), "Record has been added!", Toast.LENGTH_LONG).show();
-                        refreshList();
-                    } else if (noteState == NOTE_EDIT) {
-                        note.setNoteTitle(edtTitle.getText().toString());
-                        note.setNoteContent(edtContent.getText().toString());
-                        note.setNoteImageUri(noteUri);
-                        myDatabaseHelper.updateNote(note);
-                        Toast.makeText(getApplicationContext(), "Record has been editted!", Toast.LENGTH_LONG).show();
-                        refreshList();
-                    }
-                }
-                break;
-
-            case R.id.btnDelete:
-                // Ask before delete.
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Alert:");
-                builder.setMessage("Delete this record?")
-                        .setCancelable(false)
-                        // Set event for Deleting
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Delete Note
-                                myDatabaseHelper.deleteNote(note);
-                                refreshList();
-                                finish();
-                            }
-                        })
-                        // Set event for Canceling
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-                break;
-            case R.id.imgAvatar:
-                openImageChooser();
-                break;
+    @Click(R.id.btnAddEdit)
+    void clickBtnAddEdit() {
+        if (edtTitle.getText().toString().equals("") || edtContent.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Please enter title & content", Toast.LENGTH_LONG).show();
         }
+        else {
+            if (noteState == NOTE_ADD) {
+                if (noteUri != null) {
+                    Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString(), noteUri);
+                    myDatabaseHelper.addNote(newNote);
+                } else {
+                    Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString());
+                    myDatabaseHelper.addNote(newNote);
+                }
+                Toast.makeText(getApplicationContext(), "Record has been added!", Toast.LENGTH_LONG).show();
+                refreshList();
+            } else if (noteState == NOTE_EDIT) {
+                note.setNoteTitle(edtTitle.getText().toString());
+                note.setNoteContent(edtContent.getText().toString());
+                note.setNoteImageUri(noteUri);
+                myDatabaseHelper.updateNote(note);
+                Toast.makeText(getApplicationContext(), "Record has been editted!", Toast.LENGTH_LONG).show();
+                refreshList();
+            }
+        }
+    }
+
+    @Click(R.id.btnDelete)
+    void clickBtnDelte() {
+        // Ask before delete.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Alert:");
+        builder.setMessage("Delete this record?")
+                .setCancelable(false)
+                // Set event for Deleting
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Delete Note
+                        myDatabaseHelper.deleteNote(note);
+                        refreshList();
+                        finish();
+                    }
+                })
+                // Set event for Canceling
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    @Click(R.id.imgAvatar)
+    void clickImgAvater() {
+        openImageChooser();
     }
 
     /* Choose an image from Gallery */
@@ -135,10 +142,10 @@ public class AddEditNoteActivity extends AppCompatActivity implements View.OnCli
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @OnActivityResult(SELECT_PICTURE)
+    void onActivityResult(int resultCode, Intent data) {
         // Gallery request
-        if (resultCode == RESULT_OK && requestCode == SELECT_PICTURE) {
+        if (resultCode == RESULT_OK) {
             // Get the url from data
             Uri selectedImageUri = data.getData();
             noteUri = selectedImageUri.toString();

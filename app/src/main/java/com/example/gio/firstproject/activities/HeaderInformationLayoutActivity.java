@@ -1,39 +1,37 @@
 package com.example.gio.firstproject.activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.gio.firstproject.R;
+
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 /**
  * Copyright by Gio.
  * Created on 3/9/2017.
  */
 
-public class HeaderInformationLayoutActivity extends AppCompatActivity implements View.OnClickListener {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_header_information);
+@EActivity(R.layout.activity_header_information)
+public class HeaderInformationLayoutActivity extends AppCompatActivity {
 
-        ImageButton imgBtnBack = (ImageButton) findViewById(R.id.imgBtnBack);
-        imgBtnBack.setOnClickListener(this);
-        ImageButton imgBtnSettings = (ImageButton) findViewById(R.id.imgBtnSettings);
-        imgBtnSettings.setOnClickListener(this);
+    @ViewById(R.id.imgBtnBack)
+    ImageButton imgBtnBack;
+
+    @ViewById(R.id.imgBtnSettings)
+    ImageButton imgBtnSettings;
+
+    @Click(R.id.imgBtnSettings)
+    void clickBtnSettings() {
+        // Navigate to ListUser  Screen
+        startActivity(new Intent(this, ListUserActivity.class));
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.imgBtnSettings:
-                // Navigate to ListUser  Screen
-                startActivity(new Intent(this, ListUserActivity.class));
-                break;
-            case R.id.imgBtnBack:
-                finish();
-        }
+    @Click(R.id.imgBtnBack)
+    void clickImgBtnBack() {
+        finish();
     }
 }

@@ -2,7 +2,6 @@ package com.example.gio.firstproject.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,32 +11,28 @@ import android.widget.Toast;
 
 import com.example.gio.firstproject.R;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 /**
  * Copyright by Gio.
  * Created on 3/20/2017.
  */
-
+@EActivity(R.layout.activity_shared_preference_setting)
 public class SharedPreferenceActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private SeekBar skSound;
-    private SeekBar skBrightness;
+    @ViewById(R.id.skSound)
+    SeekBar skSound;
+    @ViewById(R.id.skBrightness)
+    SeekBar skBrightness;
+    @ViewById(R.id.rgDifficulty)
+    RadioGroup rgDifficulty;
+    @ViewById(R.id.btnSave)
+    Button btnSave;
 
-    private RadioGroup rgDifficulty;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shared_preference_setting);
-
-        skSound = (SeekBar) findViewById(R.id.skSound);
-        skBrightness = (SeekBar) findViewById(R.id.skBrightness);
-        rgDifficulty = (RadioGroup) findViewById(R.id.rgDifficulty);
-//        RadioButton rbEasy = (RadioButton) findViewById(R.id.rbEasy);
-//        RadioButton rbNormal = (RadioButton) findViewById(R.id.rbNormal);
-//        RadioButton rbHard = (RadioButton) findViewById(R.id.rbHard);
-        Button btnSave = (Button) findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(this);
-
+    @AfterViews
+    void afterViews() {
         // Load settings last time
         this.loadGameSettings();
     }

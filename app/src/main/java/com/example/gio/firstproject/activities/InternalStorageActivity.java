@@ -1,15 +1,16 @@
 package com.example.gio.firstproject.activities;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gio.firstproject.R;
+
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -20,36 +21,27 @@ import java.io.InputStreamReader;
  * Copyright by Gio.
  * Created on 3/20/2017.
  */
-
+@EActivity(R.layout.activity_internal_storage)
 public class InternalStorageActivity extends AppCompatActivity {
 
-    private TextView tvOutputText;
-    private EditText edtInputText;
+    @ViewById(R.id.btnSave)
+    Button btnSaveToFile;
+
+    @ViewById(R.id.btnReadFile)
+    Button btnReadFile;
+
+    @ViewById(R.id.tvOutput)
+    TextView tvOutputText;
+
+    @ViewById(R.id.edtInput)
+    EditText edtInputText;
 
     // A simple name file without path
     private String simpleFileName = "note.txt";
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_internal_storage);
-
-        Button btnSaveToFile = (Button) findViewById(R.id.btnSave);
-        Button btnReadFile = (Button) findViewById(R.id.btnReadFile);
-        edtInputText = (EditText) findViewById(R.id.edtInput);
-        tvOutputText = (TextView) findViewById(R.id.tvOutput);
-        btnSaveToFile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveData();
-            }
-        });
-        btnReadFile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readFile();
-            }
-        });
+    @Click(R.id.btnSave)
+    void clickBtnSaveToFile() {
+        saveData();
     }
 
     private void saveData() {
@@ -63,6 +55,11 @@ public class InternalStorageActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Error!" + e.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Click(R.id.btnReadFile)
+    void clickBtnReadFile() {
+        readFile();
     }
 
     private void readFile() {
