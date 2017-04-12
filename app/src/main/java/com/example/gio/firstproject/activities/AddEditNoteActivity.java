@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
 
@@ -45,9 +46,11 @@ public class AddEditNoteActivity extends AppCompatActivity {
     TextView tvHeaderAddEdit;
 
 
-    private Note note;
+    @Extra
+    Note note;
     private static final int SELECT_PICTURE = 7;
-    private static int noteState = 0;
+    @Extra
+    int noteState;
     private static final int NOTE_ADD = 11;
     private static final int NOTE_EDIT = 22;
     private MyDatabaseHelper myDatabaseHelper;
@@ -55,10 +58,10 @@ public class AddEditNoteActivity extends AppCompatActivity {
 
     @AfterViews
     void afterViews() {
-        noteState = NOTE_ADD;
-        noteState = getIntent().getIntExtra("editNote", NOTE_ADD);
+//        noteState = NOTE_ADD;
+//        noteState = getIntent().getIntExtra("editNote", NOTE_ADD);
         if (noteState == NOTE_EDIT) {
-            note = getIntent().getBundleExtra("mNotes").getParcelable("note_item");
+//            note = getIntent().getBundleExtra("mNotes").getParcelable("note_item");
             assert note != null;
             edtTitle.setText(note.getNoteTitle());
             edtContent.setText(note.getNoteContent());

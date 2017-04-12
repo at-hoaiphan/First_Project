@@ -43,7 +43,7 @@ public class ViewpagerInner3Adapter extends FragmentStatePagerAdapter {
 
     @Override
     public float getPageWidth(int position) {
-        return 0.85f;
+        return 1.0f;
     }
 }
 

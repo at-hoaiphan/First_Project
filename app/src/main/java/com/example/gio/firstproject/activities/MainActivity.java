@@ -12,7 +12,7 @@ import com.example.gio.firstproject.broadcast_receiver.SmsBroadcastReceiver;
 import com.example.gio.firstproject.fragmentdemo.FragmentDemoActivity;
 import com.example.gio.firstproject.fragmentdemo.FragmentMainDemo2_;
 import com.example.gio.firstproject.servicedemo.Test_;
-import com.example.gio.firstproject.thread_handler_asynctask.DownloadImageActivity;
+import com.example.gio.firstproject.thread_handler_asynctask.DownloadImageActivity_;
 import com.example.gio.firstproject.thread_handler_asynctask.MultiThread;
 
 import org.androidannotations.annotations.Click;
@@ -138,8 +138,7 @@ public class MainActivity extends AppCompatActivity {
     @Click(R.id.btnFragmentDemo2)
     void clickBtnFragmentDemo2() {
         //Navigate to FragmentMainDemo2 Layout  Screen
-        Intent intentFragmentDemo2 = new Intent(this, FragmentMainDemo2_.class);
-        startActivity(intentFragmentDemo2);
+        FragmentMainDemo2_.intent(this).start();
     }
 
     @Click(R.id.btnViewpager)
@@ -184,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
     @Click(R.id.btnAsyncTask)
     void clickBtnAsyncTask() {
         //Navigate to Downloader AsyncTask Layout  Screen
-        Intent intentDownloader = new Intent(this, DownloadImageActivity.class);
+        Intent intentDownloader = new Intent(this, DownloadImageActivity_.class);
         startActivity(intentDownloader);
     }
 

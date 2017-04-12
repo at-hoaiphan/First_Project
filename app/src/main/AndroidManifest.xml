@@ -74,7 +74,7 @@
         <activity android:name=".activities.UIActivity_" />
         <activity android:name=".activities.MapActivity_" />
         <activity android:name=".thread_handler_asynctask.MultiThread" />
-        <activity android:name=".thread_handler_asynctask.DownloadImageActivity" />
+        <activity android:name=".thread_handler_asynctask.DownloadImageActivity_" />
         <activity android:name=".activities.AnswersActivity_" />
         <activity android:name=".activities.AAnnotationDemo_" />
         <meta-data

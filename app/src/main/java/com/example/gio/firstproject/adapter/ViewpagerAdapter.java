@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.gio.firstproject.viewpagers.ViewpagerFragment1;
-import com.example.gio.firstproject.viewpagers.ViewpagerFragment2;
+import com.example.gio.firstproject.viewpagers.ViewpagerFragment1_;
+import com.example.gio.firstproject.viewpagers.ViewpagerFragment2_;
 import com.example.gio.firstproject.viewpagers.ViewpagerFragment3;
 
 /**
@@ -23,10 +23,10 @@ public class ViewpagerAdapter extends FragmentStatePagerAdapter {
         Fragment frag = null;
         switch (position) {
             case 0:
-                frag = new ViewpagerFragment1();
+                frag = new ViewpagerFragment1_();
                 break;
             case 1:
-                frag = new ViewpagerFragment2();
+                frag = new ViewpagerFragment2_();
                 break;
             case 2:
                 frag = new ViewpagerFragment3();
