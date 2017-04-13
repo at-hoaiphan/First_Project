@@ -11,8 +11,9 @@ import com.example.gio.firstproject.viewpagers.ViewpagerFragment3;
  * Created on 3/23/2017.
  */
 
-public class ViewpagerInner2Adapter extends FragmentStatePagerAdapter {
-    public ViewpagerInner2Adapter(FragmentManager fm) {
+// Class for test
+public class ViewpagerInner2AdapterForExample extends FragmentStatePagerAdapter {
+    public ViewpagerInner2AdapterForExample(FragmentManager fm) {
         super(fm);
     }
 

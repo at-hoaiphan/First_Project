@@ -27,6 +27,7 @@ public class MultiThread extends AppCompatActivity {
     private Handler handler;
     private AtomicBoolean atomic = null;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

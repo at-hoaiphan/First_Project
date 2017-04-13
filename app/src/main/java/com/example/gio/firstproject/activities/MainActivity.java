@@ -3,154 +3,202 @@ package com.example.gio.firstproject.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.broadcast_receiver.SmsBroadcastReceiver;
 import com.example.gio.firstproject.fragmentdemo.FragmentDemoActivity;
-import com.example.gio.firstproject.fragmentdemo.FragmentMainDemo2;
-import com.example.gio.firstproject.servicedemo.Test;
-import com.example.gio.firstproject.thread_handler_asynctask.DownloadImageActivity;
+import com.example.gio.firstproject.fragmentdemo.FragmentMainDemo2_;
+import com.example.gio.firstproject.servicedemo.Test_;
+import com.example.gio.firstproject.thread_handler_asynctask.DownloadImageActivity_;
 import com.example.gio.firstproject.thread_handler_asynctask.MultiThread;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button btnLoginPage = (Button) findViewById(R.id.btnLoginPage);
-        btnLoginPage.setOnClickListener(this);
-        Button btnLayout = (Button) findViewById(R.id.btnLayout);
-        btnLayout.setOnClickListener(this);
-        ImageButton imgBtnCall = (ImageButton) findViewById(R.id.imgBtnCall);
-        imgBtnCall.setOnClickListener(this);
-        Button btnIntentFilter = (Button) findViewById(R.id.btnIntentFilter);
-        btnIntentFilter.setOnClickListener(this);
-        Button btnSqlite = (Button) findViewById(R.id.btnSqlite);
-        btnSqlite.setOnClickListener(this);
-        Button btnSharedPre = (Button) findViewById(R.id.btnSharedPreference);
-        btnSharedPre.setOnClickListener(this);
-        Button btnStorage = (Button) findViewById(R.id.btnStorage);
-        btnStorage.setOnClickListener(this);
-        Button btnFragment = (Button) findViewById(R.id.btnFragment);
-        btnFragment.setOnClickListener(this);
-        Button btnFragmentDemo2 = (Button) findViewById(R.id.btnFragmentDemo2);
-        btnFragmentDemo2.setOnClickListener(this);
-        Button btnViewpager = (Button) findViewById(R.id.btnViewpager);
-        btnViewpager.setOnClickListener(this);
-        Button btnService = (Button) findViewById(R.id.btnService);
-        btnService.setOnClickListener(this);
-        Button btnBroadcast = (Button) findViewById(R.id.btnBroadcastReceiver);
-        btnBroadcast.setOnClickListener(this);
-        Button btnUI = (Button) findViewById(R.id.btnUI);
-        btnUI.setOnClickListener(this);
-        Button btnGoogleMap = (Button) findViewById(R.id.btnGoogleMap);
-        btnGoogleMap.setOnClickListener(this);
-        Button btnThreadDemo = (Button) findViewById(R.id.btnThreadDemo);
-        btnThreadDemo.setOnClickListener(this);
-        Button btnDownloader = (Button) findViewById(R.id.btnAsyncTask);
-        btnDownloader.setOnClickListener(this);
+@EActivity(R.layout.activity_main)
+public class MainActivity extends AppCompatActivity {
+
+    @ViewById(R.id.btnLoginPage)
+    Button btnLoginPage;
+
+    @ViewById(R.id.btnLayout)
+    Button btnLayout;
+
+    @ViewById(R.id.imgBtnCall)
+    ImageButton imgBtnCall;
+
+    @ViewById(R.id.btnIntentFilter)
+    Button btnIntentFilter;
+
+    @ViewById(R.id.btnSqlite)
+    Button btnSqlite;
+
+    @ViewById(R.id.btnSharedPreference)
+    Button btnSharedPre;
+
+    @ViewById(R.id.btnStorage)
+    Button btnStorage;
+
+    @ViewById(R.id.btnFragment)
+    Button btnFragment;
+
+    @ViewById(R.id.btnFragmentDemo2)
+    Button btnFragmentDemo2;
+
+    @ViewById(R.id.btnViewpager)
+    Button btnViewpager;
+
+    @ViewById(R.id.btnService)
+    Button btnService;
+
+    @ViewById(R.id.btnBroadcastReceiver)
+    Button btnBroadcast;
+
+    @ViewById(R.id.btnUI)
+    Button btnUI;
+
+    @ViewById(R.id.btnGoogleMap)
+    Button btnGoogleMap;
+
+    @ViewById(R.id.btnThreadDemo)
+    Button btnThreadDemo;
+
+    @ViewById(R.id.btnAsyncTask)
+    Button btnDownloader;
+
+    @ViewById(R.id.btnAnswersJson)
+    Button btnAnswersJson;
+
+    @ViewById(R.id.btnAAnotation)
+    Button btnAAnotation;
+
+    @Click(R.id.btnLoginPage)
+    void clickBtnLoginPage() {
+        boolean isLogIn = false;
+        SharedPreferences sharedPreferences = getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
+
+        if (sharedPreferences != null) {
+            isLogIn = sharedPreferences.getBoolean("isLogIn", false);
+        }
+        if (isLogIn) {
+            startActivity(new Intent(this, LogInSuccessActivity_.class));
+        } else {
+            //Navigate to Login  Screen
+            LoginScreenActivity_.intent(this).start();
+        }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnLoginPage:
-                boolean isLogIn = false;
-                SharedPreferences sharedPreferences = getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
+    @Click(R.id.btnLayout)
+    void clickBtnLayout() {
+        //Navigate to Header Information Layout  Screen
+        HeaderInformationLayoutActivity_.intent(this).start();
+    }
 
-                if (sharedPreferences != null) {
-                    isLogIn = sharedPreferences.getBoolean("isLogIn", false);
-                }
-                if (isLogIn) {
-                    startActivity(new Intent(this, LogInSuccessActivity.class));
-                } else {
-                    //Navigate to Login  Screen
-                    Intent i = new Intent(MainActivity.this, LoginScreenActivity.class);
-                    startActivity(i);
-                }
-                break;
-            case R.id.btnLayout:
-                //Navigate to Header Information Layout  Screen
-                Intent i2 = new Intent(this, HeaderInformationLayoutActivity.class);
-                startActivity(i2);
-                break;
-            case R.id.imgBtnCall:
-                //Navigate to PhoneCallActvity Layout  Screen
-                Intent intentCall = new Intent(this, PhoneCallActivity.class);
-                startActivity(intentCall);
-                break;
-            case R.id.btnIntentFilter:
-                //Navigate to IntentFilterActivity Layout  Screen
-                Intent intentFilter = new Intent(this, IntentFilterActivity.class);
-                startActivity(intentFilter);
-                break;
-            case R.id.btnSqlite:
-                //Navigate to ListNoteActivity Layout  Screen
-                Intent intentSqlite = new Intent(this, ListNoteActivity.class);
-                startActivity(intentSqlite);
-                break;
-            case R.id.btnSharedPreference:
-                //Navigate to SharedPreferenceActivity Layout  Screen
-                Intent intentSharedPre = new Intent(this, SharedPreferenceActivity.class);
-                startActivity(intentSharedPre);
-                break;
-            case R.id.btnStorage:
-                //Navigate to InternalStorageActivity Layout  Screen
-                Intent intentStorage = new Intent(this, InternalStorageActivity.class);
-                startActivity(intentStorage);
-                break;
-            case R.id.btnFragment:
-                //Navigate to FragmentDemoActivity Layout  Screen
-                Intent intentFragment = new Intent(this, FragmentDemoActivity.class);
-                startActivity(intentFragment);
-                break;
-            case R.id.btnFragmentDemo2:
-                //Navigate to FragmentMainDemo2 Layout  Screen
-                Intent intentFragmentDemo2 = new Intent(this, FragmentMainDemo2.class);
-                startActivity(intentFragmentDemo2);
-                break;
-            case R.id.btnViewpager:
-                //Navigate to ViewPager Layout  Screen
-                Intent intentViewpager = new Intent(this, ViewPagerActivity.class);
-                startActivity(intentViewpager);
-                break;
-            case R.id.btnService:
-                //Navigate to ServiceDemo Layout  Screen
-                Intent intentService = new Intent(this, Test.class);
-                startActivity(intentService);
-                break;
-            case R.id.btnBroadcastReceiver:
-                //Navigate to BroadcastReceiver Layout  Screen
-                Intent intentBroadcast = new Intent(this, SmsBroadcastReceiver.class);
-                startActivity(intentBroadcast);
-                break;
-            case R.id.btnUI:
-                //Navigate to UI Layout  Screen
-                Intent intentUI = new Intent(this, UIActivity.class);
-                startActivity(intentUI);
-                break;
-            case R.id.btnGoogleMap:
-                //Navigate to Google Map Layout  Screen
-                Intent intentMap = new Intent(this, MapActivity.class);
-                startActivity(intentMap);
-                break;
-            case R.id.btnThreadDemo:
-                //Navigate to Demo Multi-Thread Layout  Screen
-                Intent intentThread = new Intent(this, MultiThread.class);
-                startActivity(intentThread);
-                break;
-            case R.id.btnAsyncTask:
-                //Navigate to Demo Multi-Thread Layout  Screen
-                Intent intentDownloader = new Intent(this, DownloadImageActivity.class);
-                startActivity(intentDownloader);
-                break;
+    @Click(R.id.imgBtnCall)
+    void clickImgBtnCall() {
+        //Navigate to PhoneCallActvity Layout  Screen
+        PhoneCallActivity_.intent(this).start();
+    }
 
-        }
+    @Click(R.id.btnIntentFilter)
+    void clickBtnIntentFilter() {
+        //Navigate to IntentFilterActivity Layout  Screen
+        IntentFilterActivity_.intent(this).start();
+    }
+
+    @Click(R.id.btnSqlite)
+    void clickBtnSqlite() {
+        //Navigate to ListNoteActivity Layout  Screen
+//        ListNoteActivity_.intent(this).start();
+        startActivity(new Intent(this, ListNoteActivity_.class));
+    }
+
+    @Click(R.id.btnSharedPreference)
+    void clickBtnSharedPreference() {
+        //Navigate to SharedPreferenceActivity Layout  Screen
+        SharedPreferenceActivity_.intent(this).start();
+    }
+
+    @Click(R.id.btnStorage)
+    void clickBtnStorage() {
+        //Navigate to InternalStorageActivity Layout  Screen
+        InternalStorageActivity_.intent(this).start();
+    }
+
+    @Click(R.id.btnFragment)
+    void clickBtnFragment() {
+        //Navigate to FragmentDemoActivity Layout  Screen
+        Intent intentFragment = new Intent(this, FragmentDemoActivity.class);
+        startActivity(intentFragment);
+    }
+
+    @Click(R.id.btnFragmentDemo2)
+    void clickBtnFragmentDemo2() {
+        //Navigate to FragmentMainDemo2 Layout  Screen
+        FragmentMainDemo2_.intent(this).start();
+    }
+
+    @Click(R.id.btnViewpager)
+    void clickBtnViewpager() {
+        //Navigate to ViewPager Layout  Screen
+        ViewPagerActivity_.intent(this).start();
+    }
+
+    @Click(R.id.btnService)
+    void clickBtnService() {
+        //Navigate to ServiceDemo Layout  Screen
+        Test_.intent(this).start();
+    }
+
+    @Click(R.id.btnBroadcastReceiver)
+    void clickBtnBroadcastReceiver() {
+        //Navigate to BroadcastReceiver Layout  Screen
+        Intent intentBroadcast = new Intent(this, SmsBroadcastReceiver.class);
+
+        startActivity(intentBroadcast);
+    }
+
+    @Click(R.id.btnUI)
+    void clickBtnUI() {
+        //Navigate to UI Layout  Screen
+        UIActivity_.intent(this).start();
+    }
+
+    @Click(R.id.btnGoogleMap)
+    void clickBtnGoogleMap() {
+        //Navigate to Google Map Layout  Screen
+        MapActivity_.intent(this).start();
+    }
+
+    @Click(R.id.btnThreadDemo)
+    void clickBtnThreadDemo() {
+        //Navigate to Demo Multi-Thread Layout  Screen
+        Intent intentThread = new Intent(this, MultiThread.class);
+        startActivity(intentThread);
+    }
+
+    @Click(R.id.btnAsyncTask)
+    void clickBtnAsyncTask() {
+        //Navigate to Downloader AsyncTask Layout  Screen
+        Intent intentDownloader = new Intent(this, DownloadImageActivity_.class);
+        startActivity(intentDownloader);
+    }
+
+    @Click(R.id.btnAnswersJson)
+    void clickBtnAnswerJson() {
+        //Navigate to Answers Json Layout  Screen
+        Intent intentAnswerJson = new Intent(this, AnswersActivity_.class);
+        startActivity(intentAnswerJson);
+    }
+
+    @Click(R.id.btnAAnotation)
+    void clickBtnAAnnotation() {
+        // AAnnotationDemo_.intent(this).start();
+        Intent iAA = new Intent(this, AAnnotationDemo_.class);
+        startActivity(iAA);
     }
 }

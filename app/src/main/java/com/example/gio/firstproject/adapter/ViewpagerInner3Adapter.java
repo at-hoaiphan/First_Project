@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.gio.firstproject.NoteSQLite.MyDatabaseHelper;
-import com.example.gio.firstproject.viewpagers.ViewPagerFragment3Item;
+import com.example.gio.firstproject.viewpagers.ViewPagerFragment3Item_;
 
 /**
  * Copyright by Gio.
@@ -23,7 +23,7 @@ public class ViewpagerInner3Adapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new ViewPagerFragment3Item().getPosition(position);
+        return new ViewPagerFragment3Item_().getPosition(position);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ViewpagerInner3Adapter extends FragmentStatePagerAdapter {
 
     @Override
     public float getPageWidth(int position) {
-        return 0.85f;
+        return 1.0f;
     }
 }
 

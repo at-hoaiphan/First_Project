@@ -6,25 +6,27 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.EReceiver;
+
 /**
  * Created by Gio on 3/28/2017.
  * Copyright by Gio.
  */
-
+@EReceiver
 public class MyBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-//        // Extract data included in the Intent
-//        CharSequence intentData = intent.getCharSequenceExtra("message");
-//        if (intentData != null) {
-//            Toast.makeText(context, "The Intent's message: " + intentData, Toast.LENGTH_LONG).show();
-//        }
+        // Extract data included in the Intent
+        CharSequence intentData = intent.getCharSequenceExtra("message");
+        if (intentData != null) {
+            Toast.makeText(context, "The Intent's message: " + intentData, Toast.LENGTH_LONG).show();
+        }
 
         // Received from app2
-        CharSequence intentData = intent.getCharSequenceExtra("fromApp2");
-        Log.d("Received from app 2", "onReceive: " + intent.getCharSequenceExtra("fromApp2") + intentData);
-        Toast.makeText(context, intent.getCharSequenceExtra("fromApp2"), Toast.LENGTH_SHORT).show();
+        CharSequence intentDataApp = intent.getCharSequenceExtra("fromApp2");
+        Log.d("Received from app 2", "onReceive: " + intent.getCharSequenceExtra("fromApp2") + intentDataApp);
+//        Toast.makeText(context, intent.getCharSequenceExtra("fromApp2"), Toast.LENGTH_SHORT).show();
 
 
 //        // Internet State

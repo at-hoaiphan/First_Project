@@ -1,8 +1,8 @@
 package com.example.gio.firstproject;
 
-/**
- * Copyright by Gio.
- * Created on 3/30/2017.
+/*
+  Copyright by Gio.
+  Created on 3/30/2017.
  */
 
 import android.content.Context;

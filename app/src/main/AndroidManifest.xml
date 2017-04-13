@@ -24,7 +24,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,28 +54,29 @@
                 <data android:scheme="mailto" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginScreenActivity" />
-        <activity android:name=".activities.RegisterScreenActivity" />
-        <activity android:name=".activities.HeaderInformationLayoutActivity" />
-        <activity android:name=".activities.InformationLayoutactivity" />
+        <activity android:name=".activities.LoginScreenActivity_" />
+        <activity android:name=".activities.RegisterScreenActivity_" />
+        <activity android:name=".activities.HeaderInformationLayoutActivity_" />
         <activity android:name=".activities.ListUserActivity" />
-        <activity android:name=".activities.DetailItemActivity" />
-        <activity android:name=".activities.PhoneCallActivity" />
-        <activity android:name=".activities.IntentFilterActivity" />
-        <activity android:name=".activities.ListNoteActivity" />
-        <activity android:name=".activities.AddEditNoteActivity" />
-        <activity android:name=".activities.SharedPreferenceActivity" />
-        <activity android:name=".activities.InternalStorageActivity" />
-        <activity android:name=".activities.LogInSuccessActivity" />
+        <activity android:name=".activities.DetailItemActivity_" />
+        <activity android:name=".activities.PhoneCallActivity_" />
+        <activity android:name=".activities.IntentFilterActivity_" />
+        <activity android:name=".activities.ListNoteActivity_" />
+        <activity android:name=".activities.AddEditNoteActivity_" />
+        <activity android:name=".activities.SharedPreferenceActivity_" />
+        <activity android:name=".activities.InternalStorageActivity_" />
+        <activity android:name=".activities.LogInSuccessActivity_" />
         <activity android:name=".fragmentdemo.FragmentDemoActivity" />
-        <activity android:name=".fragmentdemo.FragmentMainDemo2" />
-        <activity android:name=".activities.ViewPagerActivity" />
-        <activity android:name=".servicedemo.Test" />
-        <activity android:name=".broadcast_receiver.SmsBroadcastReceiver" />
-        <activity android:name=".activities.UIActivity" />
-        <activity android:name=".activities.MapActivity" />
+        <activity android:name=".fragmentdemo.FragmentMainDemo2_" />
+        <activity android:name=".activities.ViewPagerActivity_" />
+        <activity android:name=".servicedemo.Test_" />
+        <activity android:name=".broadcast_receiver.SmsBroadcastReceiver_" />
+        <activity android:name=".activities.UIActivity_" />
+        <activity android:name=".activities.MapActivity_" />
         <activity android:name=".thread_handler_asynctask.MultiThread" />
-        <activity android:name=".thread_handler_asynctask.DownloadImageActivity" />
+        <activity android:name=".thread_handler_asynctask.DownloadImageActivity_" />
+        <activity android:name=".activities.AnswersActivity_" />
+        <activity android:name=".activities.AAnnotationDemo_" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -84,10 +85,10 @@
             android:value="AIzaSyD02-1rFyVgUOVmlR5mnvah9bODtGqPE6Q" />
 
         <service
-            android:name=".servicedemo.PlayAudio"
+            android:name=".servicedemo.PlayAudio_"
             android:enabled="true" />
 
-        <receiver android:name=".broadcast_receiver.MyBroadcastReceiver">
+        <receiver android:name=".broadcast_receiver.MyBroadcastReceiver_">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -7,9 +7,12 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:scrollbars="vertical"
     tools:context="com.example.gio.firstproject.activities.MainActivity">
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <Button
         android:id="@+id/btnLoginPage"
         android:layout_width="200dp"
@@ -125,17 +128,34 @@
         android:id="@+id/btnThreadDemo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/btnGoogleMap"
         android:layout_below="@+id/btnService"
+        android:layout_toEndOf="@+id/btnGoogleMap"
         android:text="@string/thread_demo" />
+
     <Button
         android:id="@+id/btnAsyncTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/btnThreadDemo"
         android:layout_below="@+id/btnService"
+        android:layout_toEndOf="@+id/btnThreadDemo"
         android:text="@string/async_task" />
+
+    <Button
+        android:id="@+id/btnAnswersJson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGoogleMap"
+        android:text="@string/json_demo" />
+
+    <Button
+        android:id="@+id/btnAAnotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGoogleMap"
+        android:layout_toEndOf="@+id/btnAnswersJson"
+        android:text="@string/aannotation_demo" />
 </RelativeLayout>
+</ScrollView>
 
 
 

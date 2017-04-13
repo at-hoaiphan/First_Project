@@ -2,48 +2,42 @@ package com.example.gio.firstproject.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.gio.firstproject.R;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 /**
  * Copyright by Gio.
  * Created on 3/20/2017.
  */
+@EActivity(R.layout.activity_login_success)
+public class LogInSuccessActivity extends AppCompatActivity {
 
-public class LogInSuccessActivity extends AppCompatActivity implements View.OnClickListener {
+    @ViewById(R.id.tvLogOut)
+    TextView tvLogOut;
+
     private SharedPreferences.Editor editor;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_success);
-
+    @AfterViews
+    void afterViews() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("Check LogIn", Context.MODE_PRIVATE);
 
         editor = sharedPreferences.edit();
-
-        TextView tvLogOut = (TextView) findViewById(R.id.tvLogOut);
-        tvLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editor.clear().commit();
-                finish();
-            }
-        });
-
 
         editor.putBoolean("isLogIn", true);
         // Save.
         editor.apply();
     }
 
-    @Override
-    public void onClick(View v) {
-
+    @Click(R.id.tvLogOut)
+    void clickTvLogOut() {
+        editor.clear().commit();
+        finish();
     }
 }

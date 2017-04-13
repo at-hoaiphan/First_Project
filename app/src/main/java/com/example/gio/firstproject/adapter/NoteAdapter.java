@@ -16,6 +16,7 @@ import com.example.gio.firstproject.R;
 import com.example.gio.firstproject.model.Note;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -50,7 +51,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         if (java.util.Objects.equals(imageUri, "") || imageUri == null) {
             holder.imgNote.setImageResource(R.drawable.img_nullavatar);
         } else {
-            Picasso.with(mContext).load(imageUri).placeholder(R.drawable.ic_setting).error(R.drawable.ic_lock).into(holder.imgNote);
+            Picasso.with(mContext).load(new File(imageUri))
+                    .placeholder(R.drawable.ic_setting)
+                    .error(R.drawable.ic_lock)
+                    .into(holder.imgNote);
+//            holder.imgNote.setImageDrawable(Drawable.createFromPath(imageUri));
         }
     }
 
