@@ -113,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
     @Click(R.id.btnSqlite)
     void clickBtnSqlite() {
         //Navigate to ListNoteActivity Layout  Screen
-        ListNoteActivity_.intent(this).start();
+//        ListNoteActivity_.intent(this).start();
+        startActivity(new Intent(this, ListNoteActivity_.class));
     }
 
     @Click(R.id.btnSharedPreference)

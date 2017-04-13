@@ -69,7 +69,7 @@ public class InternalStorageActivity extends AppCompatActivity {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             StringBuilder stringBuilder = new StringBuilder();
-            String str = null;
+            String str;
             while ((str = bufferedReader.readLine()) != null) {
                 stringBuilder.append(str).append("\n");
             }

@@ -41,7 +41,7 @@ public class ListUserActivity extends AppCompatActivity implements UserAdapter.M
 
         //create ItemUser data
         mListItems = getListItems();
-        mUserAdapter = new UserAdapter(this, mListItems, this);
+        mUserAdapter = new UserAdapter(mListItems, this);
 
         recyclerViewUsers.setAdapter(mUserAdapter);
         mUserAdapter.setMyOnClickListener(new UserAdapter.MyOnClickListener() {

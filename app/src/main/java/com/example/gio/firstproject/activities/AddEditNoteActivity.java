@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +23,8 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.ViewById;
+
+import java.io.File;
 
 @EActivity(R.layout.activity_add_edit_note)
 public class AddEditNoteActivity extends AppCompatActivity {
@@ -59,15 +60,18 @@ public class AddEditNoteActivity extends AppCompatActivity {
     @AfterViews
     void afterViews() {
 //        noteState = NOTE_ADD;
-//        noteState = getIntent().getIntExtra("editNote", NOTE_ADD);
+        noteState = getIntent().getIntExtra("editNote", NOTE_ADD);
         if (noteState == NOTE_EDIT) {
-//            note = getIntent().getBundleExtra("mNotes").getParcelable("note_item");
+            note = getIntent().getBundleExtra("mNotes").getParcelable("note_item");
             assert note != null;
             edtTitle.setText(note.getNoteTitle());
             edtContent.setText(note.getNoteContent());
             noteUri = note.getNoteImageUri();
             if (note.getNoteImageUri() != null) {
-                Picasso.with(this).load(note.getNoteImageUri()).into(imgAvatar);
+                Picasso.with(this).load(new File(note.getNoteImageUri()))
+                        .placeholder(R.drawable.ic_setting)
+                        .error(R.drawable.ic_lock)
+                        .into(imgAvatar);
             } else {
                 imgAvatar.setImageResource(R.drawable.img_nullavatar);
             }
@@ -83,8 +87,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
     void clickBtnAddEdit() {
         if (edtTitle.getText().toString().equals("") || edtContent.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Please enter title & content", Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else {
             if (noteState == NOTE_ADD) {
                 if (noteUri != null) {
                     Note newNote = new Note(edtTitle.getText().toString(), edtContent.getText().toString(), noteUri);
@@ -141,7 +144,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
     public void openImageChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setAction(Intent.ACTION_PICK);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
     }
 
@@ -151,16 +154,17 @@ public class AddEditNoteActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             // Get the url from data
             Uri selectedImageUri = data.getData();
-            noteUri = selectedImageUri.toString();
+            File file = new File(selectedImageUri.getPath());
+            noteUri = file.getPath();
+            Toast.makeText(this, noteUri, Toast.LENGTH_SHORT).show();
             // Set the image in ImageView
             imgAvatar.setImageURI(selectedImageUri);
         }
     }
 
-    public void refreshList() {
+    private void refreshList() {
         Intent data = new Intent();
         data.putExtra("needRefresh", true);
-        Log.d("", "refreshList: ");
         this.setResult(RESULT_OK, data);
     }
 }

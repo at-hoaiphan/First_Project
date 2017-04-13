@@ -2,6 +2,7 @@ package com.example.gio.firstproject.viewpagers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -59,13 +60,13 @@ public class ViewpagerFragment1 extends Fragment {
         noteAdapter.setNoteOnClickListener(new NoteAdapter.NoteOnClickListener() {
             @Override
             public void onClick(int id) {
-//                Intent intent = new Intent(mViewPagerActivity, AddEditNoteActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putParcelable("note_item", mNotes.get(id));
-//                intent.putExtra("mNotes", bundle);
-//                intent.putExtra("editNote", NOTE_EDIT);
-//                startActivityForResult(intent, 1);
-                AddEditNoteActivity_.intent(getContext()).note(mNotes.get(id)).noteState(NOTE_EDIT).start();
+                Intent intent = new Intent(mViewPagerActivity, AddEditNoteActivity_.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("note_item", mNotes.get(id));
+                intent.putExtra("mNotes", bundle);
+                intent.putExtra("editNote", NOTE_EDIT);
+                startActivityForResult(intent, 1);
+//                AddEditNoteActivity_.intent(getContext()).note(mNotes.get(id)).noteState(NOTE_EDIT).start();
             }
         });
     }

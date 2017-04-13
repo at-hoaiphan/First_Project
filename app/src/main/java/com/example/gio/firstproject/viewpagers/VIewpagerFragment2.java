@@ -13,6 +13,8 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.File;
+
 /**
  * Copyright by Gio.
  * Created on 3/23/2017.
@@ -46,6 +48,11 @@ public class ViewpagerFragment2 extends Fragment {
         MyDatabaseHelper db = new MyDatabaseHelper(getContext());
         Note note = db.getNote(1);
         tvTitleNote.setText(note.getNoteTitle());
-        Picasso.with(getContext()).load(note.getNoteImageUri()).into(imgAvatar);
+        if (note.getNoteImageUri() != null) {
+            Picasso.with(getContext()).load(new File(note.getNoteImageUri()))
+                    .placeholder(R.drawable.ic_setting)
+                    .error(R.drawable.ic_lock)
+                    .into(imgAvatar);
+        }
     }
 }

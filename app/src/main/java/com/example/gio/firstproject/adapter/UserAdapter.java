@@ -1,6 +1,5 @@
 package com.example.gio.firstproject.adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,9 +32,8 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final IsOnFavouriteListener mIsOnFavouriteListener;
     private MyOnClickListener mMyOnClickListener;
 
-    public UserAdapter(Context context, ArrayList<ListItem> datas, IsOnFavouriteListener listener) {
+    public UserAdapter(ArrayList<ListItem> datas, IsOnFavouriteListener listener) {
         mListItems = datas;
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
         mIsOnFavouriteListener = listener;
     }
 

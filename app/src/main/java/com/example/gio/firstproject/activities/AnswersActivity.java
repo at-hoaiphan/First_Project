@@ -29,7 +29,7 @@ import retrofit2.Response;
  * Created on 4/5/2017.
  */
 @EActivity(R.layout.activity_answer_api)
-public class AnswersActivity extends AppCompatActivity{
+public class AnswersActivity extends AppCompatActivity {
     @ViewById(R.id.rv_answers)
     RecyclerView mRecyclerView;
 
@@ -54,15 +54,16 @@ public class AnswersActivity extends AppCompatActivity{
 
         loadAnswers();
     }
+
     public void loadAnswers() {
         mService.getAnswers().enqueue(new Callback<SOAnswersResponse>() {
             @Override
             public void onResponse(Call<SOAnswersResponse> call, Response<SOAnswersResponse> response) {
 
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     mAdapter.updateAnswers(response.body().getItems());
                     Log.d("MainActivity", "posts loaded from API");
-                }else {
+                } else {
 //                    int statusCode  = response.code();
                     Log.d("MainActivity", "posts didn't load from API: ");
                     // handle request errors depending on status code
