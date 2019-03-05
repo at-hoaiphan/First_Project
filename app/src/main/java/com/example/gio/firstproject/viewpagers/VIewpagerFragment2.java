@@ -19,9 +19,9 @@ import com.squareup.picasso.Picasso;
  * Created on 3/23/2017.
  */
 
-public class ViewpagerFragment2 extends Fragment {
+public class VIewpagerFragment2 extends Fragment {
 
-    public ViewpagerFragment2() {
+    public VIewpagerFragment2() {
     }
 
     @Nullable

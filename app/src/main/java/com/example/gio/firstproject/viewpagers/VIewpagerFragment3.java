@@ -15,10 +15,10 @@ import com.example.gio.firstproject.adapter.ViewpagerInner3Adapter;
  * Created by Gio on 3/23/2017.
  */
 
-public class ViewpagerFragment3 extends Fragment {
+public class VIewpagerFragment3 extends Fragment {
 
     private ViewpagerInner3Adapter mAdapter;
-    public ViewpagerFragment3() {
+    public VIewpagerFragment3() {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
